@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science & Validation | Insai</title>
+<!-- Google Analytics (GA4) - Consent Mode v2 -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  var storedConsent = localStorage.getItem('cookie-consent');
+  gtag('consent', 'default', {
+    analytics_storage: storedConsent === 'accepted' ? 'granted' : 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+  window.GA_MEASUREMENT_ID = 'G-VBBBKQDH0W';
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBBBKQDH0W"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', window.GA_MEASUREMENT_ID);
+</script>
+<meta name="description" content="The peer-reviewed science behind Insai: published biomarker research, sample outputs, technical specifications, and FAQ, across independent cohorts and devices.">
+<!-- Open Graph -->
+<meta property="og:title" content="Science & Validation | Insai">
+<meta property="og:description" content="The peer-reviewed science behind Insai: published biomarker research, sample outputs, technical specifications, and FAQ, across independent cohorts and devices.">
+<meta property="og:image" content="https://insai.tech/assets/eeg-wave-hero.jpg">
+<meta property="og:url" content="https://insai.tech/evidence.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Insai">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Science & Validation | Insai">
+<meta name="twitter:description" content="Insai's biomarker validation results, sample outputs, technical specifications, and FAQ.">
+<meta name="twitter:image" content="https://insai.tech/assets/eeg-wave-hero.jpg">
+<!-- Canonical URL -->
+<link rel="canonical" href="https://insai.tech/evidence.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/Insai-logo-2026-icon.png">
+<!-- Calendly widget -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Structured Data: TechArticle -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Science & Validation",
+  "description": "Insai's biomarker validation methodology, accuracy benchmarks, and technical specifications for sleep EEG analysis.",
+  "author": {
+    "@type": "Organization",
+    "name": "Insai",
+    "url": "https://insai.tech"
+  },
+  "dateModified": "2026-04",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Insai",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://insai.tech/assets/Insai-logo-2026-transparent.png"
+    }
+  }
+}
+</script>
+<!-- Structured Data: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you handle multi-site EEG variability?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our models are validated across 6+ independent cohorts with different recording equipment, protocols, and demographics. Cross-site generalization is a design principle, not an afterthought."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is your approach to regulatory qualification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Insai is designed for regulatory workflows. Our outputs include audit trails, version-controlled model documentation, and qualification-ready evidence packages. Our platform is for research use only."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What data formats do you accept?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EDF, EDF+, BDF, and proprietary PSG formats from major clinical systems. We also support raw binary formats with channel mapping specifications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the typical turnaround time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Batch processing of a typical Phase 2 study (200-500 recordings) completes within 24-48 hours. Single-recording analysis returns results in under 5 minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Insai handle data security?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All data is encrypted in transit (TLS 1.3) and at rest (AES-256). We process data in isolated environments. No patient-identifiable information is required for biomarker extraction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Insai work with wearable EEG devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Our models are designed for cross-device generalization. We support clinical PSG and headband EEG today, with in-ear EEG on the roadmap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What biomarkers can Insai extract?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sleep architecture metrics, spectral power features, sleep spindle characteristics, slow-wave activity, and composite brain health scores. Custom biomarker development is available for specific clinical endpoints."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you validate against gold-standard scoring?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our models are validated against expert polysomnography scoring from board-certified sleep technologists. We report concordance metrics, sensitivity, specificity, and Cohen's kappa for each biomarker."
+      }
+    }
+  ]
+}
+</script>
+<style>
+/* ============================================
+   EVIDENCE.HTML — STRICT DARK SYSTEM (DESIGN.md)
+   One dark canvas, teal-only accent, Geist + Geist Mono,
+   mono teal eyebrows left-aligned, one card style.
+   ============================================ */
+:root {
+  --color-teal: #1BA8A0;
+  --color-teal-dark: #148F88;
+  --color-white: #FFFFFF;
+
+  /* STRICT dark system (DESIGN.md) */
+  --bg: #0B0F12;
+  --bg-deep: #07090B;
+  --surface: #14181D;
+  --surface-2: #1A1F26;
+  --border-d: rgba(255,255,255,0.08);
+  --border-d-strong: rgba(255,255,255,0.14);
+  --fg: #EDF1F0;
+  --fg-muted: rgba(255,255,255,0.62);
+  --fg-dim: rgba(255,255,255,0.52);
+  --accent-bright: #3DBEB6;
+  --accent-glow: rgba(27,168,160,0.14);
+
+  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --radius-md: 8px;
+  --max-width: 1200px;
+  --max-width-text: 720px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--fg-muted);
+  background: var(--bg-deep);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+/* ============================================
+   NAVBAR — dark translucent + blur on scroll
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0; right: 0;
+  z-index: 100;
+  padding: 0 var(--space-xl);
+  transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.navbar--transparent { background: transparent; border-bottom: 1px solid transparent; }
+.navbar--solid {
+  background: rgba(11, 15, 18, 0.85);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid var(--border-d);
+}
+.navbar__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.navbar__logo { display: flex; align-items: center; gap: 10px; }
+.navbar__logo img { height: 36px; width: auto; }
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+.navbar__link {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--color-white);
+  border-bottom-color: var(--color-teal);
+}
+.navbar__cta {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: var(--radius-md);
+  background: var(--color-teal);
+  color: #04110F;
+  transition: background 0.2s;
+  cursor: pointer;
+  display: inline-block;
+}
+.navbar__cta:hover { background: var(--color-teal-dark); }
+
+/* Dropdown */
+.navbar__dropdown { position: relative; }
+.navbar__dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 4px 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s;
+}
+.navbar__dropdown-toggle svg { width: 14px; height: 14px; transition: transform 0.2s; }
+.navbar__dropdown:hover .navbar__dropdown-toggle svg,
+.navbar__dropdown.is-open .navbar__dropdown-toggle svg { transform: rotate(180deg); }
+.navbar__dropdown-toggle:hover,
+.navbar__dropdown.is-open .navbar__dropdown-toggle { color: var(--color-white); }
+.navbar__dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 200px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-d);
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+  z-index: 110;
+}
+.navbar__dropdown:hover .navbar__dropdown-menu,
+.navbar__dropdown.is-open .navbar__dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.navbar__dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.navbar__dropdown-item:hover { background: var(--surface-2); }
+.navbar__dropdown-item-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(27, 168, 160, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.navbar__dropdown-item-icon svg { width: 16px; height: 16px; color: var(--color-teal); }
+.navbar__dropdown-item-text { display: flex; flex-direction: column; gap: 2px; }
+.navbar__dropdown-item-label { font-size: 14px; font-weight: 600; color: var(--fg); }
+.navbar__dropdown-item-desc { font-size: 12px; color: var(--fg-dim); line-height: 1.4; }
+
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.navbar__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-white);
+  transition: background 0.2s;
+}
+.navbar__mobile {
+  display: none;
+  position: fixed;
+  top: 72px; left: 0; right: 0; bottom: 0;
+  background: var(--bg-deep);
+  padding: var(--space-xl);
+  z-index: 99;
+}
+.navbar__mobile.is-open { display: flex; flex-direction: column; gap: var(--space-lg); }
+.navbar__mobile a {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--fg);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--border-d);
+}
+
+/* ============================================
+   SHARED — eyebrow, headlines, body
+   ============================================ */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+h1, h2, h3, h4 { color: var(--fg); font-weight: 500; }
+
+.section-body {
+  font-size: 18px;
+  color: var(--fg-muted);
+  line-height: 1.7;
+  max-width: var(--max-width-text);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.01em;
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border-d-strong);
+}
+.btn:hover {
+  border-color: var(--color-teal);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--fg);
+}
+.btn--primary {
+  background: var(--color-teal);
+  color: #04110F;
+  border-color: var(--color-teal);
+}
+.btn--primary:hover { background: var(--color-teal-dark); border-color: var(--color-teal-dark); color: #04110F; }
+.btn--share {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border-d-strong);
+}
+.btn--share:hover { border-color: var(--color-teal); background: rgba(255, 255, 255, 0.05); }
+
+/* ============================================
+   HERO HEADER — content-led, dark, one teal glow
+   ============================================ */
+.evidence-hero {
+  background: var(--bg-deep);
+  padding: 150px 0 72px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-d);
+}
+.evidence-hero::before {
+  content: '';
+  position: absolute;
+  width: 640px;
+  height: 640px;
+  top: -200px;
+  right: -140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 68%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+.evidence-hero .container { position: relative; z-index: 1; }
+.evidence-breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: var(--space-lg);
+}
+.evidence-breadcrumb a { color: var(--color-teal); transition: color 0.2s; }
+.evidence-breadcrumb a:hover { color: var(--accent-bright); }
+.evidence-hero h1 {
+  font-size: clamp(2.4rem, 4vw + 1rem, 3.6rem);
+  font-weight: 400;
+  color: var(--fg);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin-bottom: var(--space-md);
+  max-width: 760px;
+}
+.evidence-hero .subtitle {
+  font-size: 18px;
+  color: var(--fg-muted);
+  line-height: 1.65;
+  max-width: 640px;
+  margin-bottom: var(--space-lg);
+}
+.evidence-updated {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.evidence-reports-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 11px 20px;
+  border: 1px solid var(--border-strong, rgba(255,255,255,0.14));
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.evidence-reports-link:hover { border-color: var(--color-teal); background: rgba(27,168,160,0.08); }
+.evidence-reports-link svg { width: 15px; height: 15px; color: var(--color-teal); }
+
+/* ============================================
+   STICKY IN-PAGE NAV
+   ============================================ */
+.evidence-nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(11, 15, 18, 0.85);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid var(--border-d);
+}
+.evidence-nav__inner {
+  display: flex;
+  gap: var(--space-xl);
+  height: 52px;
+  align-items: center;
+  overflow-x: auto;
+}
+.evidence-nav a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  white-space: nowrap;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.evidence-nav a:hover,
+.evidence-nav a.active { color: var(--color-teal); border-bottom-color: var(--color-teal); }
+
+/* ============================================
+   SECTIONS — one dark canvas
+   ============================================ */
+.evidence-section {
+  padding: var(--space-4xl) 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border-d);
+}
+.evidence-section--alt { background: var(--bg); }
+.evidence-section h2 {
+  font-size: clamp(1.6rem, 2.4vw + 0.6rem, 2.4rem);
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: var(--space-md);
+  text-align: left;
+}
+.evidence-subheading {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+  margin: var(--space-2xl) 0 var(--space-md);
+}
+
+/* ============================================
+   STATS
+   ============================================ */
+.evidence-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  margin: var(--space-2xl) 0;
+}
+.evidence-stat {
+  background: var(--surface);
+  border: 1px solid var(--border-d);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+}
+.evidence-stat--hero { border-left: 2px solid var(--color-teal); }
+.evidence-stat__number {
+  font-family: var(--font-mono);
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: var(--color-teal);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-xs);
+}
+.evidence-stat__label { font-size: 14px; color: var(--fg-muted); line-height: 1.4; }
+
+/* ============================================
+   TABLES — dark, one card style
+   ============================================ */
+.evidence-table-wrap {
+  border: 1px solid var(--border-d);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: var(--space-md);
+  background: var(--surface);
+}
+.evidence-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.evidence-table thead { background: var(--surface-2); }
+.evidence-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-d);
+  white-space: nowrap;
+}
+.evidence-table td {
+  padding: 14px 16px;
+  color: var(--fg-muted);
+  border-bottom: 1px solid var(--border-d);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.evidence-table tbody tr:last-child td { border-bottom: none; }
+.evidence-table tbody tr { transition: background 0.15s; }
+.evidence-table tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
+.evidence-table td strong { color: var(--fg); font-weight: 600; }
+.evidence-table td em { color: var(--fg-dim); font-style: italic; }
+.evidence-table a { color: var(--color-teal); transition: color 0.2s; }
+.evidence-table a:hover { color: var(--accent-bright); }
+.status-supported {
+  color: var(--accent-bright);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.status-validation {
+  color: var(--fg-dim);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ============================================
+   PUBLICATIONS + TEAM (FAQ-style cards)
+   ============================================ */
+.evidence-faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border-d);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg) var(--space-xl);
+  margin-bottom: var(--space-md);
+  transition: border-color 0.2s, background 0.2s;
+}
+.evidence-faq-item:hover { border-color: var(--border-d-strong); }
+.evidence-faq-question {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--fg);
+  line-height: 1.4;
+}
+.evidence-faq-question span { color: var(--color-teal) !important; font-family: var(--font-mono); letter-spacing: 0.04em; }
+.evidence-faq-answer {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.6;
+  margin-top: var(--space-sm);
+}
+.evidence-faq-answer strong { color: var(--fg); }
+.evidence-faq-answer a { color: var(--color-teal) !important; font-family: var(--font-mono); }
+.evidence-faq-answer a:hover { color: var(--accent-bright) !important; }
+.evidence-faq-anchor {
+  color: var(--fg-dim);
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.evidence-faq-item:hover .evidence-faq-anchor { opacity: 1; }
+.evidence-faq-anchor:hover { color: var(--color-teal); }
+
+/* Team cards — one card style */
+.evidence-team-card {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border-d);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s;
+}
+.evidence-team-card:hover { border-color: var(--border-d-strong); }
+.evidence-team-name { font-weight: 500; color: var(--fg); }
+.evidence-team-role {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--color-teal);
+  margin: 6px 0;
+}
+.evidence-team-bio { font-size: 14px; color: var(--fg-muted); line-height: 1.5; }
+
+/* ============================================
+   CTA STRIP
+   ============================================ */
+.evidence-cta {
+  padding: var(--space-4xl) 0;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-d);
+  position: relative;
+  overflow: hidden;
+}
+.evidence-cta::before {
+  content: '';
+  position: absolute;
+  right: -120px;
+  top: -160px;
+  width: 620px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 68%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+.evidence-cta .container { position: relative; z-index: 1; }
+.evidence-cta h3 {
+  font-size: clamp(1.6rem, 2.4vw + 0.6rem, 2.2rem);
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-sm);
+}
+.evidence-cta p {
+  font-size: 18px;
+  color: var(--fg-muted);
+  line-height: 1.6;
+  max-width: 560px;
+  margin-bottom: var(--space-xl);
+}
+.evidence-cta__buttons { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+.share-fallback { margin-top: var(--space-md); display: none; }
+.share-fallback.is-visible { display: block; }
+.share-fallback input {
+  width: 100%;
+  max-width: 440px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: var(--font-mono);
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-d-strong);
+  border-radius: var(--radius-md);
+}
+.share-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--border-d-strong);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 10000;
+}
+.share-toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ============================================
+   TRUST BAR
+   ============================================ */
+.evidence-trust {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  padding: var(--space-lg) var(--space-xl);
+  background: var(--bg);
+  border-top: 1px solid var(--border-d);
+}
+.evidence-trust span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+/* ============================================
+   FOOTER (deep anchor)
+   ============================================ */
+.footer {
+  padding: var(--space-xl) 0;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-d);
+}
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__brand { display: flex; align-items: center; gap: var(--space-sm); }
+.footer__icon { width: 24px; height: 24px; opacity: 0.5; }
+.footer__links { display: flex; gap: var(--space-lg); }
+.footer__text { font-size: 14px; color: var(--fg-dim); }
+.footer__text a { color: var(--fg-dim); transition: color 0.2s; }
+.footer__text a:hover { color: var(--color-teal); }
+.footer__disclaimer {
+  font-size: 12px;
+  color: var(--fg-dim);
+  text-align: center;
+  margin-top: var(--space-md);
+  max-width: var(--max-width-text);
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* ============================================
+   FOCUS RING
+   ============================================ */
+:focus-visible { outline: 2px solid var(--color-teal); outline-offset: 2px; }
+input:focus-visible { outline: none; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .evidence-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .navbar__links { display: none; }
+  .navbar__hamburger { display: flex; }
+  .evidence-hero { padding: 120px 0 56px; }
+  .evidence-section { padding: var(--space-3xl) 0; }
+  .container { padding: 0 var(--space-lg); }
+  .navbar { padding: 0 var(--space-lg); }
+  .evidence-stats { grid-template-columns: 1fr; }
+  .evidence-table-wrap { overflow-x: auto; }
+  .evidence-table { min-width: 640px; }
+  .evidence-cta__buttons { flex-direction: column; align-items: stretch; }
+  .footer__inner { flex-direction: column; gap: var(--space-sm); text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar--transparent" id="navbar">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo">
+      <img src="assets/Insai-logo-2026-white.png" alt="Insai" id="navbar-logo" width="101" height="36">
+    </a>
+    <ul class="navbar__links">
+      <li><a href="index.html" class="navbar__link">Home</a></li>
+      <li class="navbar__dropdown" id="solutions-dropdown">
+        <button class="navbar__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Solutions
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="navbar__dropdown-menu">
+          <a href="biopharma.html" class="navbar__dropdown-item">
+            <div class="navbar__dropdown-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.58 16.5h12.85"/></svg>
+            </div>
+            <div class="navbar__dropdown-item-text">
+              <span class="navbar__dropdown-item-label">Biopharma</span>
+              <span class="navbar__dropdown-item-desc">Validated endpoints for CNS drug development</span>
+            </div>
+          </a>
+          <a href="research.html" class="navbar__dropdown-item">
+            <div class="navbar__dropdown-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2v6l5.4 9.4a2 2 0 0 1-1.7 3H5.8a2 2 0 0 1-1.7-3L9.5 8V2"/><path d="M8 2h8"/><path d="M9 12h6"/></svg>
+            </div>
+            <div class="navbar__dropdown-item-text">
+              <span class="navbar__dropdown-item-label">Research</span>
+              <span class="navbar__dropdown-item-desc">Reproducible sleep-EEG biomarkers for your study</span>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li><a href="evidence.html" class="navbar__link navbar__link--active">Science & Validation</a></li>
+      <li><a href="https://calendly.com/mark-1215" class="navbar__cta" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/mark-1215'});return false;}">Book a walkthrough</a></li>
+    </ul>
+    <button class="navbar__hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="navbar__mobile" id="mobile-nav">
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="biopharma.html" onclick="closeMobileNav()">Biopharma</a>
+  <a href="research.html" onclick="closeMobileNav()">Research</a>
+  <a href="evidence.html" onclick="closeMobileNav()">Science & Validation</a>
+  <a href="https://calendly.com/mark-1215" onclick="closeMobileNav()">Book a walkthrough</a>
+</div>
+
+<!-- HERO HEADER — dark, matching homepage energy -->
+<div class="evidence-hero">
+  <div class="container">
+    <div class="evidence-breadcrumb">
+      <a href="index.html">Home</a> &rsaquo; Science & Validation
+    </div>
+    <h1>Science & Validation</h1>
+    <p class="subtitle">The peer-reviewed research Insai is built on, with our biomarker pipeline, sample outputs, and technical specifications. Published results, with citations.</p>
+    <div class="evidence-updated">Last updated: June 2026</div>
+    <a href="https://insai.github.io/biomarker-portal/research/" target="_blank" rel="noopener" class="evidence-reports-link">
+      Read the research reports
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- STICKY IN-PAGE NAV -->
+<div class="evidence-nav">
+  <div class="container">
+    <div class="evidence-nav__inner">
+      <a href="#validation" class="active">Validation Results</a>
+      <a href="#outputs">Publications & Team</a>
+      <a href="#specs">Technical Specs</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SECTION 1: VALIDATION RESULTS
+     ============================================ -->
+<section class="evidence-section" id="validation">
+  <div class="container">
+    <div class="eyebrow" >Validation</div>
+    <h2>Published validation results</h2>
+    <p class="section-body">Insai's science has two layers, kept separate below: the peer-reviewed foundations our team and collaborators have published, and the results our product delivers on the Nexus headband. We build on published methods, reproduce them to a fixed tolerance, and report our own on-device numbers, including what does not transfer.</p>
+
+    <div class="evidence-stats">
+      <div class="evidence-stat evidence-stat--hero">
+        <div class="evidence-stat__number">585,000+</div>
+        <div class="evidence-stat__label">Hours of PSG behind the foundations</div>
+      </div>
+      <div class="evidence-stat">
+        <div class="evidence-stat__number">65,000</div>
+        <div class="evidence-stat__label">Participants</div>
+      </div>
+      <div class="evidence-stat">
+        <div class="evidence-stat__number">25,805</div>
+        <div class="evidence-stat__label">PSGs (U-Sleep training)</div>
+      </div>
+      <div class="evidence-stat">
+        <div class="evidence-stat__number">16</div>
+        <div class="evidence-stat__label">Studies, 8 countries</div>
+      </div>
+    </div>
+
+    <h3 class="evidence-subheading">Published foundations we build on</h3>
+    <p class="section-body" style="margin-bottom: 16px;">Peer-reviewed models and results our team and collaborators authored. SleepFM's disease prediction runs on full multimodal PSG (EEG, ECG, EMG, respiration), not the EEG-only Nexus product. What Insai delivers on the headband is in the next table.</p>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Task</th>
+            <th>Training Data</th>
+            <th>Performance</th>
+            <th>Publication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>U-Sleep</strong></td>
+            <td>Sleep staging</td>
+            <td>25,805 PSGs, 16 studies, 8 countries</td>
+            <td>Expert-level agreement on unseen patients and devices</td>
+            <td><a href="https://www.nature.com/articles/s41746-021-00440-5" >npj Digital Medicine, 2021</a></td>
+          </tr>
+          <tr>
+            <td><strong>SleepFM</strong></td>
+            <td>Disease prediction</td>
+            <td>585,000+ hours, 65,000 participants</td>
+            <td>AUROC 0.93 (Parkinson's), 0.87 (Alzheimer's)</td>
+            <td><a href="https://www.nature.com/articles/s41591-025-04133-4" >Nature Medicine, 2026</a></td>
+          </tr>
+          <tr>
+            <td><strong>Arousal Detection</strong></td>
+            <td>Cortical arousal scoring</td>
+            <td>2,889 PSGs</td>
+            <td>F1 = 0.76, wakefulness accuracy 0.95</td>
+            <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8444626/" >Clinical Neurophysiology, 2020</a></td>
+          </tr>
+          <tr>
+            <td><strong>Breathing Events</strong></td>
+            <td>AHI prediction</td>
+            <td>5,456 PSGs</td>
+            <td>r&sup2; = 0.84</td>
+            <td><a href="#" >Nature Communications, 2026</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="evidence-subheading">Insai on the Nexus headband</h3>
+    <p class="section-body" style="margin-bottom: 16px;">What the product actually delivers today, on the at-home forehead headband, with the caveats we hold ourselves to.</p>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr><th>Result</th><th>What it means</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>&kappa; 0.77</strong> sleep staging vs clinical PSG</td><td>On the real Nexus montage (ANPHY, 24 nights). Raw wearable ties clinical PSG.</td><td>On-device</td></tr>
+          <tr><td><strong>ICC 0.91</strong> spectral slowing (&theta;/&alpha;)</td><td>The same biomarker night to night within a person. Our most reproducible marker.</td><td>Validated</td></tr>
+          <tr><td>Reproduced sleep markers</td><td>Slow-wave density, aperiodic 1/f, relative slow-wave activity, each reproducing a published method to a 1e-3 tolerance.</td><td>Reproduced</td></tr>
+          <tr><td><strong>r 0.73</strong> brain-age</td><td>A cohort-level risk readout across 846 nights and five cohorts. Not an absolute age; cross-site calibration in progress.</td><td>Research</td></tr>
+          <tr><td>Published failures</td><td>We publish what does not transfer, including a withdrawn densification result and a retracted motor screen.</td><td>Ongoing</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="evidence-subheading">Cross-Population Validation</h3>
+    <p class="section-body" style="margin-bottom: 16px;">Every model is validated across independent populations to ensure transportability. We do not publish results from the same cohorts used for training.</p>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr>
+            <th>Validation Study</th>
+            <th>Population</th>
+            <th>Result</th>
+            <th>Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Neurodegenerative differential diagnosis</td>
+            <td>Alzheimer's, DLB, PD, controls</td>
+            <td>Sleep structure discriminates between conditions</td>
+            <td>Gramkow, Brink-Kjaer, Jennum et al., <em>Alzheimer's Research & Therapy</em>, 2025</td>
+          </tr>
+          <tr>
+            <td>Multicenter RBD detection</td>
+            <td>Cross-site, cross-device</td>
+            <td>Transportable across centers and hardware</td>
+            <td>Brink-Kjaer et al., <em>Movement Disorders</em>, 2023</td>
+          </tr>
+          <tr>
+            <td>Subcutaneous EEG validation</td>
+            <td>UNEEG SubQ vs. clinical PSG</td>
+            <td>Strong agreement for automated staging</td>
+            <td>Ahrens, Jennum et al., <em>Sleep Health</em>, 2024</td>
+          </tr>
+          <tr>
+            <td>Pediatric sleep staging</td>
+            <td>Children and adolescents</td>
+            <td>U-Sleep validated for pediatric populations</td>
+            <td>Moeller, Perslev, Jennum et al., <em>Sleep</em>, 2025</td>
+          </tr>
+          <tr>
+            <td>Actigraphy-PSG agreement</td>
+            <td>NT1, hypersomnolence, healthy controls</td>
+            <td>Validated across sleep disorder populations</td>
+            <td>Torstensen, Jennum et al., <em>Sleep Medicine</em>, 2021</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 2: PUBLICATIONS & TEAM
+     ============================================ -->
+<section class="evidence-section evidence-section--alt" id="outputs">
+  <div class="container">
+    <div class="eyebrow" >Publications</div>
+    <h2>Published Research</h2>
+    <p class="section-body">Insai's technology is built on peer-reviewed research published in leading journals. Our scientific team has authored 500+ publications in sleep medicine, neurophysiology, and machine learning.</p>
+
+    <div style="margin-top: 32px;">
+      <div class="evidence-faq-item">
+        <div class="evidence-faq-question" style="font-size: 15px;">
+          U-Sleep: Resilient High-Frequency Sleep Staging
+          <span style="font-weight: 400; color: var(--color-teal-dark); font-size: 13px; margin-left: 8px;">npj Digital Medicine</span>
+        </div>
+        <div class="evidence-faq-answer">Perslev M, Darkner S, Kempfner L, Nikolic M, <strong>Jennum P</strong>, Igel C. Trained on 25,805 PSGs from 16 studies across 8 countries. Expert-level sleep staging on entirely new patients and devices.
+          <br><a href="https://www.nature.com/articles/s41746-021-00440-5" style="color: var(--color-teal-dark); font-size: 13px;">doi.org/10.1038/s41746-021-00440-5</a>
+        </div>
+      </div>
+
+      <div class="evidence-faq-item">
+        <div class="evidence-faq-question" style="font-size: 15px;">
+          A Multimodal Sleep Foundation Model for Disease Prediction
+          <span style="font-weight: 400; color: var(--color-teal-dark); font-size: 13px; margin-left: 8px;">Nature Medicine</span>
+        </div>
+        <div class="evidence-faq-answer">Thapa R, Kjaer MR, He B, ... <strong>Brink-Kjaer A</strong>, Mignot E, Zou J. 585,000+ hours from 65,000 participants. Predicts 130+ disease phenotypes including Parkinson's (AUROC 0.93) and Alzheimer's (0.87).
+          <br><a href="https://www.nature.com/articles/s41591-025-04133-4" style="color: var(--color-teal-dark); font-size: 13px;">doi.org/10.1038/s41591-025-04133-4</a>
+        </div>
+      </div>
+
+      <div class="evidence-faq-item">
+        <div class="evidence-faq-question" style="font-size: 15px;">
+          Automatic Detection of Cortical Arousals in Sleep
+          <span style="font-weight: 400; color: var(--color-teal-dark); font-size: 13px; margin-left: 8px;">Clinical Neurophysiology</span>
+        </div>
+        <div class="evidence-faq-answer"><strong>Brink-Kjaer A</strong>, Olesen AN, Peppard PE, ... <strong>Jennum P</strong>, Mignot E, Sorensen HBD. Multimodal Arousal Detector (MAD) trained on 2,889 PSGs. F1 = 0.76 for arousals, wakefulness accuracy 0.95.
+          <br><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8444626/" style="color: var(--color-teal-dark); font-size: 13px;">doi.org/10.1016/j.clinph.2020.02.032</a>
+        </div>
+      </div>
+
+      <div class="evidence-faq-item">
+        <div class="evidence-faq-question" style="font-size: 15px;">
+          Sleep Structure Discriminates Neurodegenerative Conditions
+          <span style="font-weight: 400; color: var(--color-teal-dark); font-size: 13px; margin-left: 8px;">Alzheimer's Research & Therapy</span>
+        </div>
+        <div class="evidence-faq-answer">Gramkow MH, <strong>Brink-Kjaer A</strong>, ... <strong>Jennum P</strong>. Deep learning approach for differential diagnosis across Alzheimer's, DLB, Parkinson's, and healthy controls using sleep architecture.
+        </div>
+      </div>
+
+      <div class="evidence-faq-item">
+        <div class="evidence-faq-question" style="font-size: 15px;">
+          Automated Breathing Event Detection
+          <span style="font-weight: 400; color: var(--color-teal-dark); font-size: 13px; margin-left: 8px;">Nature Communications</span>
+        </div>
+        <div class="evidence-faq-answer">Kjaer MR, Hanif M, <strong>Brink-Kjaer A</strong>, ... <strong>Jennum P</strong>. 5,456 PSGs. r&sup2; = 0.84 for AHI prediction. Automated detection of respiratory events from EEG channels.
+        </div>
+      </div>
+    </div>
+
+    <h3 class="evidence-subheading">Scientific Team</h3>
+    <p class="section-body">Our platform is developed with leading researchers in sleep medicine and clinical neurophysiology.</p>
+    <div class="evidence-team-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 16px;">
+      <div class="evidence-team-card">
+        <div class="evidence-team-name">Prof. Poul Jennum, MD, DMSc</div>
+        <div class="evidence-team-role">Director, Danish Center for Sleep Medicine</div>
+        <div class="evidence-team-bio">Rigshospitalet, University of Copenhagen. 500+ publications. PI for narcolepsy and neurodegenerative sleep research.</div>
+      </div>
+      <div class="evidence-team-card">
+        <div class="evidence-team-name">Andreas Brink-Kjaer, PhD</div>
+        <div class="evidence-team-role">Multimodal AI & Clinical Validation</div>
+        <div class="evidence-team-bio">Published multicenter RBD detection, arousal scoring, and breathing event detection. Stanford Sleep Center collaborator.</div>
+      </div>
+      <div class="evidence-team-card">
+        <div class="evidence-team-name">Mathias Perslev, PhD</div>
+        <div class="evidence-team-role">U-Sleep / U-Time Lead Developer</div>
+        <div class="evidence-team-bio">University of Copenhagen. Creator of U-Sleep and U-Time architectures. Published in NeurIPS and npj Digital Medicine.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 3: TECHNICAL SPECIFICATIONS
+     ============================================ -->
+<section class="evidence-section" id="specs">
+  <div class="container">
+    <div class="eyebrow" >Specifications</div>
+    <h2>Technical Specifications</h2>
+    <p class="section-body">Hardware compatibility, supported data formats, and integration requirements.</p>
+
+    <h3 class="evidence-subheading">Key Capabilities</h3>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>High-frequency sleep staging</td><td>Up to 1-second resolution (128 Hz input) vs. standard 30-second epochs</td></tr>
+          <tr><td>Probabilistic staging</td><td>Continuous probability distributions across sleep stages (hypnodensity)</td></tr>
+          <tr><td>Spatial sleep analysis</td><td>Sleep state dissociation mapping with sub-second precision</td></tr>
+          <tr><td>Automated arousal detection</td><td>Expert-level cortical arousal scoring (2,889 PSGs validated)</td></tr>
+          <tr><td>Breathing event detection</td><td>AHI prediction with r&sup2; = 0.84 across 5,456 PSGs</td></tr>
+          <tr><td>Device-agnostic analytics</td><td>Works across EEG montages, hardware platforms, and recording sites</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="evidence-subheading">Hardware Compatibility</h3>
+    <p class="section-body" style="margin-bottom: 16px;">Our models are designed for cross-device generalization. No device-specific calibration required.</p>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr>
+            <th>Device</th>
+            <th>Form Factor</th>
+            <th>Channels</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Clinical PSG (standard)</td><td>Full montage</td><td>16-32ch</td><td class="status-supported">Supported</td></tr>
+          <tr><td>Cebreo Nexus Headband</td><td>Headband</td><td>4ch</td><td class="status-supported">Supported</td></tr>
+          <tr><td>Cebreo NeuroBuds</td><td>In-ear EEG</td><td>2ch</td><td class="status-supported">Supported</td></tr>
+          <tr><td>UNEEG SubQ</td><td>Subcutaneous EEG</td><td>1-2ch</td><td class="status-supported">Validated</td></tr>
+          <tr><td>NAOX Wave</td><td>In-ear EEG (FDA 510(k))</td><td>2ch</td><td class="status-supported">Supported</td></tr>
+          <tr><td>g.tec Nautilus</td><td>Research cap</td><td>8-64ch</td><td class="status-validation">In validation</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="evidence-subheading">Supported Data Formats</h3>
+    <div class="evidence-table-wrap">
+      <table class="evidence-table">
+        <thead>
+          <tr>
+            <th>Format</th>
+            <th>Extension</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>European Data Format</td><td>.edf, .edf+</td><td>Standard clinical PSG format</td></tr>
+          <tr><td>BioSemi Data Format</td><td>.bdf</td><td>24-bit resolution</td></tr>
+          <tr><td>Raw binary</td><td>.bin, .dat</td><td>Requires channel mapping specification</td></tr>
+          <tr><td>Proprietary PSG</td><td>Various</td><td>Major clinical systems supported on request</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 4: FAQ
+     ============================================ -->
+<section class="evidence-section evidence-section--alt" id="faq">
+  <div class="container">
+    <div class="eyebrow" >FAQ</div>
+    <h2>Technical FAQ</h2>
+
+    <div class="evidence-faq-item" id="faq-multi-site">
+      <div class="evidence-faq-question">
+        How do you handle multi-site EEG variability?
+        <a href="#faq-multi-site" class="evidence-faq-anchor" aria-label="Copy link to this question">#</a>
+      </div>
+      <div class="evidence-faq-answer">Our models are validated across 6+ independent cohorts with different recording equipment, protocols, and demographics. Cross-site generalization is a design principle, not an afterthought.</div>
+    </div>
+
+    <div class="evidence-faq-item" id="faq-regulatory">
+      <div class="evidence-faq-question">
+        What is your approach to regulatory qualification?
+        <a href="#faq-regulatory" class="evidence-faq-anchor" aria-label="Copy link to this question">#</a>
+      </div>
+      <div class="evidence-faq-answer">Insai is designed for regulatory workflows. Our outputs include audit trails, version-controlled model documentation, and qualification-ready evidence packages. Our platform is for research use only.</div>
+    </div>
+
+    <div class="evidence-faq-item" id="faq-data-formats">
+      <div class="evidence-faq-question">
+        What data formats do you accept?
+        <a href="#faq-data-formats" class="evidence-faq-anchor" aria-label="Copy link to this question">#</a>
+      </div>
+      <div class="evidence-faq-answer">EDF, EDF+, BDF, and proprietary PSG formats from major clinical systems. We also support raw binary formats with channel mapping specifications.</div>
+    </div>
+
+    <div class="evidence-faq-item" id="faq-turnaround">
+      <div class="evidence-faq-question">
+        What is the typical turnaround time?
+        <a href="#faq-turnaround" class="evidence-faq-anchor" aria-label="Copy link to this question">#</a>
+      </div>
+      <div class="evidence-faq-answer">Batch processing of a typical Phase 2 study (200-500 recordings) completes within 24-48 hours. Single-recording analysis returns results in under 5 minutes.</div>
+    </div>
+
+    <div class="evidence-faq-item" id="faq-security">
+      <div class="evidence-faq-question">
+        How does Insai handle data security?
+        <a href="#faq-security" class="evidence-faq-anchor" aria-label="Copy link to this question">#</a>
+      </div>
+      <div class="evidence-faq-answer">All data is encrypted in transit (TLS 1.3) and at rest (AES-256). We process data in isolated environments. No patient-identifiable information is required for biomarker extraction.</div>
+    </div>
+
+    <div class="evidence-faq-item" id="faq-wearable">
+      <div class="evidence-faq-question">
+        Can Insai work with wearable EEG devices?
+        <a href="#faq-wearable" class="evidence-faq-anchor" aria-label="Copy link to this question">#</a>
+      </div>
+      <div class="evidence-faq-answer">Yes. Our models are designed for cross-device generalization. We support clinical PSG and headband EEG today, with in-ear EEG on the roadmap.</div>
+    </div>
+
+    <div class="evidence-faq-item" id="faq-biomarkers">
+      <div class="evidence-faq-question">
+        What biomarkers can Insai extract?
+        <a href="#faq-biomarkers" class="evidence-faq-anchor" aria-label="Copy link to this question">#</a>
+      </div>
+      <div class="evidence-faq-answer">Sleep architecture metrics, spectral power features, sleep spindle characteristics, slow-wave activity, and composite brain health scores. Custom biomarker development is available for specific clinical endpoints.</div>
+    </div>
+
+    <div class="evidence-faq-item" id="faq-gold-standard">
+      <div class="evidence-faq-question">
+        How do you validate against gold-standard scoring?
+        <a href="#faq-gold-standard" class="evidence-faq-anchor" aria-label="Copy link to this question">#</a>
+      </div>
+      <div class="evidence-faq-answer">Our models are validated against expert polysomnography scoring from board-certified sleep technologists. We report concordance metrics, sensitivity, specificity, and Cohen's kappa for each biomarker.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA STRIP
+     ============================================ -->
+<div class="evidence-cta">
+  <div class="container">
+    <h3>Ready to see the science?</h3>
+    <p>Book a 20-minute technical walkthrough. No pitch deck, just methodology.</p>
+    <div class="evidence-cta__buttons">
+      <button class="btn btn--share" onclick="shareEvidence()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 6px;"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        Send to a colleague
+      </button>
+      <a href="https://insai.github.io/biomarker-portal/research/" target="_blank" rel="noopener" class="btn" style="text-decoration: none; display: inline-flex; align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 6px;"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+        Read the research reports
+      </a>
+      <a href="https://calendly.com/mark-1215" class="btn btn--primary" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/mark-1215'});return false;}" style="text-decoration: none;">Book a Technical Walkthrough</a>
+    </div>
+    <div class="share-fallback" id="share-fallback">
+      <input type="text" readonly aria-label="Share URL">
+    </div>
+  </div>
+</div>
+
+<!-- Share toast -->
+<div class="share-toast" id="share-toast" aria-live="polite"></div>
+
+<!-- Trust bar -->
+<div class="evidence-trust">
+  <span>For Research Use Only</span>
+  <span>Copenhagen, Denmark</span>
+  <span>Designed for Regulatory Workflows</span>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="assets/Insai-logo-2026-icon.png" alt="" class="footer__icon">
+        <span class="footer__text">&copy; 2026 Insai. Copenhagen.</span>
+      </div>
+      <div class="footer__links">
+        <span class="footer__text"><a href="privacy.html">Privacy Policy</a></span>
+        <span class="footer__text"><a href="mailto:mark@insai.tech">mark@insai.tech</a></span>
+      </div>
+    </div>
+    <p class="footer__disclaimer">Insai's biomarker platform is intended for research and drug development use only. Not intended for clinical diagnosis, patient monitoring, or therapeutic decision-making.</p>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+(function() {
+  // Navbar — transparent over dark hero, solid on scroll
+  var navbar = document.getElementById('navbar');
+  var navbarLogo = document.getElementById('navbar-logo');
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobile-nav');
+  var logoWhite = 'assets/Insai-logo-2026-white.png';
+  var logoDefault = 'assets/Insai-logo-2026-transparent.png';
+
+  function updateNavbar() {
+    if (window.scrollY > 120) {
+      navbar.classList.remove('navbar--transparent');
+      navbar.classList.add('navbar--solid');
+      navbarLogo.src = logoDefault;
+    } else {
+      navbar.classList.remove('navbar--solid');
+      navbar.classList.add('navbar--transparent');
+      navbarLogo.src = logoWhite;
+    }
+  }
+  window.addEventListener('scroll', updateNavbar);
+  updateNavbar();
+
+  hamburger.addEventListener('click', function() {
+    mobileNav.classList.toggle('is-open');
+  });
+
+  window.closeMobileNav = function() {
+    mobileNav.classList.remove('is-open');
+  };
+
+  // Solutions dropdown
+  var dropdownToggle = document.getElementById('solutions-dropdown')?.querySelector('.navbar__dropdown-toggle');
+  if (dropdownToggle) {
+    dropdownToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      this.closest('.navbar__dropdown').classList.toggle('is-open');
+    });
+    document.addEventListener('click', function() {
+      document.getElementById('solutions-dropdown')?.classList.remove('is-open');
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      var target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      var navHeight = 72 + 48 + 20; // navbar + sticky nav + buffer
+      window.scrollTo({ top: target.offsetTop - navHeight, behavior: 'smooth' });
+    });
+  });
+
+  // Handle direct anchor link on page load
+  if (window.location.hash) {
+    setTimeout(function() {
+      var target = document.querySelector(window.location.hash);
+      if (target) {
+        var navHeight = 72 + 48 + 20;
+        window.scrollTo({ top: target.offsetTop - navHeight, behavior: 'smooth' });
+      }
+    }, 100);
+  }
+})();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

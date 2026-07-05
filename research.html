@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insai | Reproducible Sleep-EEG Biomarkers for Research</title>
+<!-- Google Analytics (GA4) - Consent Mode v2: loads immediately in cookieless mode -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+
+  // Set default consent state before GA4 loads
+  var storedConsent = localStorage.getItem('cookie-consent');
+  gtag('consent', 'default', {
+    analytics_storage: storedConsent === 'accepted' ? 'granted' : 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+
+  window.GA_MEASUREMENT_ID = 'G-VBBBKQDH0W';
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBBBKQDH0W"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', window.GA_MEASUREMENT_ID);
+</script>
+<meta name="description" content="Insai runs validated sleep staging and biomarkers on your own recordings, across headband, clinical PSG, and archived EEG. Methods reproduced from published science, results with confidence scores.">
+<!-- Open Graph -->
+<meta property="og:title" content="Insai | Reproducible Sleep-EEG Biomarkers for Research">
+<meta property="og:description" content="Insai runs validated sleep staging and biomarkers on your own recordings, across headband, clinical PSG, and archived EEG. Methods reproduced from published science, results with confidence scores.">
+<meta property="og:image" content="https://insai.tech/assets/eeg-wave-hero.jpg">
+<meta property="og:url" content="https://insai.tech/research.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Insai">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Insai | Reproducible Sleep-EEG Biomarkers for Research">
+<meta name="twitter:description" content="Insai runs validated sleep staging and biomarkers on your own recordings, across headband, clinical PSG, and archived EEG. Methods reproduced from published science, results with confidence scores.">
+<meta name="twitter:image" content="https://insai.tech/assets/eeg-wave-hero.jpg">
+<!-- Canonical URL -->
+<link rel="canonical" href="https://insai.tech/research.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/Insai-logo-2026-icon.png">
+<style>
+/* ============================================
+   INSAI DESIGN TOKENS v1.0
+   ============================================ */
+:root {
+  --color-teal: #1BA8A0;
+  --color-teal-dark: #148F88;
+  --color-teal-light: #E6F7F6;
+  --color-navy: #1E2D3D;
+  --color-slate: #475569;
+  --color-gray: #94A3B8;
+  --color-border: #E2E8F0;
+  --color-surface: #F8FAFC;
+  --color-white: #FFFFFF;
+
+  /* STRICT dark system (DESIGN.md) */
+  --bg: #0B0F12;
+  --bg-deep: #07090B;
+  --surface: #14181D;
+  --surface-2: #1A1F26;
+  --border-d: rgba(255,255,255,0.08);
+  --border-d-strong: rgba(255,255,255,0.14);
+  --fg: #EDF1F0;
+  --fg-muted: rgba(255,255,255,0.62);
+  --fg-dim: rgba(255,255,255,0.52);
+  --accent-bright: #3DBEB6;
+  --accent-glow: rgba(27,168,160,0.14);
+
+  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --radius-md: 8px;
+  --shadow-sm: 0 1px 3px rgba(30, 45, 61, 0.06);
+  --shadow-md: 0 4px 12px rgba(30, 45, 61, 0.08);
+  --max-width: 1200px;
+  --max-width-text: 720px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-slate);
+  background: var(--color-white);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================
+   TEAL TOP ACCENT BAR
+   ============================================ */
+.top-accent {
+  height: 3px;
+  background: var(--color-teal);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 3px;
+  left: 0; right: 0;
+  z-index: 100;
+  padding: 0 var(--space-xl);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.navbar--transparent { background: transparent; }
+
+.navbar--solid {
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar__logo img { height: 36px; width: auto; }
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.navbar__link {
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.navbar--transparent .navbar__link { color: rgba(255, 255, 255, 0.8); }
+.navbar--transparent .navbar__link:hover,
+.navbar--transparent .navbar__link--active {
+  color: var(--color-white);
+  border-bottom-color: var(--color-teal);
+}
+
+.navbar--solid .navbar__link { color: var(--color-slate); }
+.navbar--solid .navbar__link:hover,
+.navbar--solid .navbar__link--active {
+  color: var(--color-navy);
+  border-bottom-color: var(--color-teal);
+}
+
+.navbar__cta {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: var(--radius-md);
+  background: var(--color-teal);
+  color: var(--color-white);
+  transition: background 0.2s;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.navbar__cta:hover { background: var(--color-teal-dark); }
+
+/* Dropdown */
+.navbar__dropdown { position: relative; }
+
+.navbar__dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 4px 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: color 0.2s;
+}
+
+.navbar__dropdown-toggle svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s;
+}
+
+.navbar__dropdown:hover .navbar__dropdown-toggle svg,
+.navbar__dropdown.is-open .navbar__dropdown-toggle svg {
+  transform: rotate(180deg);
+}
+
+.navbar--transparent .navbar__dropdown-toggle { color: rgba(255, 255, 255, 0.8); }
+.navbar--transparent .navbar__dropdown-toggle:hover,
+.navbar--transparent .navbar__dropdown.is-open .navbar__dropdown-toggle { color: var(--color-white); }
+
+.navbar--solid .navbar__dropdown-toggle { color: var(--color-slate); }
+.navbar--solid .navbar__dropdown-toggle:hover,
+.navbar--solid .navbar__dropdown.is-open .navbar__dropdown-toggle { color: var(--color-navy); }
+
+.navbar__dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 200px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(30, 45, 61, 0.12), 0 2px 6px rgba(30, 45, 61, 0.06);
+  border: 1px solid var(--color-border);
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+  z-index: 110;
+}
+
+.navbar__dropdown:hover .navbar__dropdown-menu,
+.navbar__dropdown.is-open .navbar__dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.navbar__dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.navbar__dropdown-item:hover { background: var(--color-surface); }
+
+.navbar__dropdown-item-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--color-teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navbar__dropdown-item-icon svg { width: 16px; height: 16px; color: var(--color-teal); }
+
+.navbar__dropdown-item-text { display: flex; flex-direction: column; gap: 2px; }
+
+.navbar__dropdown-item-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.navbar__dropdown-item-desc {
+  font-size: 12px;
+  color: var(--color-gray);
+  line-height: 1.4;
+}
+
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  transition: background 0.2s;
+}
+
+.navbar--transparent .navbar__hamburger span { background: var(--color-white); }
+.navbar--solid .navbar__hamburger span { background: var(--color-navy); }
+
+.navbar__mobile {
+  display: none;
+  position: fixed;
+  top: 75px; left: 0; right: 0; bottom: 0;
+  background: var(--color-white);
+  padding: var(--space-xl);
+  z-index: 99;
+}
+
+.navbar__mobile.is-open {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.navbar__mobile a {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-navy);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ============================================
+   SHARED
+   ============================================ */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin-bottom: 12px;
+}
+
+.section-headline {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+
+.section-body {
+  font-size: 18px;
+  color: var(--color-slate);
+  line-height: 1.7;
+  max-width: var(--max-width-text);
+}
+
+.section-body p {
+  margin-bottom: var(--space-lg);
+}
+
+.section-body p:last-child { margin-bottom: 0; }
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.01em;
+  border: none;
+}
+
+.btn--primary {
+  background: var(--color-teal);
+  color: var(--color-white);
+}
+
+.btn--primary:hover { background: var(--color-teal-dark); }
+
+.btn--secondary-light {
+  background: transparent;
+  color: var(--color-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+}
+
+.btn--secondary-light:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-teal);
+  border: 1.5px solid var(--color-teal);
+}
+
+.btn--secondary:hover {
+  background: var(--color-teal-light);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  background: var(--bg-deep);
+  padding: 150px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* single teal radial bloom top-right — no photo */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 640px;
+  height: 640px;
+  top: -200px;
+  right: -140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 68%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero .container { position: relative; z-index: 1; }
+
+.hero__label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  background: rgba(27, 168, 160, 0.12);
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-bottom: var(--space-lg);
+}
+
+.hero .eyebrow {
+  color: var(--color-gray);
+  margin-bottom: var(--space-md);
+}
+
+.hero__headline {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-md);
+  max-width: 680px;
+}
+
+.hero__subhead {
+  font-size: 18px;
+  color: var(--color-gray);
+  line-height: 1.65;
+  max-width: 560px;
+  margin-bottom: var(--space-xl);
+}
+
+.hero__ctas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   PROBLEM
+   ============================================ */
+.problem {
+  padding: var(--space-4xl) 0;
+  background: var(--color-white);
+}
+
+.problem__layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.problem__content .section-body {
+  margin-bottom: var(--space-xl);
+}
+
+.problem__closing {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1.5;
+  padding-top: var(--space-lg);
+  border-top: 2px solid var(--color-teal);
+}
+
+.problem__sidebar {
+  position: sticky;
+  top: 120px;
+}
+
+.problem__stat {
+  background: var(--color-navy);
+  border-radius: var(--radius-md);
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+}
+
+.problem__stat-number {
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--color-teal);
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+}
+
+.problem__stat-label {
+  font-size: 16px;
+  color: var(--color-gray);
+  line-height: 1.5;
+}
+
+.problem__stat-source {
+  display: block;
+  font-size: 12px;
+  color: var(--color-gray);
+  opacity: 0.7;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* ============================================
+   IMPACT — 4 outcome cards
+   ============================================ */
+.impact {
+  padding: var(--space-4xl) 0;
+  background: var(--color-surface);
+}
+
+.impact .section-headline,
+.impact .eyebrow,
+.impact .section-body {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.impact .section-body {
+  margin-bottom: var(--space-2xl);
+}
+
+.impact__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.impact__card {
+  padding: var(--space-xl) var(--space-xl) var(--space-lg);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: box-shadow 0.2s;
+}
+
+.impact__card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.impact__card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--color-teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.impact__card-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-teal);
+}
+
+.impact__card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.3;
+  margin-bottom: var(--space-sm);
+}
+
+.impact__card-body {
+  font-size: 15px;
+  color: var(--color-slate);
+  line-height: 1.6;
+}
+
+/* ============================================
+   USE CASES — 3 lifecycle cards
+   ============================================ */
+.usecases {
+  padding: var(--space-4xl) 0;
+  background: var(--color-white);
+}
+
+.usecases .section-headline,
+.usecases .eyebrow,
+.usecases .section-body {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.usecases .section-body {
+  margin-bottom: var(--space-2xl);
+}
+
+.usecases__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.usecases__card {
+  padding: var(--space-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  border-top: 3px solid var(--color-teal);
+  transition: box-shadow 0.2s;
+}
+
+.usecases__card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.usecases__number {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--color-teal);
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: var(--space-md);
+}
+
+.usecases__card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.3;
+  margin-bottom: var(--space-sm);
+}
+
+.usecases__card-body {
+  font-size: 15px;
+  color: var(--color-slate);
+  line-height: 1.6;
+}
+
+/* ============================================
+   SOLUTION
+   ============================================ */
+.platform {
+  padding: var(--space-4xl) 0;
+  background: var(--color-surface);
+}
+
+.platform .section-headline,
+.platform .section-body {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.platform .section-body { margin-bottom: var(--space-2xl); }
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.timeline__step {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-teal);
+  border-radius: var(--radius-md);
+  transition: box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline__step:hover {
+  box-shadow: 0 6px 20px rgba(30, 45, 61, 0.1);
+}
+
+.timeline__marker {
+  display: none;
+}
+
+.timeline__marker-label {
+  display: none;
+}
+
+.timeline__step::before {
+  content: attr(data-step);
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  font-size: 80px;
+  font-weight: 800;
+  color: var(--color-navy);
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.timeline__icon {
+  width: 36px;
+  height: 36px;
+  color: var(--color-teal);
+  margin-bottom: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.timeline__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.timeline__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.3;
+  margin-bottom: var(--space-sm);
+}
+
+.timeline__body {
+  font-size: 15px;
+  color: var(--color-slate);
+  line-height: 1.6;
+  margin-top: 0;
+  flex: 1;
+}
+
+.research-reports-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: 28px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border-d);
+  border-radius: 12px;
+}
+.research-reports-band__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  text-decoration: none;
+}
+.research-reports-band__link svg { width: 15px; height: 15px; transition: transform 0.2s ease; }
+.research-reports-band__link:hover svg { transform: translate(2px, -2px); }
+.research-reports-band__note { font-size: 13px; color: var(--fg-dim); line-height: 1.5; }
+.platform__outcome {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-navy);
+  text-align: center;
+  padding: var(--space-lg) var(--space-xl);
+  background: var(--color-teal-light);
+  border-radius: var(--radius-md);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ============================================
+   WHY INSAI
+   ============================================ */
+.why {
+  padding: var(--space-4xl) 0;
+  background: var(--color-white);
+}
+
+.why .section-body { margin-bottom: var(--space-2xl); }
+
+.why__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.diff {
+  display: flex;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-teal);
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.diff:hover {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.diff__content {
+  flex: 1;
+}
+
+.diff__icon {
+  width: 28px;
+  height: 28px;
+  color: var(--color-teal);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.diff__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.diff__title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.diff__body {
+  font-size: 15px;
+  color: var(--color-slate);
+  line-height: 1.6;
+}
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.contact__bookend {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-navy);
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.contact {
+  padding: var(--space-4xl) 0;
+  background: var(--color-teal-light);
+}
+
+.contact .section-headline {
+  color: var(--color-navy);
+  max-width: 520px;
+}
+
+.contact__body {
+  font-size: 18px;
+  color: var(--color-slate);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: var(--space-xl);
+}
+
+.contact__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.contact__email {
+  font-size: 16px;
+  color: var(--color-slate);
+  transition: color 0.2s;
+}
+
+.contact__email:hover { color: var(--color-teal-dark); }
+
+/* Contact form — light background variant */
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.contact__text .section-headline {
+  max-width: none;
+}
+
+.contact__email-fallback {
+  font-size: 15px;
+  color: var(--color-slate);
+  margin-top: var(--space-lg);
+}
+
+.contact__email-fallback a {
+  color: var(--color-teal);
+  transition: color 0.2s;
+}
+
+.contact__email-fallback a:hover {
+  color: var(--color-teal-dark);
+}
+
+.contact__form-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-xl);
+  box-shadow: 0 4px 16px rgba(30, 45, 61, 0.06);
+}
+
+.contact__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.contact__field {
+  margin-bottom: var(--space-md);
+}
+
+.contact__field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-navy);
+  margin-bottom: 6px;
+}
+
+.contact__field label .required {
+  color: var(--color-teal);
+}
+
+.contact__field input,
+.contact__field select,
+.contact__field textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  color: var(--color-navy);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact__field input::placeholder,
+.contact__field textarea::placeholder {
+  color: var(--color-gray);
+}
+
+.contact__field select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2 4 6 8 10 4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.contact__field select option {
+  background: var(--color-white);
+  color: var(--color-navy);
+}
+
+.contact__field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.contact__field input:focus,
+.contact__field select:focus,
+.contact__field textarea:focus {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(27, 168, 160, 0.15);
+}
+
+.contact__field input.is-invalid,
+.contact__field select.is-invalid,
+.contact__field textarea.is-invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.contact__field-error {
+  font-size: 13px;
+  color: #ef4444;
+  margin-top: 4px;
+  display: none;
+}
+
+.contact__field-error.is-visible {
+  display: block;
+}
+
+.contact__honeypot {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.contact__submit {
+  width: 100%;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--color-white);
+  background: var(--color-teal);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--space-sm);
+}
+
+.contact__submit:hover {
+  background: var(--color-teal-dark);
+}
+
+.contact__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.contact__spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--color-white);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.contact__submit.is-loading .contact__spinner {
+  display: block;
+}
+
+.contact__success,
+.contact__error {
+  display: none;
+}
+
+.contact__success.is-visible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-xl);
+  min-height: 300px;
+}
+
+.contact__success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(27, 168, 160, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.contact__success-icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--color-teal);
+}
+
+.contact__success h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: var(--space-sm);
+}
+
+.contact__success p {
+  font-size: 15px;
+  color: var(--color-slate);
+  margin-bottom: var(--space-lg);
+}
+
+.contact__success a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-teal);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.contact__success a:hover {
+  color: var(--color-teal-dark);
+}
+
+.contact__error.is-visible {
+  display: block;
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.contact__error p {
+  font-size: 14px;
+  color: #dc2626;
+  margin-bottom: var(--space-sm);
+}
+
+.contact__error p:last-child {
+  margin-bottom: 0;
+}
+
+.contact__error a {
+  color: var(--color-teal);
+  font-weight: 500;
+}
+
+.contact__error button {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--color-navy);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  margin-top: var(--space-sm);
+}
+
+.contact__error button:hover {
+  border-color: var(--color-teal);
+  background: var(--color-teal-light);
+}
+
+/* ============================================
+   INSAI STATS BAR
+   ============================================ */
+.insai-stats {
+  padding: var(--space-2xl) 0;
+  background: var(--color-surface);
+}
+
+.insai-stats__bar {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3xl);
+}
+
+.insai-stats__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.insai-stats__number {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.1;
+}
+
+.insai-stats__label {
+  font-size: 0.875rem;
+  color: var(--color-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer__links {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.footer__disclaimer {
+  font-size: 12px;
+  color: var(--color-gray);
+  opacity: 0.7;
+  text-align: center;
+  margin-top: var(--space-md);
+  max-width: var(--max-width-text);
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.footer {
+  padding: var(--space-xl) 0;
+  background: var(--color-navy);
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.footer__icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.5;
+}
+
+.footer__text {
+  font-size: 14px;
+  color: var(--color-gray);
+}
+
+.footer__text a {
+  color: var(--color-gray);
+  transition: color 0.2s;
+}
+
+.footer__text a:hover { color: var(--color-teal); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .problem__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .problem__sidebar {
+    position: static;
+    max-width: 360px;
+  }
+
+  .hero__headline { font-size: 40px; }
+  .section-headline { font-size: 30px; }
+}
+
+@media (max-width: 768px) {
+  .navbar__links { display: none; }
+  .navbar__hamburger { display: flex; }
+  .hero { padding: 130px 0 60px; }
+  .hero__headline { font-size: 32px; }
+  .hero__subhead { font-size: 16px; }
+  .section-headline { font-size: 28px; }
+  .section-body { font-size: 16px; }
+
+  .problem, .platform, .why, .contact {
+    padding: var(--space-3xl) 0;
+  }
+
+  .insai-stats__bar {
+    flex-direction: column;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .insai-stats__number {
+    font-size: 1.75rem;
+  }
+
+  .container { padding: 0 var(--space-lg); }
+  .navbar { padding: 0 var(--space-lg); }
+
+  .hero__ctas,
+  .contact__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .contact__form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+
+  .problem__stat-number { font-size: 56px; }
+
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .timeline__step {
+    padding: var(--space-lg);
+  }
+
+  .timeline__step::before {
+    font-size: 60px;
+  }
+
+  .timeline__title {
+    font-size: 19px;
+  }
+
+  .why__list {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .diff {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .impact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .usecases__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insai-stats {
+    padding: var(--space-xl) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__headline { font-size: 28px; }
+  .section-headline { font-size: 24px; }
+  .contact__bookend { font-size: 16px; }
+  .problem__stat-number { font-size: 48px; }
+  .footer__links { flex-direction: column; gap: var(--space-xs); align-items: center; }
+}
+
+/* ============================================
+   STRICT DARK SYSTEM OVERRIDES (DESIGN.md)
+   One dark canvas, teal-only accent, Geist + Geist Mono,
+   mono teal eyebrows left-aligned, one card style.
+   Loaded last so it wins the cascade.
+   ============================================ */
+
+/* --- Base canvas --- */
+body { background: var(--bg); color: var(--fg-muted); }
+
+/* --- Eyebrows: mono teal, left-aligned, de-centered --- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  text-align: left;
+}
+
+/* --- Headlines: light, lighter weight, tighter tracking --- */
+.section-headline {
+  color: var(--fg);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  text-align: left;
+}
+
+/* De-center every section header that was centered in the light system */
+.impact .section-headline,
+.impact .eyebrow,
+.impact .section-body,
+.usecases .section-headline,
+.usecases .eyebrow,
+.usecases .section-body,
+.platform .section-headline,
+.platform .section-body {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* --- Body text --- */
+.section-body { color: var(--fg-muted); }
+
+/* --- Buttons --- */
+.btn--primary { background: var(--color-teal); color: #04110F; }
+.btn--primary:hover { background: var(--color-teal-dark); }
+.navbar__cta { color: #04110F !important; }
+/* strict: card/timeline titles <= weight 500 */
+.impact__card-title, .usecases__card-title, .timeline__title, .diff__title { font-weight: 500; }
+.btn--secondary,
+.btn--secondary-light {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border-d-strong);
+}
+.btn--secondary:hover,
+.btn--secondary-light:hover {
+  border-color: var(--color-teal);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--fg);
+}
+
+/* --- Navbar: dark translucent + blur on scroll, light links --- */
+.top-accent { display: none; }
+.navbar { top: 0; }
+.navbar--solid {
+  background: rgba(11, 15, 18, 0.85);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid var(--border-d);
+  box-shadow: none;
+}
+.navbar--solid .navbar__link { color: rgba(255, 255, 255, 0.75); }
+.navbar--solid .navbar__link:hover,
+.navbar--solid .navbar__link--active { color: var(--color-white); }
+.navbar--solid .navbar__dropdown-toggle { color: rgba(255, 255, 255, 0.75); }
+.navbar--solid .navbar__dropdown-toggle:hover,
+.navbar--solid .navbar__dropdown.is-open .navbar__dropdown-toggle { color: var(--color-white); }
+.navbar--solid .navbar__hamburger span { background: var(--color-white); }
+/* dropdown menu + mobile nav onto dark surfaces */
+.navbar__dropdown-menu {
+  background: var(--surface);
+  border-color: var(--border-d);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+.navbar__dropdown-item:hover { background: var(--surface-2); }
+.navbar__dropdown-item-icon { background: rgba(27, 168, 160, 0.14); }
+.navbar__dropdown-item-label { color: var(--fg); }
+.navbar__dropdown-item-desc { color: var(--fg-dim); }
+.navbar__mobile { background: var(--bg-deep); }
+.navbar__mobile a { color: var(--fg); border-bottom-color: var(--border-d); }
+
+/* --- HERO --- */
+.hero { background: var(--bg-deep); border-bottom: 1px solid var(--border-d); }
+.hero .container { position: relative; z-index: 1; }
+.hero__eyebrow { color: var(--color-teal); margin-bottom: var(--space-lg); }
+.hero__headline { color: var(--fg); font-weight: 400; letter-spacing: -0.035em; }
+.hero__subhead { color: var(--fg-muted); }
+
+/* --- PROBLEM (canvas) --- */
+.problem { background: var(--bg); border-top: 1px solid var(--border-d); }
+.problem__closing {
+  color: var(--fg);
+  font-weight: 500;
+  border-top: 2px solid var(--color-teal);
+}
+/* stat panel = one card style */
+.problem__stat {
+  background: var(--surface);
+  border: 1px solid var(--border-d);
+}
+.problem__stat-number { color: var(--color-teal); }
+.problem__stat-label { color: var(--fg-muted); }
+.problem__stat-source { color: var(--fg-dim); }
+
+/* --- INSAI STATS (canvas) --- */
+.insai-stats { background: var(--bg); border-top: 1px solid var(--border-d); }
+.insai-stats__number { color: var(--fg); }
+.insai-stats__label { color: var(--fg-dim); }
+
+/* --- IMPACT (canvas) --- */
+.impact { background: var(--bg); border-top: 1px solid var(--border-d); }
+.impact__card {
+  background: var(--surface);
+  border: 1px solid var(--border-d);
+}
+.impact__card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  border-color: var(--color-teal);
+}
+.impact__card-icon { background: rgba(27, 168, 160, 0.14); }
+.impact__card-title { color: var(--fg); }
+.impact__card-body { color: var(--fg-muted); }
+
+/* --- USE CASES (canvas) --- */
+.usecases { background: var(--bg); border-top: 1px solid var(--border-d); }
+.usecases__card {
+  background: var(--surface);
+  border: 1px solid var(--border-d);
+  border-top: 1px solid var(--border-d);
+}
+.usecases__card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  border-color: var(--color-teal);
+}
+.usecases__number { color: var(--color-teal); opacity: 0.5; }
+.usecases__card-title { color: var(--fg); }
+.usecases__card-body { color: var(--fg-muted); }
+
+/* --- PLATFORM / timeline (canvas) --- */
+.platform { background: var(--bg); border-top: 1px solid var(--border-d); }
+.timeline__step {
+  background: var(--surface);
+  border: 1px solid var(--border-d);
+  border-left: 1px solid var(--border-d);
+}
+.timeline__step:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  border-color: var(--color-teal);
+}
+.timeline__step::before { color: var(--fg); opacity: 0.05; }
+.timeline__title { color: var(--fg); }
+.timeline__body { color: var(--fg-muted); }
+.platform__outcome {
+  color: var(--fg);
+  font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--border-d);
+  border-left: 2px solid var(--color-teal);
+  text-align: left;
+}
+
+/* --- WHY (canvas) --- */
+.why { background: var(--bg); border-top: 1px solid var(--border-d); }
+.diff {
+  background: var(--surface);
+  border: 1px solid var(--border-d);
+  border-left: 1px solid var(--border-d);
+}
+.diff:hover {
+  background: var(--surface-2);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  border-color: var(--color-teal);
+}
+.diff__title { color: var(--fg); }
+.diff__body { color: var(--fg-muted); }
+
+/* --- CONTACT (deep anchor) --- */
+.contact {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-d);
+  position: relative;
+  overflow: hidden;
+}
+.contact::before {
+  content: '';
+  position: absolute;
+  right: -120px;
+  top: -160px;
+  width: 620px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 68%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+.contact .container { position: relative; z-index: 1; }
+.contact__bookend { color: var(--fg); font-weight: 500; text-align: left; }
+.contact .section-headline { color: var(--fg); }
+.contact__body { color: var(--fg-muted); }
+.contact__email { color: var(--fg-muted); }
+.contact__email:hover { color: var(--color-teal); }
+.contact__email-fallback { color: var(--fg-muted); }
+.contact__email-fallback a { color: var(--color-teal); }
+
+/* contact form onto dark glass */
+.contact__form-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-d-strong);
+  box-shadow: none;
+}
+.contact__field label { color: rgba(255, 255, 255, 0.7); }
+.contact__field input,
+.contact__field select,
+.contact__field textarea {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-d-strong);
+}
+.contact__field input::placeholder,
+.contact__field textarea::placeholder { color: rgba(255, 255, 255, 0.3); }
+.contact__field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2 4 6 8 10 4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+.contact__field select option { background: var(--surface); color: var(--color-white); }
+.contact__success h3 { color: var(--color-white); }
+.contact__success p { color: var(--fg-muted); }
+.contact__error button { color: var(--color-white); border-color: var(--border-d-strong); }
+.contact__error button:hover { border-color: var(--color-teal); background: rgba(255, 255, 255, 0.05); }
+
+/* --- FOOTER (deep anchor) --- */
+.footer { background: var(--bg-deep); border-top: 1px solid var(--border-d); }
+.footer__text { color: var(--fg-dim); }
+.footer__text a { color: var(--fg-dim); }
+.footer__text a:hover { color: var(--color-teal); }
+.footer__disclaimer { color: var(--fg-dim); }
+
+/* --- Focus ring --- */
+:focus-visible { outline: 2px solid var(--color-teal); outline-offset: 2px; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; }
+</style>
+</head>
+<body>
+
+<!-- TEAL TOP ACCENT BAR -->
+<div class="top-accent"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar--transparent" id="navbar">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo">
+      <img src="assets/Insai-logo-2026-white.png" alt="Insai" id="navbar-logo">
+    </a>
+    <ul class="navbar__links">
+      <li><a href="index.html" class="navbar__link">Home</a></li>
+      <li class="navbar__dropdown" id="solutions-dropdown">
+        <button class="navbar__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+          Solutions
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="navbar__dropdown-menu">
+          <a href="biopharma.html" class="navbar__dropdown-item">
+            <div class="navbar__dropdown-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.58 16.5h12.85"/></svg>
+            </div>
+            <div class="navbar__dropdown-item-text">
+              <span class="navbar__dropdown-item-label">Biopharma</span>
+              <span class="navbar__dropdown-item-desc">Validated endpoints for CNS drug development</span>
+            </div>
+          </a>
+          <a href="research.html" class="navbar__dropdown-item">
+            <div class="navbar__dropdown-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2v6l5.4 9.4a2 2 0 0 1-1.7 3H5.8a2 2 0 0 1-1.7-3L9.5 8V2"/><path d="M8 2h8"/><path d="M9 12h6"/></svg>
+            </div>
+            <div class="navbar__dropdown-item-text">
+              <span class="navbar__dropdown-item-label">Research</span>
+              <span class="navbar__dropdown-item-desc">Reproducible sleep-EEG biomarkers for your study</span>
+            </div>
+          </a>
+          <a href="evidence.html" class="navbar__dropdown-item">
+            <div class="navbar__dropdown-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>
+            </div>
+            <div class="navbar__dropdown-item-text">
+              <span class="navbar__dropdown-item-label">Science</span>
+              <span class="navbar__dropdown-item-desc">The published research behind Insai</span>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li><a href="#contact" class="navbar__cta">Contact us</a></li>
+    </ul>
+    <button class="navbar__hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="navbar__mobile" id="mobile-nav">
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="biopharma.html" onclick="closeMobileNav()">Biopharma</a>
+  <a href="research.html" onclick="closeMobileNav()">Research</a>
+  <a href="evidence.html" onclick="closeMobileNav()">Science</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="eyebrow hero__eyebrow">Solutions for Research</div>
+    <h1 class="hero__headline">Reproducible sleep-EEG biomarkers for your study</h1>
+    <p class="hero__subhead">Run validated staging and biomarkers on your own recordings, across headband, clinical PSG, and archived EEG. Methods reproduced from published science, results reported with confidence scores. Built for labs in sleep medicine and neurophysiology.</p>
+    <div class="hero__ctas">
+      <a href="#contact" class="btn btn--primary">Get research access</a>
+      <a href="#platform" class="btn btn--secondary-light">See how it works</a>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="problem__layout">
+      <div class="problem__content">
+        <div class="eyebrow">The Challenge</div>
+        <h2 class="section-headline">Sleep-EEG analysis is hard to reproduce</h2>
+        <div class="section-body">
+          <p>Staging and biomarker pipelines are often hand-built per study: tuned to one dataset, one montage, one scorer. The numbers rarely transfer, and the methods are hard for the next lab to reproduce.</p>
+          <p>The result: findings that don't replicate, and months spent rebuilding analysis that should already exist.</p>
+        </div>
+        <p class="problem__closing">The missing piece isn't more data. It's reproducible measurement.</p>
+      </div>
+      <div class="problem__sidebar">
+        <div class="problem__stat">
+          <div class="problem__stat-number">1e-3</div>
+          <div class="problem__stat-label">reproduction tolerance: each marker reproduces its published method on standard cohorts before it ships.<br><span class="problem__stat-source">Validated on Sleep-EDFx and other public datasets</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSAI STATS -->
+<div class="insai-stats">
+  <div class="container">
+    <div class="insai-stats__bar">
+      <div class="insai-stats__item">
+        <span class="insai-stats__number">&kappa; 0.77</span>
+        <span class="insai-stats__label">staging vs clinical PSG, on the headband</span>
+      </div>
+      <div class="insai-stats__item">
+        <span class="insai-stats__number">ICC 0.91</span>
+        <span class="insai-stats__label">same biomarker, night to night in a person</span>
+      </div>
+      <div class="insai-stats__item">
+        <span class="insai-stats__number">6</span>
+        <span class="insai-stats__label">published reports, failures included</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OUR IMPACT -->
+<section class="impact" id="impact">
+  <div class="container">
+    <div class="eyebrow">What You Get</div>
+    <h2 class="section-headline">Analysis you can publish and others can reproduce</h2>
+
+    <div class="impact__grid">
+      <div class="impact__card">
+        <div class="impact__card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </div>
+        <div class="impact__card-title">Automated, validated staging</div>
+        <div class="impact__card-body">Sleep staging built on published models, with per-epoch confidence scores so you can flag and review uncertain epochs instead of trusting a black box.</div>
+      </div>
+      <div class="impact__card">
+        <div class="impact__card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div>
+        <div class="impact__card-title">Reproduced from published methods</div>
+        <div class="impact__card-body">Sleep architecture, slow-wave activity, spectral measures, and spindles, each reproducing a published result on standard cohorts before it runs on your data.</div>
+      </div>
+      <div class="impact__card">
+        <div class="impact__card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <div class="impact__card-title">Works across your devices</div>
+        <div class="impact__card-body">Bring headband, clinical PSG, or legacy EEG. The same method re-runs per device, so you are not locked to one recording setup.</div>
+      </div>
+      <div class="impact__card">
+        <div class="impact__card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        </div>
+        <div class="impact__card-title">Longitudinal, at-home capture</div>
+        <div class="impact__card-body">Multi-night recording at home captures night-to-night variability a single lab visit cannot, with the data organized by subject and study.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES — DRUG DEVELOPMENT LIFECYCLE -->
+<section class="usecases" id="usecases">
+  <div class="container">
+    <div class="eyebrow">Who It's For</div>
+    <h2 class="section-headline">Built for the way labs actually work</h2>
+    <div class="section-body">
+      <p>From a retrospective re-analysis to a prospective at-home study, Insai gives your lab the same validated pipeline at every stage.</p>
+    </div>
+
+    <div class="usecases__grid">
+      <div class="usecases__card">
+        <div class="usecases__number">01.</div>
+        <div class="usecases__card-title">Re-analyze existing recordings</div>
+        <div class="usecases__card-body">Point Insai at your PSG or EEG archive for consistent, validated staging and biomarkers, without rebuilding a pipeline from scratch.</div>
+      </div>
+      <div class="usecases__card">
+        <div class="usecases__number">02.</div>
+        <div class="usecases__card-title">Run a prospective at-home study</div>
+        <div class="usecases__card-body">Capture multi-night sleep-EEG at home with the Nexus headband, then score and analyze it in one place, organized by subject.</div>
+      </div>
+      <div class="usecases__card">
+        <div class="usecases__number">03.</div>
+        <div class="usecases__card-title">Collaborate and publish</div>
+        <div class="usecases__card-body">Share methods and results that another lab can reproduce, with the validation record and confidence scores attached.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SOLUTION -->
+<section class="platform" id="platform">
+  <div class="container">
+    <div class="eyebrow">How It Works</div>
+    <h2 class="section-headline">From raw recordings to reproducible results</h2>
+    <div class="section-body">
+      <p>Sleep-EEG carries rich neurophysiological signal that can be captured at home over many nights. Insai turns that signal into structured, validated biomarkers your lab can trust and reproduce.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline__step" data-step="01">
+        <div class="timeline__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="timeline__title">Capture</div>
+        <div class="timeline__body">Collect multi-night EEG at home with research wearables, or analyze existing PSG and EEG from your archive. Real-world data across days and weeks, not single-visit snapshots.</div>
+      </div>
+      <div class="timeline__step" data-step="02">
+        <div class="timeline__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3 4 4.5 4.5 0 0 1-3-4"/><path d="M12 18v-6"/><circle cx="12" cy="12" r="1"/></svg></div>
+        <div class="timeline__title">Analyze</div>
+        <div class="timeline__body">Published staging models and biomarker methods, each reproduced to a 1e-3 tolerance on public cohorts, turn raw EEG into sleep architecture, spectral measures, and event markers with confidence scores.</div>
+      </div>
+      <div class="timeline__step" data-step="03">
+        <div class="timeline__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg></div>
+        <div class="timeline__title">Report</div>
+        <div class="timeline__body">Structured biomarker outputs delivered as data tables, visual reports, or via API, each with its confidence scores and validation record. Built for analysis, sharing, and publication.</div>
+      </div>
+    </div>
+
+    <div class="platform__outcome">Validated results from real-world sleep data. Methods another lab can reproduce. Less time rebuilding pipelines, more time on the science.</div>
+
+    <div class="research-reports-band">
+      <a href="https://insai.github.io/biomarker-portal/research/" target="_blank" rel="noopener" class="research-reports-band__link">
+        Read the research reports
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+      </a>
+      <span class="research-reports-band__note">Living scientific writeups of our sleep-staging, Parkinson's biomarker, and brain-age work. For Research Use Only.</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY INSAI -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="eyebrow">Why Insai</div>
+    <h2 class="section-headline">A validation engine, not a point solution</h2>
+    <div class="section-body">
+      <p>Most sleep-EEG pipelines are narrow: one algorithm, one device, hand-tuned per study. Insai validates the biomarker across the devices you already use, and shows the work.</p>
+    </div>
+
+    <div class="why__list">
+      <div class="diff">
+        <div class="diff__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div>
+        <div class="diff__content">
+          <div class="diff__title">Validated, not hand-tuned per study</div>
+          <div class="diff__body">Each biomarker reproduces a published method and is validated for its context of use, not hand-crafted per trial.</div>
+        </div>
+      </div>
+      <div class="diff">
+        <div class="diff__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <div class="diff__content">
+          <div class="diff__title">Biomarkers, not raw metrics</div>
+          <div class="diff__body">Outputs are structured for interpretation and reproduction, with confidence scores and the validation record attached.</div>
+        </div>
+      </div>
+      <div class="diff">
+        <div class="diff__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+        <div class="diff__content">
+          <div class="diff__title">Cross-device by design</div>
+          <div class="diff__body">Works across headband, clinical EEG, and clinical PSG. No vendor lock-in.</div>
+        </div>
+      </div>
+      <div class="diff">
+        <div class="diff__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="diff__content">
+          <div class="diff__title">Longitudinal, real-world signal</div>
+          <div class="diff__body">Multi-night measurement captures true biological variability, not single-visit snapshots.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <p class="contact__bookend">Reproducible measurement starts here.</p>
+    <div class="contact__grid">
+      <div class="contact__text">
+        <div class="eyebrow">Get in touch</div>
+        <h2 class="section-headline">Talk to us about your study</h2>
+        <p class="contact__body">Bring your recordings and your research question. We will tell you, honestly, what we can run and validate today and what is still on the bench.</p>
+        <p class="contact__email-fallback">Or email us directly: <a href="mailto:mark@insai.tech">mark@insai.tech</a></p>
+      </div>
+      <div class="contact__form-card">
+        <form id="contact-form" action="https://formspree.io/f/meeleqvr" method="POST" novalidate>
+          <input type="hidden" name="_page" value="research">
+          <div class="contact__honeypot" aria-hidden="true">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="contact__form-row">
+            <div class="contact__field">
+              <label for="contact-name">Name <span class="required">*</span></label>
+              <input type="text" id="contact-name" name="name" required placeholder="Your name">
+              <div class="contact__field-error" id="contact-name-error">Please enter your name</div>
+            </div>
+            <div class="contact__field">
+              <label for="contact-email">Work email <span class="required">*</span></label>
+              <input type="email" id="contact-email" name="email" required placeholder="you@company.com">
+              <div class="contact__field-error" id="contact-email-error">Please enter a valid email</div>
+            </div>
+          </div>
+          <div class="contact__form-row">
+            <div class="contact__field">
+              <label for="contact-company">Company / Organization <span class="required">*</span></label>
+              <input type="text" id="contact-company" name="company" required placeholder="Your company">
+              <div class="contact__field-error" id="contact-company-error">Please enter your company</div>
+            </div>
+            <div class="contact__field">
+              <label for="contact-role">Role / Title</label>
+              <input type="text" id="contact-role" name="role" placeholder="Your role">
+            </div>
+          </div>
+          <div class="contact__field">
+            <label for="contact-inquiry">Inquiry type</label>
+            <select id="contact-inquiry" name="inquiry">
+              <option value="" disabled selected>Select an option</option>
+              <option value="Re-analysis of existing EEG/PSG recordings">Re-analysis of existing EEG/PSG recordings</option>
+              <option value="Prospective at-home sleep-EEG study">Prospective at-home sleep-EEG study</option>
+              <option value="Validated staging / biomarker access">Validated staging / biomarker access</option>
+              <option value="Platform demo / early access">Platform demo / early access</option>
+              <option value="Research collaboration">Research collaboration</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="contact__field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" placeholder="Tell us about your project or question..."></textarea>
+          </div>
+          <button type="submit" class="contact__submit" id="contact-submit">
+            <span>Send message</span>
+            <span class="contact__spinner"></span>
+          </button>
+          <div class="contact__error" id="contact-error">
+            <p>Something went wrong. Please try again or email us at <a href="mailto:mark@insai.tech">mark@insai.tech</a>.</p>
+            <button type="button" id="contact-retry">Try again</button>
+          </div>
+        </form>
+        <div class="contact__success" id="contact-success">
+          <div class="contact__success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Message sent</h3>
+          <p>We typically respond within one business day.</p>
+          <a href="#" id="contact-reset">Send another message</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="assets/Insai-logo-2026-icon.png" alt="" class="footer__icon">
+        <span class="footer__text">&copy; 2026 Insai. Copenhagen.</span>
+      </div>
+      <div class="footer__links">
+        <span class="footer__text"><a href="privacy.html">Privacy Policy</a></span>
+        <span class="footer__text"><a href="mailto:mark@insai.tech">mark@insai.tech</a></span>
+      </div>
+    </div>
+    <p class="footer__disclaimer">Insai's biomarker platform is intended for research and drug development use only. Not intended for clinical diagnosis, patient monitoring, or therapeutic decision-making.</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var navbar = document.getElementById('navbar');
+  var navbarLogo = document.getElementById('navbar-logo');
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobile-nav');
+  var logoWhite = 'assets/Insai-logo-2026-white.png';
+  var logoDefault = 'assets/Insai-logo-2026-transparent.png';
+  function updateNavbar() {
+    if (window.scrollY > 80) {
+      navbar.classList.remove('navbar--transparent');
+      navbar.classList.add('navbar--solid');
+      navbarLogo.src = logoDefault;
+    } else {
+      navbar.classList.remove('navbar--solid');
+      navbar.classList.add('navbar--transparent');
+      navbarLogo.src = logoWhite;
+    }
+  }
+
+  hamburger.addEventListener('click', function() {
+    mobileNav.classList.toggle('is-open');
+  });
+
+  window.closeMobileNav = function() {
+    mobileNav.classList.remove('is-open');
+  };
+
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        updateNavbar();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // ========================================
+  // Contact form handler
+  // ========================================
+  var contactForm = document.getElementById('contact-form');
+  var contactSubmit = document.getElementById('contact-submit');
+  var contactSuccess = document.getElementById('contact-success');
+  var contactError = document.getElementById('contact-error');
+  var contactReset = document.getElementById('contact-reset');
+  var contactRetry = document.getElementById('contact-retry');
+
+  if (contactForm) {
+    var requiredFields = contactForm.querySelectorAll('[required]');
+
+    function validateField(field) {
+      var error = document.getElementById(field.id + '-error');
+      var valid = true;
+      if (field.required && !field.value.trim()) {
+        valid = false;
+      } else if (field.type === 'email' && field.value.trim()) {
+        valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
+      }
+      if (error) {
+        field.classList.toggle('is-invalid', !valid);
+        error.classList.toggle('is-visible', !valid);
+      }
+      return valid;
+    }
+
+    requiredFields.forEach(function(field) {
+      field.addEventListener('blur', function() {
+        validateField(field);
+      });
+      field.addEventListener('input', function() {
+        if (field.classList.contains('is-invalid')) {
+          validateField(field);
+        }
+      });
+    });
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var allValid = true;
+      requiredFields.forEach(function(field) {
+        if (!validateField(field)) allValid = false;
+      });
+      if (!allValid) return;
+
+      contactSubmit.classList.add('is-loading');
+      contactSubmit.disabled = true;
+      contactSubmit.querySelector('span:first-child').textContent = 'Sending...';
+      contactError.classList.remove('is-visible');
+
+      var formData = new FormData(contactForm);
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response) {
+        if (response.ok) {
+          contactForm.style.display = 'none';
+          contactSuccess.classList.add('is-visible');
+        } else {
+          throw new Error('Form submission failed');
+        }
+      }).catch(function() {
+        contactError.classList.add('is-visible');
+      }).finally(function() {
+        contactSubmit.classList.remove('is-loading');
+        contactSubmit.disabled = false;
+        contactSubmit.querySelector('span:first-child').textContent = 'Send message';
+      });
+    });
+
+    if (contactReset) {
+      contactReset.addEventListener('click', function(e) {
+        e.preventDefault();
+        contactForm.reset();
+        contactForm.style.display = '';
+        contactSuccess.classList.remove('is-visible');
+        contactError.classList.remove('is-visible');
+        contactForm.querySelectorAll('.is-invalid').forEach(function(el) {
+          el.classList.remove('is-invalid');
+        });
+        contactForm.querySelectorAll('.contact__field-error').forEach(function(el) {
+          el.classList.remove('is-visible');
+        });
+      });
+    }
+
+    if (contactRetry) {
+      contactRetry.addEventListener('click', function() {
+        contactError.classList.remove('is-visible');
+      });
+    }
+  }
+
+  updateNavbar();
+})();
+</script>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-consent-banner" style="display:none;position:fixed;bottom:24px;left:24px;right:24px;max-width:480px;z-index:10000;background:#14181D;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:20px 24px;box-shadow:0 8px 32px rgba(0,0,0,0.5);font-family:'Geist',system-ui,-apple-system,sans-serif;opacity:0;transform:translateY(16px);transition:opacity 0.4s ease,transform 0.4s ease;">
+  <p style="margin:0 0 16px 0;font-size:14px;line-height:1.6;color:#CBD5E1;">We use analytics cookies to understand how visitors interact with our site. No advertising or third-party tracking.</p>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <button id="cookie-accept" style="padding:10px 28px;border-radius:8px;border:none;background:#1BA8A0;color:#fff;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:background 0.2s;">Accept</button>
+    <button id="cookie-decline" style="padding:10px 16px;border-radius:8px;border:none;background:transparent;color:rgba(255,255,255,0.72);font-size:13px;font-weight:400;font-family:inherit;cursor:pointer;">No thanks</button>
+  </div>
+</div>
+<script>
+(function() {
+  var consent = localStorage.getItem('cookie-consent');
+  var consentTime = localStorage.getItem('cookie-consent-time');
+  var expired = consent === 'declined' && consentTime &&
+    (Date.now() - parseInt(consentTime, 10)) > 30 * 24 * 60 * 60 * 1000;
+  if (!consent || expired) {
+    setTimeout(function() {
+      var banner = document.getElementById('cookie-consent-banner');
+      banner.style.display = 'block';
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          banner.style.opacity = '1';
+          banner.style.transform = 'translateY(0)';
+        });
+      });
+    }, 1500);
+  }
+  document.getElementById('cookie-accept').addEventListener('click', function() {
+    localStorage.setItem('cookie-consent', 'accepted');
+    localStorage.setItem('cookie-consent-time', String(Date.now()));
+    document.getElementById('cookie-consent-banner').style.display = 'none';
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function() {
+    localStorage.setItem('cookie-consent', 'declined');
+    localStorage.setItem('cookie-consent-time', String(Date.now()));
+    document.getElementById('cookie-consent-banner').style.display = 'none';
+  });
+})();
+</script>
+<script>
+// Reduced motion: freeze SVG SMIL animations (CSS animation:none can't stop <animate>)
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('svg').forEach(function(svg){
+      if (svg.pauseAnimations) { try { svg.pauseAnimations(); } catch (e) {} }
+    });
+  }
+})();
+</script>
+</body>
+</html>
