@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<!-- @dsCard group="Brand" name="Homepage" subtitle="Hero · Signals · Engine · Platform · Solutions · Applications" viewport="1440x900" -->
 <html lang="en">
 <head>
-<meta name="robots" content="noindex,nofollow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insai | Validated brain biomarkers from everyday sleep</title>
+<meta name="robots" content="noindex,nofollow">
+<title>Insai | Reproducible brain biomarkers from at-home sleep</title>
 <!-- Google Analytics (GA4) - Consent Mode v2: loads immediately in cookieless mode -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -28,18 +29,18 @@
   gtag('js', new Date());
   gtag('config', window.GA_MEASUREMENT_ID);
 </script>
-<meta name="description" content="Insai turns at-home sleep-EEG into validated brain biomarkers for research, reproduced against published methods and gated by signal quality. For Research Use Only.">
+<meta name="description" content="Insai turns at-home sleep-EEG into brain biomarkers you can defend, each reproducing its published method and gated by signal quality. The validation layer for real-world brain biomarkers. For Research Use Only.">
 <!-- Open Graph -->
-<meta property="og:title" content="Insai | Validated brain biomarkers from everyday sleep">
-<meta property="og:description" content="Insai turns at-home sleep-EEG into validated brain biomarkers for research, reproduced against published methods and gated by signal quality. For Research Use Only.">
+<meta property="og:title" content="Insai | Reproducible brain biomarkers from at-home sleep">
+<meta property="og:description" content="Insai turns at-home sleep-EEG into brain biomarkers you can defend, each reproducing its published method and gated by signal quality. The validation layer for real-world brain biomarkers. For Research Use Only.">
 <meta property="og:image" content="https://insai.tech/assets/eeg-wave-hero.jpg">
 <meta property="og:url" content="https://insai.tech/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Insai">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Insai | Validated brain biomarkers from everyday sleep">
-<meta name="twitter:description" content="Insai turns at-home sleep-EEG into validated brain biomarkers for research, reproduced against published methods and gated by signal quality. For Research Use Only.">
+<meta name="twitter:title" content="Insai | Reproducible brain biomarkers from at-home sleep">
+<meta name="twitter:description" content="Insai turns at-home sleep-EEG into brain biomarkers you can defend, each reproducing its published method and gated by signal quality. The validation layer for real-world brain biomarkers. For Research Use Only.">
 <meta name="twitter:image" content="https://insai.tech/assets/eeg-wave-hero.jpg">
 <!-- Canonical URL -->
 <link rel="canonical" href="https://insai.tech/">
@@ -611,10 +612,10 @@ a {
 .hero .eyebrow { margin-bottom: var(--space-lg); }
 
 .hero__headline {
-  font-size: clamp(2.6rem, 4.4vw + 1rem, 4rem);
+  font-size: clamp(2.2rem, 3.2vw + 0.8rem, 3.25rem);
   font-weight: 600;
   color: var(--fg);
-  line-height: 1.04;
+  line-height: 1.06;
   letter-spacing: -0.035em;
   margin-bottom: var(--space-md);
   text-wrap: balance;
@@ -1196,6 +1197,17 @@ a {
   background: var(--bg);
   border-top: 1px solid var(--border-d);
 }
+.applications {
+  padding: var(--space-4xl) 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border-d);
+}
+.devices-connect {
+  margin-top: var(--space-xl);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+.devices-connect .accent { color: var(--color-teal); }
 .solutions__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1997,6 +2009,13 @@ a {
 .why__radial-foot .why__hub-coremeta { margin: 0 auto; max-width: 480px; }
 .why__hub .why__legend { justify-content: center; margin-top: 14px; }
 .why__hub .why__legend-link { margin-left: 0; }
+.why__legend-cta { display: flex; justify-content: center; margin-top: 24px; }
+.why__legend-btn { display: inline-flex; align-items: center; gap: 12px; padding: 13px 22px; border: 1px solid rgba(27,168,160,0.4); border-radius: 999px; background: rgba(27,168,160,0.06); color: var(--fg); font-size: 0.92rem; font-weight: 500; text-decoration: none; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.why__legend-btn small { font-family: var(--font-mono); font-size: 0.62rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.07em; color: var(--fg-dim); }
+.why__legend-btn span { color: var(--color-teal); font-size: 1.1em; transition: transform .2s ease; }
+.why__legend-btn:hover { border-color: rgba(27,168,160,0.7); background: rgba(27,168,160,0.1); transform: translateY(-2px); }
+.why__legend-btn:hover span { transform: translateX(3px); }
+@media (max-width: 560px) { .why__legend-btn { flex-direction: column; gap: 5px; text-align: center; padding: 14px 20px; } .why__legend-btn small { order: 1; } }
 .why__devices { margin-top: var(--space-2xl); padding-top: var(--space-2xl); border-top: 1px solid var(--border-d); }
 .why__devices-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
 .why__devices-row .why__chip { flex: 1 1 175px; width: auto; padding: 14px 16px; }
@@ -2024,6 +2043,8 @@ a {
 /* Endpoint cards flanking the radial */
 .why__radial-layout { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; margin: 20px 0 0; }
 .why__ep-col { display: flex; flex-direction: column; gap: 14px; }
+.why__ep-head { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.11em; color: var(--color-teal); text-align: center; margin-bottom: 2px; }
+.why__ep-head small { display: block; color: var(--fg-dim); letter-spacing: 0.06em; font-size: 0.9em; margin-top: 2px; }
 .why__radial-center { display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .why__radial-center .why__hub-engine { position: relative; left: auto; top: auto; width: 250px; height: 250px; aspect-ratio: auto; flex: none; overflow: visible; }
 .why__radial-spokes { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; z-index: 0; pointer-events: none; }
@@ -2042,11 +2063,14 @@ a {
 .why__radial-layout { position: relative; }
 .why__connectors { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; z-index: 0; pointer-events: none; }
 .why__radial-center { position: relative; z-index: 1; }
-.why__proc-card { position: relative; z-index: 1; background: var(--surface); border: 1px solid var(--border-d); border-radius: 13px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
-.why__proc-card__name { font-size: 15px; font-weight: 500; color: var(--fg); letter-spacing: -0.01em; }
-.why__proc-card__desc { font-size: 12.5px; font-weight: 300; color: var(--fg-muted); line-height: 1.45; }
-.why__proc-card__bms { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 2px; }
-.why__bm { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--fg); white-space: nowrap; }
+.why__proc-card { position: relative; z-index: 1; background: var(--surface); border: 1px solid var(--border-d); border-radius: 14px; padding: 17px 19px; display: flex; flex-direction: column; gap: 9px; transition: border-color .2s ease, background .2s ease; }
+.why__proc-card:hover { border-color: rgba(27,168,160,0.3); background: rgba(27,168,160,0.02); }
+.why__proc-card__name { font-size: 1rem; font-weight: 600; color: var(--fg); letter-spacing: -0.01em; display: flex; align-items: center; gap: 9px; }
+.why__proc-card__name::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--color-teal); flex: none; box-shadow: 0 0 8px rgba(27,168,160,0.65); }
+.why__proc-card__desc { font-size: 0.82rem; font-weight: 300; color: var(--fg-muted); line-height: 1.5; }
+.why__proc-card__bms { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 3px; }
+.why__bm { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.07em; line-height: 1; color: var(--fg-dim); border: 1px solid var(--border-d-strong); border-radius: 999px; padding: 4px 9px; white-space: nowrap; }
+.why__bm--soon { border-style: dashed; }
 .why__bm .marker-chip__tag { font-size: 8px; padding: 1px 6px; }
 @media (max-width: 860px) {
   .why__radial-layout { grid-template-columns: 1fr; gap: 14px; }
@@ -2295,6 +2319,91 @@ a {
   .research__proof-grid { grid-template-columns: 1fr; }
 }
 
+/* Pillars — three reasons a result survives scrutiny */
+.pillars__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: var(--space-2xl); }
+.pillar-card { background: var(--surface); border: 1px solid var(--border-d); border-radius: 12px; padding: 26px 24px; display: flex; flex-direction: column; gap: 12px; }
+.pillar-card__title { font-size: 1.15rem; font-weight: 500; color: var(--fg); letter-spacing: -0.02em; }
+.pillar-card__body { font-size: 14.5px; font-weight: 300; color: var(--fg-muted); line-height: 1.55; }
+.pillar-card__proof { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border-d); font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.03em; color: var(--fg-dim); line-height: 1.5; }
+.pillars__onliness { margin: var(--space-2xl) auto 0; max-width: 780px; text-align: center; font-size: 1.15rem; line-height: 1.5; color: var(--fg); }
+
+/* Solutions — application cards with context imagery (from M6 Section 3) */
+.appgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: var(--space-xl); }
+.appcard { background: var(--surface); border: 1px solid var(--border-d); border-radius: 13px; overflow: hidden; display: flex; flex-direction: column; }
+.appcard--lead { border-color: rgba(27,168,160,.45); }
+.appcard__img { position: relative; height: 128px; overflow: hidden; }
+.appcard__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.appcard__img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,15,18,.65), transparent 55%); }
+.appcard__tag { position: absolute; top: 10px; left: 10px; z-index: 2; font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-teal); background: rgba(4,17,15,.72); border: 1px solid rgba(27,168,160,.45); border-radius: 999px; padding: 3px 9px; }
+.appcard__body { padding: 15px 17px; }
+.appcard__k { font-size: 1rem; font-weight: 600; color: var(--fg); margin-bottom: 5px; }
+.appcard__d { font-size: 0.82rem; color: var(--fg-muted); line-height: 1.45; }
+.appcard__sig { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--border-d); }
+.appcard__sig span { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.07em; line-height: 1; color: var(--fg-dim); border: 1px solid var(--border-d-strong); border-radius: 999px; padding: 4px 8px; white-space: nowrap; }
+.appcard__sig span.is-signal { color: var(--color-teal); border-color: rgba(27,168,160,.4); background: rgba(27,168,160,.06); }
+.appband { display: flex; align-items: center; gap: 14px; margin-top: 14px; background: var(--surface); border: 1px solid var(--border-d); border-radius: 13px; padding: 14px 18px; }
+.appband__k { font-size: 0.9rem; font-weight: 600; color: var(--fg); white-space: nowrap; }
+.appband__tag { font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--fg-dim); border: 1px solid var(--border-d-strong); border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
+.appband__d { font-size: 0.82rem; color: var(--fg-muted); line-height: 1.4; }
+.solutions__start-lead { margin-top: var(--space-2xl); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.11em; color: var(--fg-dim); }
+@media (max-width: 860px) { .appgrid { grid-template-columns: 1fr; } .appband { flex-direction: column; align-items: flex-start; gap: 8px; } }
+
+/* Why-us — owned devices showcase */
+.devices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: var(--space-2xl); }
+.device-card { background: var(--surface); border: 1px solid var(--border-d); border-radius: 14px; padding: 26px 22px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+.device-card__media { height: 132px; display: flex; align-items: center; justify-content: center; }
+.device-card__media img { max-height: 132px; max-width: 100%; object-fit: contain; }
+.device-card__name { font-size: 1.05rem; font-weight: 600; color: var(--fg); }
+.device-card__reads { font-size: 0.85rem; color: var(--fg-muted); line-height: 1.45; }
+.device-card__status { margin-top: 4px; font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.09em; padding: 4px 11px; border-radius: 999px; }
+.device-card__status--live { color: var(--color-teal); border: 1px solid rgba(27,168,160,.45); background: rgba(27,168,160,.08); }
+.device-card__status--soon { color: var(--fg-muted); border: 1px solid var(--border-d-strong); }
+.device-card__status--val { color: var(--fg-dim); border: 1px dashed var(--border-d-strong); }
+@media (max-width: 860px) { .devices-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .pillars__grid { grid-template-columns: 1fr; } }
+
+/* Why-us — nervous-system field + de-boxed devices + font-color fix */
+.pillars { position: relative; overflow: hidden; padding: var(--space-4xl) 0; }
+.pillars .container { position: relative; z-index: 1; }
+.pillars .section-headline { color: var(--color-white); }
+.pillars .section-body, .pillars .section-body p { color: rgba(255,255,255,0.72); }
+/* Signals — nervous system (left) wired to connected devices (right) */
+.signals-grid { position: relative; display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 76px); align-items: center; margin-top: var(--space-2xl); }
+.signals-connectors { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; overflow: visible; opacity: 0; transition: opacity .8s ease; }
+.signals-connectors.is-in { opacity: 1; }
+.signals-connectors path { fill: none; stroke-width: 1.1; stroke-linecap: round; stroke-dasharray: 4 5; opacity: 0.55; }
+.signals-connectors circle { opacity: 0.9; }
+@media (max-width: 940px) { .signals-connectors { display: none; } }
+.signals-figure { position: relative; align-self: stretch; min-height: 560px; display: flex; align-items: center; justify-content: center; }
+.signals-figure::after { content: ""; position: absolute; inset: -8% -10%; background: radial-gradient(ellipse 52% 60% at 50% 46%, rgba(27,168,160,0.16), transparent 72%); z-index: 0; pointer-events: none; }
+.signals-figure img { position: relative; z-index: 1; height: var(--fig-scale, 108%); max-height: 720px; width: auto; max-width: none; object-fit: contain; opacity: var(--fig-opacity, 0.95); mix-blend-mode: var(--fig-blend, screen); transform: translate(var(--fig-x, 0%), var(--fig-y, 0%)); transition: opacity .3s ease; }
+.signals-body { position: relative; }
+.signals-body .eyebrow { margin-top: 0; }
+.signals-devices { display: flex; flex-direction: column; gap: 12px; margin-top: var(--space-xl); }
+.signals-device { position: relative; display: flex; align-items: center; gap: 20px; padding: 15px 20px 15px 16px; border: 1px solid var(--border-d); border-radius: 14px; background: rgba(255,255,255,0.014); transition: border-color .22s ease, background .22s ease, transform .22s ease; }
+.signals-device::before { content: ""; position: absolute; left: -1px; top: 18%; bottom: 18%; width: 2px; border-radius: 2px; background: var(--conn, transparent); transition: opacity .22s ease; }
+.signals-device:hover { border-color: rgba(27,168,160,0.4); background: rgba(27,168,160,0.035); transform: translateX(4px); }
+.signals-device__media { flex: 0 0 auto; width: 96px; height: 76px; display: flex; align-items: center; justify-content: center; }
+.signals-device__media img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 12px 18px rgba(0,0,0,0.55)); }
+.signals-device__info { flex: 1 1 auto; min-width: 0; }
+.signals-device__top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.signals-device__name { font-size: 1.02rem; font-weight: 600; color: var(--fg); letter-spacing: -0.01em; }
+.signals-device__region { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-teal); border: 1px solid rgba(27,168,160,0.35); border-radius: 999px; padding: 2px 7px; line-height: 1; }
+.signals-device__reads { font-size: 0.82rem; color: var(--fg-muted); line-height: 1.4; margin-top: 4px; }
+.signals-device__status { flex: 0 0 auto; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.09em; padding: 5px 11px; border-radius: 999px; white-space: nowrap; }
+.signals-device__status--live { color: var(--color-teal); border: 1px solid rgba(27,168,160,.45); background: rgba(27,168,160,.08); }
+.signals-device__status--soon { color: var(--fg-muted); border: 1px solid var(--border-d-strong); }
+.signals-device__status--val { color: var(--fg-dim); border: 1px dashed var(--border-d-strong); }
+.signals-body .devices-connect { margin-top: var(--space-lg); }
+@media (max-width: 940px) { .signals-grid { grid-template-columns: 1fr; gap: 8px; } .signals-figure { min-height: 380px; order: -1; } .signals-figure img { height: 360px; } }
+@media (max-width: 560px) { .signals-device { gap: 12px; padding: 13px 15px; } .signals-device__media { width: 66px; height: 58px; } .signals-device__status { display: none; } }
+
+/* The proof — named negatives */
+.proof__negs { list-style: none; margin: var(--space-xl) 0 0; padding: 0; display: grid; gap: 1px; background: var(--border-d); border: 1px solid var(--border-d); border-radius: 12px; overflow: hidden; }
+.proof__neg { background: var(--surface); padding: 16px 20px; font-size: 14.5px; font-weight: 300; color: var(--fg-muted); line-height: 1.5; }
+.proof__neg b { color: var(--fg); font-weight: 500; }
+.proof__foot { margin-top: var(--space-lg); font-size: 14.5px; font-weight: 300; color: var(--fg-muted); }
+
 /* Research project cards */
 .research__grid {
   display: grid;
@@ -2500,14 +2609,14 @@ a {
 }
 
 .partners__logo {
-  height: 56px;
+  height: 44px;
   width: auto;
-  filter: grayscale(100%) opacity(0.5);
-  transition: filter 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0.55;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .partners__logo:hover {
-  filter: grayscale(0) opacity(1);
+  opacity: 0.9;
   transform: scale(1.05);
 }
 
@@ -2575,7 +2684,32 @@ a {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: var(--space-3xl);
-  align-items: start;
+  align-items: center;
+}
+.contact__assurances {
+  list-style: none;
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact__assurances li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+.contact__assurances li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: rgba(27, 168, 160, 0.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%231ba8a0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 11px no-repeat;
 }
 
 .contact__text .section-headline {
@@ -3394,6 +3528,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 /* --- Solutions (dark section: headline was inheriting navy base color) --- */
 .solutions .section-headline { color: var(--color-white); }
 .solutions .section-body, .solutions .section-body p { color: rgba(255, 255, 255, 0.65); }
+.applications .section-headline { color: var(--color-white); }
+.applications .section-body, .applications .section-body p { color: rgba(255, 255, 255, 0.65); }
 
 /* strict rule 5: section headers are left-aligned (no centered headers) */
 .why .eyebrow, .why .section-headline, .why .section-body,
@@ -3416,18 +3552,17 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 /* partner logos sit on one intentional, framed light trust panel
    (mixed-format assets can't be knocked out uniformly) */
 .partners__logos {
-  background: #F4F6F8;
-  border: 1px solid var(--border-d);
-  border-radius: 12px;
-  padding: 26px 40px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 8px 0;
   gap: 44px;
 }
 .partners__logo {
-  filter: grayscale(1);
-  opacity: 0.85;
+  opacity: 0.6;
   transition: opacity 0.2s ease;
 }
-.partners__logo:hover { opacity: 1; filter: grayscale(0); }
+.partners__logo:hover { opacity: 0.9; }
 </style>
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
@@ -3437,7 +3572,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   "name": "Insai",
   "url": "https://insai.tech",
   "logo": "https://insai.tech/assets/Insai-logo-2026.png",
-  "description": "Insai turns at-home sleep-EEG into validated brain biomarkers for research, reproduced against published methods and gated by signal quality. For Research Use Only.",
+  "description": "Insai turns at-home sleep-EEG into brain biomarkers you can defend, each reproducing its published method and gated by signal quality. The validation layer for real-world brain biomarkers. For Research Use Only.",
   "contactPoint": {
     "@type": "ContactPoint",
     "email": "mark@insai.tech"
@@ -3525,31 +3660,231 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   <div class="hero__glow"></div>
   <div class="container">
     <div class="hero__content">
-      <div class="eyebrow">Real-world brain biomarkers</div>
-      <h1 class="hero__headline">Validated brain biomarkers <span class="accent">from everyday sleep.</span></h1>
-      <p class="hero__subhead">Overnight sleep-EEG from an at-home headband, read into validated biomarkers, each reproducing a published method and checked against clinical PSG.</p>
+      <div class="eyebrow">Foundation models and infrastructure for neuroscience</div>
+      <h1 class="hero__headline">The brain and body, <span class="accent">measured in the real world.</span></h1>
+      <p class="hero__subhead">Continuous monitoring of brain and body vitals, with AI-powered insights.</p>
       <div class="hero__ctas">
-        <a href="#contact" class="btn btn--primary">Get research access</a>
-        <a href="#platform" class="btn btn--secondary-light">See the platform</a>
-      </div>
-      <div class="hero__status">
-        <span class="hero__status-item"><span class="hero__status-dot"></span>Sleep-EEG live today</span>
-        <span class="hero__status-item"><span class="hero__status-dot"></span>Validated per marker</span>
-        <span class="hero__status-item"><span class="hero__status-dot"></span>Reproduced against published methods</span>
+        <a href="#contact" class="btn btn--primary">Get access</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================
-     SECTION 2: PLATFORM
+     SECTION 2: WHY US
+     ============================================ -->
+<section class="pillars" id="pillars">
+  <div class="container">
+    <div class="signals-grid">
+      <svg class="signals-connectors" id="signals-connectors" aria-hidden="true" preserveAspectRatio="none"></svg>
+      <div class="signals-figure" aria-hidden="true">
+        <img src="assets/nervous-system-nerves.png" alt="" id="nervous-fig">
+      </div>
+      <div class="signals-body">
+        <div class="eyebrow">Signals</div>
+        <h2 class="section-headline">Seamless monitoring, <span class="accent">in everyday life.</span></h2>
+        <div class="section-body">
+          <p>We combine purpose-built wearables to monitor neural signals across the body — building a continuous, real-world picture of the nervous system, from brain to muscle.</p>
+        </div>
+        <div class="signals-devices">
+          <div class="signals-device" data-fx="0.50" data-fy="0.085" style="--conn: var(--color-teal)">
+            <div class="signals-device__media"><img src="assets/devices/device-headband.png" alt="Nexus EEG headband" loading="lazy"></div>
+            <div class="signals-device__info">
+              <div class="signals-device__top"><span class="signals-device__name">Nexus headband</span><span class="signals-device__region">Cortex</span></div>
+              <div class="signals-device__reads">Cortical brain rhythms, measured across the night.</div>
+            </div>
+            <span class="signals-device__status signals-device__status--live">Live today</span>
+          </div>
+          <div class="signals-device" data-fx="0.45" data-fy="0.13" style="--conn: var(--color-teal)">
+            <div class="signals-device__media"><img src="assets/devices/device-neurobuds.png" alt="Cebreo NeuroBuds in-ear EEG" loading="lazy"></div>
+            <div class="signals-device__info">
+              <div class="signals-device__top"><span class="signals-device__name">Cebreo NeuroBuds</span><span class="signals-device__region">Cortex</span></div>
+              <div class="signals-device__reads">Cortical activity, continuous, from the ear.</div>
+            </div>
+            <span class="signals-device__status signals-device__status--soon">Soon</span>
+          </div>
+          <div class="signals-device" data-fx="0.80" data-fy="0.46" style="--conn: #6FE0D4">
+            <div class="signals-device__media"><img src="assets/devices/device-sleeve.png" alt="Paragit EMG sleeve" loading="lazy"></div>
+            <div class="signals-device__info">
+              <div class="signals-device__top"><span class="signals-device__name">Paragit EMG sleeve</span><span class="signals-device__region">Muscle</span></div>
+              <div class="signals-device__reads">Motor-unit activity and movement, from the muscle.</div>
+            </div>
+            <span class="signals-device__status signals-device__status--val">In validation</span>
+          </div>
+        </div>
+        <p class="devices-connect">Also connects with <span class="accent">Oura</span> and <span class="accent">Whoop</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ============================================
+     SECTION 3: THE NEXUS ENGINE
+     ============================================ -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="eyebrow">The Nexus engine</div>
+    <h2 class="section-headline">One engine. <span class="accent">Integrating the brain and the body.</span></h2>
+    <div class="section-body">
+      <p>One engine fuses brain and body signals into a single model of the nervous system &mdash; opening new windows into brain health.</p>
+    </div>
+
+    <div class="why__hub">
+      <div class="why__radial-layout">
+        <svg class="why__connectors" aria-hidden="true"></svg>
+        <div class="why__ep-col why__ep-col--left">
+          <div class="why__ep-head">Brain · central<small>cortex — EEG</small></div>
+          <div class="why__proc-card">
+            <div class="why__proc-card__name">Sleep &amp; arousal</div>
+            <div class="why__proc-card__desc">Overnight staging and sleep architecture, recorded at home.</div>
+            <div class="why__proc-card__bms">
+            <span class="why__bm">Sleep architecture</span>
+            <span class="why__bm">Slow-wave</span>
+            <span class="why__bm">Sleep regularity</span>
+            </div>
+          </div>
+          <div class="why__proc-card">
+            <div class="why__proc-card__name">Cognition &amp; aging</div>
+            <div class="why__proc-card__desc">Cortical slowing that tracks with cognition and brain age.</div>
+            <div class="why__proc-card__bms">
+            <span class="why__bm">Spectral slowing</span>
+            <span class="why__bm">Aperiodic slope</span>
+            </div>
+          </div>
+        </div>
+        <div class="why__radial-center">
+          <div class="why__hub-engine">
+            <!-- Brain image centered with CSS invert filter -->
+            <img src="assets/brain.png" alt="" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56%; height: auto; filter: invert(1); mix-blend-mode: screen; opacity: 0.92; z-index: 1; pointer-events: none;">
+            <!-- Circuit overlay SVG -->
+            <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: relative; z-index: 2;">
+
+              <!-- OUTER CIRCUIT RING (static) -->
+              <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(255,255,255,0.13)" stroke-width="1.2"/>
+
+              <!-- PULSE: segment traveling around outer ring to emphasize compute -->
+              <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-dasharray="54 480"
+                      transform="rotate(-90 100 100)">
+                <animate attributeName="stroke-dashoffset" from="534" to="0" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+
+              <!-- RADIAL TRACES from outer ring toward center -->
+              <g stroke="rgba(255,255,255,0.22)" stroke-width="1.2" fill="none" stroke-linecap="round">
+                <line x1="100" y1="14" x2="100" y2="36"/>
+                <line x1="174.5" y1="57" x2="155.4" y2="68"/>
+                <line x1="186" y1="100" x2="164" y2="100"/>
+                <line x1="174.5" y1="143" x2="155.4" y2="132"/>
+                <line x1="100" y1="186" x2="100" y2="164"/>
+                <line x1="25.5" y1="143" x2="44.6" y2="132"/>
+                <line x1="14" y1="100" x2="36" y2="100"/>
+                <line x1="25.5" y1="57" x2="44.6" y2="68"/>
+                <line x1="143" y1="25.5" x2="132" y2="44.6"/>
+                <line x1="57" y1="25.5" x2="68" y2="44.6"/>
+                <line x1="57" y1="174.5" x2="68" y2="155.4"/>
+                <line x1="143" y1="174.5" x2="132" y2="155.4"/>
+              </g>
+
+              <!-- JUNCTION NODES on the outer ring (12 points) -->
+              <g fill="rgba(255,255,255,0.5)">
+                <circle cx="100" cy="14" r="2.8"/><circle cx="174.5" cy="57" r="2.8"/><circle cx="186" cy="100" r="2.8"/><circle cx="174.5" cy="143" r="2.8"/>
+                <circle cx="100" cy="186" r="2.8"/><circle cx="25.5" cy="143" r="2.8"/><circle cx="14" cy="100" r="2.8"/><circle cx="25.5" cy="57" r="2.8"/>
+                <circle cx="143" cy="25.5" r="2.8"/><circle cx="57" cy="25.5" r="2.8"/><circle cx="57" cy="174.5" r="2.8"/><circle cx="143" cy="174.5" r="2.8"/>
+              </g>
+
+              <!-- INNER DASHED CIRCLE with pulse traveling around -->
+              <circle cx="100" cy="100" r="64" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" stroke-dasharray="4 6"/>
+              <circle cx="100" cy="100" r="64" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round" stroke-dasharray="25 175"
+                      transform="rotate(90 100 100)">
+                <animate attributeName="stroke-dashoffset" from="200" to="0" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+              </circle>
+
+              <!-- Inner ring junction dots -->
+              <g fill="rgba(255,255,255,0.3)">
+                <circle cx="100" cy="36" r="1.8"/><circle cx="155.4" cy="68" r="1.8"/><circle cx="164" cy="100" r="1.8"/><circle cx="155.4" cy="132" r="1.8"/>
+                <circle cx="100" cy="164" r="1.8"/><circle cx="44.6" cy="132" r="1.8"/><circle cx="36" cy="100" r="1.8"/><circle cx="44.6" cy="68" r="1.8"/>
+                <circle cx="132" cy="44.6" r="1.8"/><circle cx="68" cy="44.6" r="1.8"/><circle cx="68" cy="155.4" r="1.8"/><circle cx="132" cy="155.4" r="1.8"/>
+              </g>
+
+              <!-- ANIMATED PULSES along radials – data filling the lines to emphasize compute -->
+              <path d="M100 14 L100 36" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="22 0" opacity="0.7">
+                <animate attributeName="stroke-dashoffset" from="22" to="0" dur="1.2s" repeatCount="indefinite"/>
+              </path>
+              <path d="M186 100 L164 100" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="22 0" opacity="0.6">
+                <animate attributeName="stroke-dashoffset" from="22" to="0" dur="1.2s" begin="0.2s" repeatCount="indefinite"/>
+              </path>
+              <path d="M100 186 L100 164" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="22 0" opacity="0.6">
+                <animate attributeName="stroke-dashoffset" from="22" to="0" dur="1.2s" begin="0.4s" repeatCount="indefinite"/>
+              </path>
+              <path d="M14 100 L36 100" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="22 0" opacity="0.6">
+                <animate attributeName="stroke-dashoffset" from="22" to="0" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>
+              </path>
+              <path d="M174.5 57 L155.4 68" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="24 0" opacity="0.5">
+                <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.4s" begin="0.1s" repeatCount="indefinite"/>
+              </path>
+              <path d="M174.5 143 L155.4 132" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="24 0" opacity="0.5">
+                <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.4s" begin="0.5s" repeatCount="indefinite"/>
+              </path>
+              <path d="M25.5 143 L44.6 132" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="24 0" opacity="0.5">
+                <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.4s" begin="0.3s" repeatCount="indefinite"/>
+              </path>
+              <path d="M25.5 57 L44.6 68" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="24 0" opacity="0.5">
+                <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.4s" begin="0.7s" repeatCount="indefinite"/>
+              </path>
+
+              <!-- Subtle glow pulse -->
+              <circle cx="100" cy="100" r="30" fill="white" opacity="0">
+                <animate attributeName="opacity" values="0;0.06;0" dur="3.5s" repeatCount="indefinite"/>
+                <animate attributeName="r" values="30;50;30" dur="3.5s" repeatCount="indefinite"/>
+              </circle>
+
+            </svg>
+          </div>
+        </div>
+        <div class="why__ep-col why__ep-col--right">
+          <div class="why__ep-head">Body · peripheral<small>muscle &amp; movement — EMG + motion</small></div>
+          <div class="why__proc-card">
+            <div class="why__proc-card__name">Movement &amp; tremor</div>
+            <div class="why__proc-card__desc">Tremor and movement, read from muscle EMG and motion.</div>
+            <div class="why__proc-card__bms">
+            <span class="why__bm">Tremor</span>
+            <span class="why__bm">Movement</span>
+            </div>
+          </div>
+          <div class="why__proc-card">
+            <div class="why__proc-card__name">Motor progression</div>
+            <div class="why__proc-card__desc">Early motor change, before it shows up in clinic.</div>
+            <div class="why__proc-card__bms">
+            <span class="why__bm why__bm--soon">In development</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why__radial-foot">
+        <div class="why__hub-corelabel">Nexus AI engine</div>
+        <div class="why__hub-coremeta">One engine, brain and body — every reading gated by signal quality.</div>
+      </div>
+      <div class="why__legend-cta">
+        <a href="research.html" class="why__legend-btn">Explore our open research <small>every marker, method &amp; validation status</small> <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
+     SECTION 4: PLATFORM
      ============================================ -->
 <section class="platform" id="platform">
   <div class="container">
     <div class="eyebrow">The Nexus platform</div>
-    <h2 class="section-headline">AI that turns sleep into <span class="accent">brain biomarkers.</span></h2>
+    <h2 class="section-headline">Easy access to <span class="accent">validated analytics.</span></h2>
     <div class="section-body">
-      <p>Every night, Insai reads sleep-EEG into a confidence-scored biomarker panel, each marker validated against clinical PSG.</p>
+      <p>The platform turns raw signals into digital biomarkers you can double-click on. Starting with sleep, as a window into brain health.</p>
     </div>
 
     <!-- Sticky-scroll showcase: 3 value props, screen swaps per active step -->
@@ -3559,14 +3894,14 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></span>
           <span class="platform__vstep-text">
             <span class="platform__vstep-title">The right model for every marker</span>
-            <span class="platform__vstep-body">Every biomarker runs the published method that validated it. Trace how each number was produced.</span>
+            <span class="platform__vstep-body">Every biomarker reproduces the published method behind it. Trace how each number was produced.</span>
           </span>
         </div>
         <div class="platform__vstep" data-screen="trends" role="button" tabindex="0">
           <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 7v5l3 3"/></svg></span>
           <span class="platform__vstep-text">
             <span class="platform__vstep-title">Multi-night, in the real world</span>
-            <span class="platform__vstep-body">The same markers, night after night at home. You see the trend, not a single lab reading.</span>
+            <span class="platform__vstep-body">The same markers, night after night at home. You see the whole record, not a single lab reading.</span>
           </span>
         </div>
         <div class="platform__vstep" data-screen="quality" role="button" tabindex="0">
@@ -3590,8 +3925,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
             <div class="platform__screen is-active" data-screen="analysis" data-url="nexus.insai.tech/analysis">
               <img src="assets/screenshots/nexus-analysis.png" alt="Nexus analysis view — hypnogram, staging confidence, stage composition, signal quality" loading="lazy">
             </div>
-            <div class="platform__screen" data-screen="trends" data-url="nexus.insai.tech/trends">
-              <img src="assets/screenshots/nexus-trends.png" alt="Nexus trends view — multi-night baselines, 30-night composite trends, per-marker sparklines" loading="lazy">
+            <div class="platform__screen" data-screen="trends" data-url="nexus.insai.tech/nights">
+              <img src="assets/screenshots/nexus-cockpit.png" alt="Nexus cockpit — multi-night nights list with recording cadence and per-night hypnograms" loading="lazy">
             </div>
             <div class="platform__screen" data-screen="quality" data-url="nexus.insai.tech/data-trust">
               <div class="platform__screen-ph">
@@ -3607,59 +3942,48 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   </div>
 </section>
 
-
-
-
 <!-- ============================================
-     SECTION 4: SOLUTIONS (audience routing)
+     SECTION 5: SOLUTIONS
      ============================================ -->
 <section class="solutions" id="solutions">
   <div class="container">
-    <div class="eyebrow">What we offer</div>
-    <h2 class="section-headline">One brain, or <span class="accent">a whole cohort.</span></h2>
+    <div class="eyebrow">Solutions</div>
+    <h2 class="section-headline">Two ways to <span class="accent">start.</span></h2>
     <div class="section-body">
-      <p>Two offerings, one engine: analyze the recordings you already have, or capture new nights with validated sensors. The same validated biomarkers whether it's a single person or a full study.</p>
+      <p>Join the early beta of the Nexus portal, or pre-order a research kit built for your study.</p>
     </div>
 
     <div class="solutions__grid offers">
-      <!-- OFFERING: Software -->
       <div class="offer-card">
         <div class="offer-card__head">
           <span class="offer-card__icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
           </span>
-          <span class="offer-card__badge">Beta &middot; research access</span>
+          <span class="offer-card__badge">Early beta</span>
         </div>
         <div class="offer-card__eyebrow">Software</div>
-        <h3 class="offer-card__title">Analyze recordings you already have</h3>
-        <p class="offer-card__body">Bring your EEG recordings, headband or clinical PSG, into the Nexus portal. It stages every night and returns a validated biomarker panel with a confidence score, and pulls in Whoop and Oura for context. No new hardware, no manual scoring.</p>
+        <h3 class="offer-card__title">Get early access to the Nexus portal</h3>
+        <p class="offer-card__body">Bring your recordings into the portal and get them scored against our validated biomarker catalogue &mdash; every marker with its method, signal quality, and a Data-Trust score.</p>
         <ul class="offer-card__points">
-          <li>Runs on the recordings you already have</li>
-          <li>Validated panel, confidence-scored per marker</li>
-          <li>A private workspace, GDPR-conscious by design</li>
+          <li>Runs on recordings you already have</li>
+          <li>Reproducible panel, scored per marker</li>
+          <li>Viewer and biomarker panels</li>
         </ul>
-        <div class="offer-card__reads">
-          <span class="offer-card__reads-label">Also reads</span>
-          <span class="offer-chip"><span class="offer-chip__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3.4"/></svg></span>Oura</span>
-          <span class="offer-chip"><span class="offer-chip__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="9" width="12" height="6" rx="3"/><path d="M9 9V7.5M15 9V7.5M9 15v1.5M15 15v1.5"/></svg></span>Whoop</span>
-        </div>
         <div class="offer-card__foot">
-          <a href="#contact" class="btn btn--primary offer-card__cta" data-inquiry="Software beta access">Try the beta</a>
-          <span class="offer-card__note">Free during beta. Extending to PPG, IMU and EMG.</span>
+          <a href="#contact" class="btn btn--primary offer-card__cta" data-inquiry="Software early beta">Request early access</a>
+          <span class="offer-card__note">Limited early-access cohort.</span>
         </div>
       </div>
-
-      <!-- OFFERING: Research Kit -->
       <div class="offer-card">
         <div class="offer-card__head">
           <span class="offer-card__icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
           </span>
-          <span class="offer-card__badge offer-card__badge--soon">Pre-order &middot; Parkinson's first</span>
+          <span class="offer-card__badge offer-card__badge--soon">Pre-order</span>
         </div>
         <div class="offer-card__eyebrow">Research Kit</div>
-        <h3 class="offer-card__title">Capture new nights with validated sensors</h3>
-        <p class="offer-card__body">For studies that need fresh recordings. The sensors ship with the same engine, so multi-night data comes back staged, analyzed, and quality-gated.</p>
+        <h3 class="offer-card__title">Custom-built for your study</h3>
+        <p class="offer-card__body">The right sensors plus the biomarker panel your protocol needs &mdash; multi-night data comes back staged, analyzed, and quality-gated.</p>
         <div class="offer-devices">
           <div class="offer-dev">
             <div class="offer-dev__media"><img src="assets/devices/device-headband.png" alt="Nexus EEG headband" loading="lazy"></div>
@@ -3669,75 +3993,76 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <div class="offer-dev">
             <div class="offer-dev__media"><img src="assets/devices/device-neurobuds.png" alt="Cebreo NeuroBuds in-ear EEG" loading="lazy"></div>
             <span class="offer-dev__name">Cebreo NeuroBuds</span>
-            <span class="offer-dev__sig">In-ear EEG</span>
+            <span class="offer-dev__sig">In-ear EEG &middot; soon</span>
           </div>
           <div class="offer-dev">
             <div class="offer-dev__media"><img src="assets/devices/device-sleeve.png" alt="Paragit EMG sleeve" loading="lazy"></div>
             <span class="offer-dev__name">Paragit sleeve</span>
-            <span class="offer-dev__sig">EMG &middot; motor</span>
+            <span class="offer-dev__sig">EMG &middot; in validation</span>
           </div>
         </div>
         <div class="offer-card__foot">
           <a href="#contact" class="btn btn--secondary-light offer-card__cta" data-inquiry="Research Kit pre-order">Pre-order the kit</a>
-          <span class="offer-card__note">Reserve yours, at home or on site</span>
+          <span class="offer-card__note">Parkinson&apos;s cohort first.</span>
         </div>
       </div>
     </div>
 
-    <p class="offer-pharma-link">Building toward validated endpoints for CNS trials. <a href="biopharma.html">For biopharma &rarr;</a></p>
-
-    
+    <p class="offer-pharma-link">Where you&apos;re headed: <a href="research.html">For research &rarr;</a> &middot; <a href="biopharma.html">For biopharma &rarr;</a></p>
   </div>
 </section>
 
 <!-- ============================================
-     SECTION 5: RESEARCH & AI
+     SECTION 6: APPLICATIONS
      ============================================ -->
-<section class="partners" id="research">
+<section class="applications" id="applications">
   <div class="container">
-    <div class="eyebrow">Research &amp; AI</div>
-    <h2 class="section-headline">Sleep as a window into <span class="accent">the brain.</span></h2>
-    <p class="partners__subtitle">We build validated biomarkers and publish what we find, including what doesn't transfer.</p>
+    <div class="eyebrow">Applications</div>
+    <h2 class="section-headline">Where the engine <span class="accent">goes to work.</span></h2>
+    <div class="section-body"><p>One engine, many endpoints &mdash; each application reads the specific signals and sensors that matter, from neurology to longevity.</p></div>
 
-    <div class="research__proof">
-      <div class="research__proof-grid">
-        <div class="research__proof-stat">
-          <div class="research__proof-num">&kappa; 0.77</div>
-          <div class="research__proof-label">Sleep staging on the Nexus headband, matched against clinical PSG</div>
-        </div>
-        <div class="research__proof-stat">
-          <div class="research__proof-num">ICC 0.91</div>
-          <div class="research__proof-label">Spectral slowing, the same reading night to night within a person</div>
-        </div>
-        <div class="research__proof-stat">
-          <div class="research__proof-num">r 0.73</div>
-          <div class="research__proof-label">Brain-age as a cohort risk readout, across 846 nights and five cohorts</div>
-        </div>
-        <div class="research__proof-stat research__proof-stat--honest">
-          <div class="research__proof-num">&darr; the failures</div>
-          <div class="research__proof-label">We publish what doesn't transfer, retractions and worked negatives included</div>
+    <div class="appgrid">
+      <div class="appcard appcard--lead">
+        <div class="appcard__img"><span class="appcard__tag">Neurology</span><img src="assets/applications/app-parkinsons.jpg" alt="Older man at home wearing the Paragit EMG sleeve" loading="lazy" style="object-position:50% 42%;"></div>
+        <div class="appcard__body">
+          <div class="appcard__k">Parkinson&apos;s, between visits</div>
+          <div class="appcard__d">Movement sensors track the symptom. We add what they can&apos;t reach &mdash; brain rhythms, sleep, and 24-hour motor activity &mdash; to see Parkinson&apos;s between visits.</div>
+          <div class="appcard__sig"><span>Nexus &middot; Paragit</span><span class="is-signal">Sleep-EEG</span><span class="is-signal">Tremor &middot; EMG</span><span class="is-signal">Brain rhythms</span></div>
         </div>
       </div>
-      <div class="research__proof-foot">Motor and EMG markers in validation &middot; Validated &amp; published &middot; For Research Use Only</div>
+      <div class="appcard">
+        <div class="appcard__img"><span class="appcard__tag">Psychiatry &amp; sleep</span><img src="assets/applications/app-sleep-pro.jpg" alt="At-home sleep study with the Nexus headband" loading="lazy" style="object-position:32% 38%;"></div>
+        <div class="appcard__body">
+          <div class="appcard__k">Accessible sleep studies</div>
+          <div class="appcard__d">Lab-grade sleep staging and architecture, at home &mdash; sleep studies at scale, starting in psychiatry.</div>
+          <div class="appcard__sig"><span>Nexus headband</span><span class="is-signal">Sleep-EEG</span><span class="is-signal">Staging</span><span class="is-signal">Architecture</span></div>
+        </div>
+      </div>
+      <div class="appcard">
+        <div class="appcard__img"><span class="appcard__tag">Longevity</span><img src="assets/applications/app-aging.jpg" alt="Healthy aging" loading="lazy"></div>
+        <div class="appcard__body">
+          <div class="appcard__k">Cognitive aging</div>
+          <div class="appcard__d">Track sleep quality and cognitive brain rhythms over the years &mdash; the everyday signal behind aging well.</div>
+          <div class="appcard__sig"><span>Nexus &middot; NeuroBuds</span><span class="is-signal">Sleep</span><span class="is-signal">Cognitive</span><span class="is-signal">Longitudinal</span></div>
+        </div>
+      </div>
     </div>
-
-    <div class="research__reports-cta">
-      <a href="https://insai.github.io/biomarker-portal/research/" target="_blank" rel="noopener" class="btn btn--secondary-light">
-        Read the research reports
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-      </a>
-      <span class="research__reports-note">Exploring a collaboration? <a href="#contact" class="research__reports-inline">Get in touch &rarr;</a></span>
+    <div class="appband">
+      <span class="appband__k">Pharma endpoints</span>
+      <span class="appband__tag">B2B track</span>
+      <span class="appband__d">Sensitive, multimodal trial endpoints where the standard scales aren&apos;t sharp enough &mdash; a different buyer, the scale horizon.</span>
     </div>
 
     <hr class="partners__divider">
     <div class="partners__label">Collaborators</div>
     <div class="partners__logos">
-      <img src="assets/DTU-logo.png" alt="Technical University of Denmark" class="partners__logo">
-      <img src="assets/rh-logo.png" alt="Rigshospitalet" class="partners__logo">
-      <img src="assets/ku-logo-clean.png" alt="University of Copenhagen" class="partners__logo">
-      <img src="assets/cebreo-logo.jpeg" alt="Cebreo Medical" class="partners__logo">
-      <img src="assets/opto-logo.jpg" alt="OptoCeutics" class="partners__logo">
+      <img src="assets/DTU-logo-mono.png" alt="Technical University of Denmark" class="partners__logo">
+      <img src="assets/rh-logo-mono.png" alt="Rigshospitalet" class="partners__logo">
+      <img src="assets/ku-logo-clean-mono.png" alt="University of Copenhagen" class="partners__logo">
+      <img src="assets/cebreo-logo-mono.png" alt="Cebreo Medical" class="partners__logo">
+      <img src="assets/opto-logo-mono.png" alt="OptoCeutics" class="partners__logo">
     </div>
+    <p class="offer-pharma-link">Brain today. Nervous system next.</p>
   </div>
 </section>
 
@@ -3750,8 +4075,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       <div class="contact__text">
         <div class="eyebrow">Get in touch</div>
         <h2 class="section-headline">Tell us what you want to measure</h2>
-        <p class="contact__body">Bring your study and the signal you're after. We'll tell you, honestly, what we can validate today and what's still in the lab.</p>
-        <p class="contact__email-fallback">Or email us directly: <a href="mailto:mark@insai.tech">mark@insai.tech</a></p>
+        <p class="contact__body">Bring your study and the signal you&apos;re after. We&apos;ll tell you, honestly, what we can reproduce today and what we cannot yet.</p>
+        <ul class="contact__assurances">
+          <li>A straight answer on feasibility &mdash; no sales runaround</li>
+          <li>A reply from the team, usually within one business day</li>
+          <li>Your data and study details stay confidential</li>
+        </ul>
+        <p class="contact__email-fallback">Prefer email? <a href="mailto:mark@insai.tech">mark@insai.tech</a></p>
       </div>
       <div class="contact__form-card">
         <form id="contact-form" action="https://formspree.io/f/meeleqvr" method="POST" novalidate>
@@ -3777,23 +4107,19 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
               <div class="contact__field-error" id="contact-company-error">Please enter your company</div>
             </div>
             <div class="contact__field">
-              <label for="contact-role">Role / Title</label>
-              <input type="text" id="contact-role" name="role" placeholder="Your role">
+              <label for="contact-inquiry">Inquiry type</label>
+              <select id="contact-inquiry" name="inquiry">
+                <option value="" disabled selected>Select an option</option>
+                <option value="Personal access">Personal access (membership)</option>
+                <option value="Software beta access">Software beta access</option>
+                <option value="Research Kit pre-order">Research Kit pre-order</option>
+                <option value="Biomarker analysis for clinical trials">Biomarker analysis for clinical trials</option>
+                <option value="Retrospective EEG/sleep data analysis">Retrospective EEG/sleep data analysis</option>
+                <option value="Platform demo / early access">Platform demo / early access</option>
+                <option value="Research collaboration">Research collaboration</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
-          </div>
-          <div class="contact__field">
-            <label for="contact-inquiry">Inquiry type</label>
-            <select id="contact-inquiry" name="inquiry">
-              <option value="" disabled selected>Select an option</option>
-              <option value="Personal access">Personal access (membership)</option>
-              <option value="Software beta access">Software beta access</option>
-              <option value="Research Kit pre-order">Research Kit pre-order</option>
-              <option value="Biomarker analysis for clinical trials">Biomarker analysis for clinical trials</option>
-              <option value="Retrospective EEG/sleep data analysis">Retrospective EEG/sleep data analysis</option>
-              <option value="Platform demo / early access">Platform demo / early access</option>
-              <option value="Research collaboration">Research collaboration</option>
-              <option value="Other">Other</option>
-            </select>
           </div>
           <div class="contact__field">
             <label for="contact-message">Message</label>
@@ -4453,6 +4779,74 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   window.addEventListener('resize', schedule);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
   window.addEventListener('load', draw);
+  draw();
+  setTimeout(draw, 250);
+  setTimeout(draw, 800);
+})();
+</script>
+
+<!-- Draw connector lines from each device to its point on the nervous-system figure -->
+<script>
+(function () {
+  var grid = document.querySelector('.signals-grid');
+  var svg = document.getElementById('signals-connectors');
+  var fig = document.getElementById('nervous-fig');
+  if (!grid || !svg || !fig) return;
+  var devices = grid.querySelectorAll('.signals-device[data-fx]');
+  var teal = (getComputedStyle(document.documentElement).getPropertyValue('--color-teal') || '#1BA8A0').trim();
+  var ns = 'http://www.w3.org/2000/svg';
+
+  function draw() {
+    if (getComputedStyle(svg).display === 'none') return;
+    var gr = svg.getBoundingClientRect();
+    var fr = fig.getBoundingClientRect();
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    devices.forEach(function (dev) {
+      var fx = parseFloat(dev.getAttribute('data-fx'));
+      var fy = parseFloat(dev.getAttribute('data-fy'));
+      var tx = (fr.left - gr.left) + fx * fr.width;
+      var ty = (fr.top - gr.top) + fy * fr.height;
+      var dr = dev.getBoundingClientRect();
+      var ox = dr.left - gr.left;
+      var oy = (dr.top - gr.top) + dr.height / 2;
+
+      var c = getComputedStyle(dev).getPropertyValue('--conn').trim();
+      if (!c || c.indexOf('var(') === 0) c = teal;
+
+      var dx = tx - ox;
+      var d = 'M ' + ox + ' ' + oy +
+              ' C ' + (ox + dx * 0.5) + ' ' + oy +
+              ', ' + (ox + dx * 0.5) + ' ' + ty +
+              ', ' + tx + ' ' + ty;
+      var path = document.createElementNS(ns, 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('stroke', c);
+      svg.appendChild(path);
+
+      var tgt = document.createElementNS(ns, 'circle');
+      tgt.setAttribute('cx', tx); tgt.setAttribute('cy', ty);
+      tgt.setAttribute('r', '3'); tgt.setAttribute('fill', c);
+      svg.appendChild(tgt);
+
+      var org = document.createElementNS(ns, 'circle');
+      org.setAttribute('cx', ox); org.setAttribute('cy', oy);
+      org.setAttribute('r', '2.2'); org.setAttribute('fill', c);
+      svg.appendChild(org);
+    });
+  }
+
+  var raf;
+  function schedule() { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); }
+  window.addEventListener('resize', schedule);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  window.addEventListener('load', draw);
+  if (fig.complete) draw(); else fig.addEventListener('load', draw);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (e) { if (e.isIntersecting) { svg.classList.add('is-in'); draw(); } });
+    }, { threshold: 0.25 }).observe(grid);
+  } else { svg.classList.add('is-in'); }
   draw();
   setTimeout(draw, 250);
   setTimeout(draw, 800);
