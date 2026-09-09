@@ -968,6 +968,7 @@ a {
 .platform__vstep-ic svg { width: 20px; height: 20px; }
 .platform__vstep.is-active .platform__vstep-ic { background: rgba(27,168,160,0.12); }
 .platform__vstep-text { display: flex; flex-direction: column; }
+.platform__vstep-job { display: block; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.11em; color: var(--color-teal); margin-bottom: 5px; }
 .platform__vstep-title { font-size: 1.02rem; font-weight: 600; letter-spacing: -0.01em; color: var(--fg); margin: 2px 0 5px; line-height: 1.2; }
 .platform__vstep-body { font-size: 13.5px; font-weight: 300; color: var(--fg-muted); line-height: 1.55; margin: 0; }
 .platform__visual { position: static; }
@@ -2403,7 +2404,7 @@ a {
 .signals-connectors circle { opacity: 0.9; }
 .signals-connectors circle.conn-pulse { filter: drop-shadow(0 0 5px currentColor); }
 @media (max-width: 940px) { .signals-connectors { display: none; } }
-.signals-figure { position: relative; align-self: stretch; min-height: 560px; display: flex; align-items: center; justify-content: center; }
+.signals-figure { position: relative; align-self: stretch; min-height: 440px; display: flex; align-items: center; justify-content: center; }
 .signals-figure::after { content: ""; position: absolute; inset: -8% -10%; background: radial-gradient(ellipse 52% 60% at 50% 46%, rgba(27,168,160,0.16), transparent 72%); z-index: 0; pointer-events: none; animation: figGlow 9s ease-in-out infinite; }
 .signals-figure img { position: relative; z-index: 1; height: var(--fig-scale, 108%); max-height: 720px; width: auto; max-width: none; object-fit: contain; opacity: var(--fig-opacity, 0.95); mix-blend-mode: var(--fig-blend, screen); transform: translate(var(--fig-x, 0%), var(--fig-y, 0%)); transition: opacity .3s ease; animation: figPulse 9s ease-in-out infinite; }
 @keyframes figGlow { 0%, 100% { opacity: 0.7; transform: scale(0.97); } 45% { opacity: 1; transform: scale(1.04); } }@keyframes figPulse { 0%, 100% { filter: drop-shadow(0 0 6px rgba(27,168,160,0.22)) brightness(0.97); } 50% { filter: drop-shadow(0 0 16px rgba(45,212,191,0.4)) brightness(1.06); } }
@@ -2428,10 +2429,11 @@ img.signals-figure__spark { position: absolute; left: 50%; top: 50%; z-index: 2;
 .signals-device__status { flex: 0 0 auto; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.09em; padding: 5px 11px; border-radius: 999px; white-space: nowrap; }
 .signals-device__status--live { color: var(--color-teal); border: 1px solid rgba(27,168,160,.45); background: rgba(27,168,160,.08); }
 .signals-device__status--soon { color: var(--fg-muted); border: 1px solid var(--border-d-strong); }
+.signals-device__status--partner { color: var(--fg-muted); border: 1px solid var(--border-d-strong); }
 .signals-device__status--val { color: var(--fg-dim); border: 1px dashed var(--border-d-strong); }
 .signals-body .devices-connect { margin-top: var(--space-lg); }
 @media (max-width: 940px) { .signals-grid { grid-template-columns: 1fr; gap: 8px; } .signals-figure { min-height: 380px; order: -1; } .signals-figure img { height: 360px; } }
-@media (max-width: 560px) { .signals-device { gap: 12px; padding: 13px 15px; } .signals-device__media { width: 66px; height: 58px; } .signals-device__status { display: none; } }
+@media (max-width: 560px) { .signals-device { gap: 12px; padding: 13px 15px; } .signals-device__media { width: 66px; height: 58px; } .signals-device__status { padding: 3px 8px; font-size: 0.55rem; } }
 
 /* The proof — named negatives */
 .proof__negs { list-style: none; margin: var(--space-xl) 0 0; padding: 0; display: grid; gap: 1px; background: var(--border-d); border: 1px solid var(--border-d); border-radius: 12px; overflow: hidden; }
@@ -3712,7 +3714,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
     <div class="hero__content">
       <div class="eyebrow">Digital biomarkers for life science research</div>
       <h1 class="hero__headline">The brain and body, <span class="accent">measured in the real world.</span></h1>
-      <p class="hero__subhead">AI-driven neurotechnology to monitor brain and body biomarkers, at home, and in between visits.</p>
+      <p class="hero__subhead">Using AI to decode neurophysiology and make brain medicine measurable.</p>
       <div class="hero__ctas">
         <a href="#contact" class="btn btn--primary">Talk to us about your study<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a href="evidence.html" class="btn btn--secondary-light">See the evidence</a>
@@ -3734,9 +3736,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       </div>
       <div class="signals-body">
         <div class="eyebrow">Neurophysiology, measured at home</div>
-        <h2 class="section-headline">Multiple signals, <span class="accent">one platform.</span></h2>
+        <h2 class="section-headline">Multiple signals, <span class="accent">one timeline.</span></h2>
         <div class="section-body">
-          <p>We integrate biosignals from wearables onto one timeline, so the brain and the systems it regulates can be read together.</p>
+          <p>Neurophysiology is stuck in the lab. We build the wearables that read it at home, and use sleep as the window into brain health.</p>
         </div>
         <div class="signals-devices">
           <div class="signals-device" data-fx="0.50" data-fy="0.085" style="--conn: var(--color-teal)">
@@ -3746,22 +3748,15 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
               <div class="signals-device__reads">Sleep-EEG headband, worn overnight at home. Hours of uninterrupted brain signal, night after night.</div>
             </div>
           </div>
-          <div class="signals-device" data-fx="0.45" data-fy="0.13" style="--conn: var(--color-teal)">
-            <div class="signals-device__media signals-device__media--sm"><img src="assets/devices/device-neurobuds.png" alt="NeuroBuds in-ear EEG" loading="lazy"></div>
-            <div class="signals-device__info">
-              <div class="signals-device__top"><span class="signals-device__name">Cebreo NeuroBuds</span><span class="signals-device__region">Cortex</span></div>
-              <div class="signals-device__reads">In-ear EEG, worn like earbuds. Brain activity through the waking day, in everyday settings.</div>
-            </div>
-          </div>
           <div class="signals-device" data-fx="0.80" data-fy="0.46" style="--conn: #6FE0D4">
             <div class="signals-device__media"><img src="assets/devices/device-sleeve.png" alt="Forearm sensor sleeve" loading="lazy"></div>
             <div class="signals-device__info">
               <div class="signals-device__top"><span class="signals-device__name">Paragit sleeve</span><span class="signals-device__region">Muscle &amp; motion</span></div>
-              <div class="signals-device__reads">Flexible EMG sleeve for the arm and leg. Muscle activity and movement, day and night.</div>
+              <div class="signals-device__reads">Surface EMG and motion, arm or leg. Muscle activity and movement, day and night.</div>
             </div>
           </div>
         </div>
-        <p class="devices-connect">Integration with <span class="accent">Oura</span> and <span class="accent">Whoop</span>.</p>
+        <p class="devices-connect">More devices join the timeline as they clear validation.</p>
       </div>
     </div>
   </div>
@@ -3774,7 +3769,69 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
 
 <!-- ============================================
-     SECTION 3: THE NEXUS ENGINE
+     SECTION 3: PLATFORM
+     ============================================ -->
+<section class="platform" id="platform">
+  <div class="container">
+    <div class="eyebrow">The Nexus platform</div>
+    <h2 class="section-headline">Sleep analysis that <span class="accent">shows its work.</span></h2>
+    <div class="section-body">
+      <p>A night in a lab tells you about one night. Nexus analyzes every night your participants sleep at home, and every number it returns comes with the method behind it.</p>
+    </div>
+
+    <!-- Sticky-scroll showcase: 3 value props, screen swaps per active step -->
+    <div class="platform__showcase" id="platform-showcase">
+      <div class="platform__vsteps">
+        <div class="platform__vstep is-active" data-screen="analysis" role="button" tabindex="0">
+          <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></span>
+          <span class="platform__vstep-text">
+            <span class="platform__vstep-job">Analyze</span><span class="platform__vstep-title">A full night in detail</span>
+            <span class="platform__vstep-body">Stages at 30-second resolution, with architecture, cycles, and fragmentation. Every epoch carries a confidence value, and the raw signal sits one click underneath.</span>
+          </span>
+        </div>
+        <div class="platform__vstep" data-screen="trends" role="button" tabindex="0">
+          <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 7v5l3 3"/></svg></span>
+          <span class="platform__vstep-text">
+            <span class="platform__vstep-job">Track</span><span class="platform__vstep-title">Many nights for context</span>
+            <span class="platform__vstep-body">Each participant becomes their own control. Markers read against that person's own baseline, so a real change separates from a bad night.</span>
+          </span>
+        </div>
+        <div class="platform__vstep" data-screen="quality" role="button" tabindex="0">
+          <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <span class="platform__vstep-text">
+            <span class="platform__vstep-job">Defend</span><span class="platform__vstep-title">Analytics you can trust</span>
+            <span class="platform__vstep-body">Method, version, and signal quality on every result. Our pipeline reproduces published methods to 1e-3, so a reviewer can run it again.</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="platform__visual">
+        <div class="platform__screen-frame">
+          <div class="platform__screen-bar">
+            <span class="platform__screenshot-dot"></span>
+            <span class="platform__screenshot-dot"></span>
+            <span class="platform__screenshot-dot"></span>
+            <span class="platform__screen-url" id="platform-url">nexus.insai.tech/analysis</span>
+          </div>
+          <div class="platform__screen-body">
+            <div class="platform__screen is-active" data-screen="analysis" data-url="nexus.insai.tech/analysis">
+              <img src="assets/screenshots/nexus-analysis.png" alt="Nexus analysis view — hypnogram, staging confidence, stage composition, signal quality" loading="lazy">
+            </div>
+            <div class="platform__screen" data-screen="trends" data-url="nexus.insai.tech/trends">
+              <img src="assets/screenshots/nexus-trends-multinight.png" alt="Nexus trends — markers across 30 nights against each participant&apos;s own baseline, with low-quality nights excluded" loading="lazy">
+            </div>
+            <div class="platform__screen" data-screen="quality" data-url="nexus.insai.tech/data-trust">
+              <img src="assets/screenshots/nexus-quality.png" alt="Nexus signal quality — Data-Trust score, per-channel quality worst first, and scoring confidence across the night" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION 4: THE NEXUS ENGINE
      ============================================ -->
 <section class="why" id="why">
   <div class="container">
@@ -3931,79 +3988,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
 
 <!-- ============================================
-     SECTION 4: PLATFORM
-     ============================================ -->
-<section class="platform" id="platform">
-  <div class="container">
-    <div class="eyebrow">The Nexus platform</div>
-    <h2 class="section-headline">From raw signal to <span class="accent">a number you can trace.</span></h2>
-    <div class="section-body">
-      <p>Starting with sleep, as a window into brain health.</p>
-    </div>
-
-    <!-- Sticky-scroll showcase: 3 value props, screen swaps per active step -->
-    <div class="platform__showcase" id="platform-showcase">
-      <div class="platform__vsteps">
-        <div class="platform__vstep is-active" data-screen="analysis" role="button" tabindex="0">
-          <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></span>
-          <span class="platform__vstep-text">
-            <span class="platform__vstep-title">The right model for every marker</span>
-            <span class="platform__vstep-body">Every biomarker reproduces the published method behind it. Trace how each number was produced.</span>
-          </span>
-        </div>
-        <div class="platform__vstep" data-screen="trends" role="button" tabindex="0">
-          <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 7v5l3 3"/></svg></span>
-          <span class="platform__vstep-text">
-            <span class="platform__vstep-title">Multi-night, in the real world</span>
-            <span class="platform__vstep-body">The same markers, night after night at home &mdash; the whole record, not one lab reading.</span>
-          </span>
-        </div>
-        <div class="platform__vstep" data-screen="quality" role="button" tabindex="0">
-          <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
-          <span class="platform__vstep-text">
-            <span class="platform__vstep-title">Every result comes with receipts</span>
-            <span class="platform__vstep-body">Method, version, and signal-quality gate on every number. Run it again and it holds.</span>
-          </span>
-        </div>
-      </div>
-
-      <div class="platform__visual">
-        <div class="platform__screen-frame">
-          <div class="platform__screen-bar">
-            <span class="platform__screenshot-dot"></span>
-            <span class="platform__screenshot-dot"></span>
-            <span class="platform__screenshot-dot"></span>
-            <span class="platform__screen-url" id="platform-url">nexus.insai.tech/analysis</span>
-          </div>
-          <div class="platform__screen-body">
-            <div class="platform__screen is-active" data-screen="analysis" data-url="nexus.insai.tech/analysis">
-              <img src="assets/screenshots/nexus-analysis.png" alt="Nexus analysis view — hypnogram, staging confidence, stage composition, signal quality" loading="lazy">
-            </div>
-            <div class="platform__screen" data-screen="trends" data-url="nexus.insai.tech/nights">
-              <img src="assets/screenshots/nexus-cockpit.png" alt="Nexus cockpit — multi-night nights list with recording cadence and per-night hypnograms" loading="lazy">
-            </div>
-            <div class="platform__screen" data-screen="quality" data-url="nexus.insai.tech/data-trust">
-              <div class="platform__screen-ph">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
-                <span class="platform__screen-ph-title">Signal quality and data trust</span>
-                <span class="platform__screen-ph-hint">Every result gated by recording quality, scored 0 to 100.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================
      SECTION 5: SOLUTIONS
      ============================================ -->
 <section class="solutions" id="solutions">
   <div class="container">
     <div class="eyebrow">Get started</div>
-    <h2 class="section-headline">Two ways <span class="accent">to start.</span></h2>
-    <p class="solutions__router">Already have EEG or sleep recordings? <span class="accent">Start with the portal.</span> Designing a new study? <span class="accent">Start with a kit.</span></p>
+    <h2 class="section-headline">Start on your data. <span class="accent">Scale with at-home studies.</span></h2>
+    <p class="solutions__router">Upload and analyze nights you already have. Run your next study on the same platform, and we ship devices straight to your participants.</p>
 
     <div class="solutions__grid offers">
       <div class="offer-card">
@@ -4011,20 +4002,20 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <span class="offer-card__icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
           </span>
-          <span class="offer-card__badge">Early beta &middot; free</span>
+          <span class="offer-card__badge">Beta</span>
         </div>
-        <div class="offer-card__for">For PIs with recordings in hand</div>
+        <div class="offer-card__for">For researchers with recordings in hand</div>
         <div class="offer-card__eyebrow">Software &middot; Nexus portal</div>
-        <h3 class="offer-card__title">Reproducible brain markers on your own recordings</h3>
-        <p class="offer-card__body">Score recordings you already have against our biomarker catalogue &mdash; every marker with its method, signal quality, and Data-Trust score.</p>
+        <h3 class="offer-card__title">Upload your nights. Get them analyzed.</h3>
+        <p class="offer-card__body">Every result carries its published method, the night&apos;s signal quality, and a full audit trail. You can defend any number you report.</p>
         <ul class="offer-card__points">
-          <li>Reproduce our numbers on your own data</li>
-          <li>Viewer and biomarker panels included</li>
+          <li>Upload and manage EDFs</li>
+          <li>Staging from U-Sleep, YASA and more</li>
+          <li>Signal quality and physiological screens on every night</li>
+          <li>CLI and API that drop into your own workflows</li>
         </ul>
         <div class="offer-card__foot">
-          <a href="#contact" class="btn btn--primary offer-card__cta" data-inquiry="Software early beta">Request early access</a>
-          <span class="offer-card__micro">Free during beta.</span>
-          <span class="offer-card__secondary is-soon" aria-disabled="true">Biomarker catalogue</span>
+          <a href="#contact" class="btn btn--primary offer-card__cta" data-inquiry="Software beta access">Request access</a>
         </div>
       </div>
       <div class="offer-card">
@@ -4032,27 +4023,20 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <span class="offer-card__icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
           </span>
-          <span class="offer-card__badge offer-card__badge--soon">Pre-order &middot; founding cohort</span>
+          <span class="offer-card__badge offer-card__badge--soon">Founding cohort</span>
         </div>
         <div class="offer-card__for">For teams designing a new study</div>
-        <div class="offer-card__eyebrow">Research Kit</div>
-        <h3 class="offer-card__title">Run the study you can&apos;t instrument today</h3>
-        <p class="offer-card__body">Sensors plus a biomarker panel scoped to your protocol &mdash; multi-night data comes back staged, analyzed, and quality-gated.</p>
-        <div class="offer-devices">
-          <div class="offer-dev">
-            <div class="offer-dev__media"><img src="assets/devices/device-headband.png" alt="Nexus EEG headband" loading="lazy"></div>
-            <span class="offer-dev__name">Nexus headband</span>
-            <span class="offer-dev__sig">Sleep-EEG</span>
-          </div>
-          <div class="offer-dev">
-            <div class="offer-dev__media"><img src="assets/devices/device-sleeve.png" alt="Motion and muscle sleeve" loading="lazy"></div>
-            <span class="offer-dev__name">Forearm sleeve</span>
-            <span class="offer-dev__sig">Muscle &amp; motion</span>
-          </div>
-        </div>
+        <div class="offer-card__eyebrow">At-home studies</div>
+        <h3 class="offer-card__title">Every bedroom becomes a study site.</h3>
+        <p class="offer-card__body">You design the study. We help you collect and analyze the data.</p>
+        <ul class="offer-card__points">
+          <li>Nexus headband per participant, Paragit sleeve on request</li>
+          <li>We handle participant setup and support</li>
+          <li>We monitor compliance and flag dropouts during the study</li>
+          <li>Nights sync automatically and come back staged</li>
+        </ul>
         <div class="offer-card__foot">
-          <a href="#contact" class="btn btn--secondary-light offer-card__cta" data-inquiry="Research Kit pre-order">Pre-order the kit</a>
-          <span class="offer-card__micro">15-min protocol call first &middot; no payment until the panel&apos;s agreed.</span>
+          <a href="#contact" class="btn btn--secondary-light offer-card__cta" data-inquiry="Research Kit pre-order">Book a protocol call</a>
         </div>
       </div>
     </div>
@@ -4067,31 +4051,34 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 <section class="applications" id="applications">
   <div class="container">
     <div class="eyebrow">Applications</div>
-    <h2 class="section-headline">Where the engine <span class="accent">goes to work.</span></h2>
+    <h2 class="section-headline">Sleep is the window. <span class="accent">Measured from home, at scale.</span></h2>
+    <div class="section-body">
+      <p>Accessible sleep studies for the protocols where sleep actually matters.</p>
+    </div>
 
     <div class="appgrid">
+      <div class="appcard">
+        <div class="appcard__img"><span class="appcard__tag">Longevity</span><img src="assets/applications/app-aging.jpg" alt="Healthy aging" loading="lazy"></div>
+        <div class="appcard__body">
+          <div class="appcard__k">Health and longevity</div>
+          <div class="appcard__d">No healthy volunteer spends years in a sleep lab. We ship headbands to their homes and send back staging and architecture you can put in a methods section.</div>
+          <div class="appcard__sig"><span>Nexus headband</span><span class="is-signal">Architecture</span><span class="is-signal">Sleep regularity</span></div>
+        </div>
+      </div>
       <div class="appcard appcard--lead">
         <div class="appcard__img"><span class="appcard__tag">Neurology</span><img src="assets/applications/app-parkinsons.jpg" alt="Older man at home wearing the forearm sensor sleeve" loading="lazy" style="object-position:50% 42%;"></div>
         <div class="appcard__body">
           <div class="appcard__k">Parkinson&apos;s, between visits</div>
-          <div class="appcard__d">In clinic, Parkinson&apos;s is scored by hand every few months. We read brain and motor signals in the months between. <a href="parkinsons.html" class="appcard__more">How it works &rarr;</a></div>
-          <div class="appcard__sig"><span>Headband + sleeve</span><span class="is-signal">Sleep-EEG</span><span class="is-signal">Tremor &middot; motion</span><span class="is-signal">Brain rhythms</span></div>
+          <div class="appcard__d">MDS-UPDRS comes months apart, scored by hand. We read the brain on the nights in between, with EMG and motion from the sleeve.</div>
+          <div class="appcard__sig"><span>Headband + sleeve</span><span class="is-signal">Spectral slowing</span><span class="is-signal">EMG + motion</span></div>
         </div>
       </div>
       <div class="appcard">
-        <div class="appcard__img"><span class="appcard__tag">Psychiatry &amp; sleep</span><img src="assets/applications/app-sleep-pro.jpg" alt="At-home sleep study with the Nexus headband" loading="lazy" style="object-position:32% 38%;"></div>
+        <div class="appcard__img"><span class="appcard__tag">Psychiatry</span><img src="assets/applications/app-sleep-pro.jpg" alt="At-home sleep study with the Nexus headband" loading="lazy" style="object-position:32% 38%;"></div>
         <div class="appcard__body">
-          <div class="appcard__k">Accessible sleep studies</div>
-          <div class="appcard__d">Sleep staging and architecture from nights at home, not one night in a lab. Starting in psychiatry.</div>
-          <div class="appcard__sig"><span>Nexus headband</span><span class="is-signal">Sleep-EEG</span><span class="is-signal">Staging</span><span class="is-signal">Architecture</span></div>
-        </div>
-      </div>
-      <div class="appcard">
-        <div class="appcard__img"><span class="appcard__tag">Longevity</span><img src="assets/applications/app-aging.jpg" alt="Healthy aging" loading="lazy"></div>
-        <div class="appcard__body">
-          <div class="appcard__k">Cognitive aging</div>
-          <div class="appcard__d">Sleep quality and cognitive brain rhythms, tracked over years.</div>
-          <div class="appcard__sig"><span>Nexus headband</span><span class="is-signal">Sleep</span><span class="is-signal">Cognitive</span><span class="is-signal">Longitudinal</span></div>
+          <div class="appcard__k">Psychiatry and mental health</div>
+          <div class="appcard__d">Mood and cognition trials run on wrist actigraphy, which infers sleep from movement. The headband reads EEG, so you follow REM and slow-wave sleep through an episode.</div>
+          <div class="appcard__sig"><span>Nexus headband</span><span class="is-signal">Sleep staging</span><span class="is-signal">REM + slow-wave</span></div>
         </div>
       </div>
     </div>
