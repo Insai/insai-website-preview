@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- @dsCard group="Brand" name="Homepage" subtitle="Hero · Signals · Engine · Platform · Solutions · Applications" viewport="1440x900" -->
+<!-- @dsCard group="Brand" name="Homepage" subtitle="Hero · Signals · Platform · Get started · Applications" viewport="1440x900" -->
 <html lang="en">
 <head>
 <meta name="robots" content="noindex,nofollow">
@@ -29,19 +29,21 @@
   gtag('js', new Date());
   gtag('config', window.GA_MEASUREMENT_ID);
 </script>
-<meta name="description" content="Insai turns at-home wearable recordings into digital biomarkers for life science research: brain rhythms from sleep, muscle and movement by day. Each marker reproduces a published method and carries a quality score on the recording it came from. For Research Use Only.">
+<meta name="description" content="Reproducible brain biomarkers from at-home sleep. Every number comes back with its method and its signal quality. For Research Use Only.">
 <!-- Open Graph -->
 <meta property="og:title" content="Insai | Brain and body biomarkers, measured at home">
-<meta property="og:description" content="Insai turns at-home wearable recordings into digital biomarkers for life science research: brain rhythms from sleep, muscle and movement by day. Each marker reproduces a published method and carries a quality score on the recording it came from. For Research Use Only.">
-<meta property="og:image" content="https://insai.tech/assets/eeg-wave-hero.jpg">
+<meta property="og:description" content="Reproducible brain biomarkers from at-home sleep. Every number comes back with its method and its signal quality. For Research Use Only.">
+<meta property="og:image" content="https://insai.tech/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://insai.tech/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Insai">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Insai | Brain and body biomarkers, measured at home">
-<meta name="twitter:description" content="Insai turns at-home wearable recordings into digital biomarkers for life science research: brain rhythms from sleep, muscle and movement by day. Each marker reproduces a published method and carries a quality score on the recording it came from. For Research Use Only.">
-<meta name="twitter:image" content="https://insai.tech/assets/eeg-wave-hero.jpg">
+<meta name="twitter:description" content="Reproducible brain biomarkers from at-home sleep. Every number comes back with its method and its signal quality. For Research Use Only.">
+<meta name="twitter:image" content="https://insai.tech/assets/og-card.png">
 <!-- Canonical URL -->
 <link rel="canonical" href="https://insai.tech/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -975,10 +977,10 @@ a {
 .platform__screen-frame { width: 100%; border: 1px solid var(--border-d); border-radius: 14px; overflow: hidden; background: var(--surface); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
 .platform__screen-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--border-d); background: var(--bg-deep); }
 .platform__screen-url { margin-left: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); }
-.platform__screen-body { position: relative; aspect-ratio: 16 / 11; background: var(--bg-deep); }
+.platform__screen-body { position: relative; aspect-ratio: 1232 / 912; background: var(--bg-deep); }
 .platform__screen { position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s ease; pointer-events: none; }
 .platform__screen.is-active { opacity: 1; pointer-events: auto; }
-.platform__screen img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.platform__screen img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
 .platform__screen-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; padding: 24px; color: var(--fg-dim); border: 1px dashed rgba(255,255,255,0.12); }
 .platform__screen-ph svg { width: 40px; height: 40px; color: var(--color-teal); opacity: 0.7; }
 .platform__screen-ph-title { font-size: 14px; font-weight: 400; color: var(--fg-muted); }
@@ -1332,6 +1334,8 @@ a {
   content: ""; position: absolute; left: 0; top: 4px; width: 15px; height: 15px;
   background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231BA8A0' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
 }
+.offer-card__points a { color: var(--fg); text-decoration: none; border-bottom: 1px solid rgba(27,168,160,0.45); transition: color .2s ease, border-color .2s ease; }
+.offer-card__points a:hover { color: var(--color-teal); border-bottom-color: var(--color-teal); }
 .offer-card__reads { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
 .offer-card__reads-label {
   font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
@@ -2031,7 +2035,7 @@ a {
 .why__radial-sub { font-family: var(--font-mono); font-size: 7px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
 .why__hub .why__legend { justify-content: center; margin-top: 14px; }
 .why__hub .why__legend-link { margin-left: 0; }
-.why__legend-cta { display: flex; justify-content: center; margin-top: 32px; }
+.why__legend-cta { display: flex; justify-content: center; margin-top: 24px; }
 .why__legend-btn { display: inline-flex; align-items: center; gap: 12px; padding: 13px 22px; border: 1px solid rgba(27,168,160,0.4); border-radius: 999px; background: rgba(27,168,160,0.06); color: var(--fg); font-size: 0.92rem; font-weight: 500; text-decoration: none; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
 .why__legend-btn small { font-family: var(--font-mono); font-size: 0.62rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.07em; color: var(--fg-dim); }
 .why__legend-btn span { color: var(--color-teal); font-size: 1.1em; transition: transform .2s ease; }
@@ -2393,7 +2397,17 @@ a {
 
 /* Why-us — nervous-system field + de-boxed devices + font-color fix */
 .pillars { position: relative; overflow: hidden; padding: var(--space-4xl) 0; }
+.section-seam { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; min-height: 240px; background: var(--bg-deep); padding: 58px 0; margin: -34px 0; overflow: hidden; }
+.section-seam::before { content: ''; position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: min(1200px, 88%); height: 1px; background: linear-gradient(90deg, transparent, var(--border-d-strong) 22%, var(--border-d-strong) 78%, transparent); pointer-events: none; }
+.section-seam__bg { position: absolute; right: 0; top: 0; width: 80%; height: 100%; object-fit: contain; object-position: right center; opacity: 0.8; pointer-events: none; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.45) 20%, #000 50%, #000 88%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.45) 20%, #000 50%, #000 88%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 9%, #000 91%, transparent 100%); mask-composite: intersect; }
+.section-seam::after { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 74%; height: 100%; background: radial-gradient(ellipse 38% 58% at 50% 50%, rgba(7,9,11,0.88) 0%, rgba(7,9,11,0.6) 45%, rgba(7,9,11,0) 78%); pointer-events: none; }
+.section-seam__inner { position: relative; z-index: 1; width: 100%; display: flex; align-items: center; justify-content: center; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--space-xl); }
+.section-seam__title { position: relative; font-family: var(--font-sans); font-size: clamp(1.25rem, 1.7vw + 0.6rem, 1.9rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; color: var(--fg); white-space: nowrap; text-align: center; text-shadow: 0 1px 12px rgba(7,9,11,0.85); }
+.section-seam__title .accent { color: var(--color-teal); }
+@media (max-width: 860px) { .section-seam__bg { width: 100%; object-position: center; opacity: 0.55; } }
+@media (max-width: 700px) { .section-seam { padding: 38px 0; min-height: 168px; } .section-seam__title { white-space: normal; text-align: center; } }
 .pillars .container { position: relative; z-index: 1; }
+.nsmap__devices-more { max-width: var(--max-width); margin: 30px auto 0; padding: 20px var(--space-xl) 0; box-sizing: border-box; text-align: center; font-size: 0.85rem; font-weight: 300; color: var(--fg-dim); }
 .pillars .section-headline { color: var(--color-white); }
 .pillars .section-body, .pillars .section-body p { color: rgba(255,255,255,0.72); }
 /* Signals — nervous system (left) wired to connected devices (right) */
@@ -2434,6 +2448,70 @@ img.signals-figure__spark { position: absolute; left: 50%; top: 50%; z-index: 2;
 .signals-body .devices-connect { margin-top: var(--space-lg); }
 @media (max-width: 940px) { .signals-grid { grid-template-columns: 1fr; gap: 8px; } .signals-figure { min-height: 380px; order: -1; } .signals-figure img { height: 360px; } }
 @media (max-width: 560px) { .signals-device { gap: 12px; padding: 13px 15px; } .signals-device__media { width: 66px; height: 58px; } .signals-device__status { padding: 3px 8px; font-size: 0.55rem; } }
+
+/* ---- Nervous-system map: the wearables and what they decode, one block ---- */
+.nsmap { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 0.95fr) minmax(0, 1fr); gap: clamp(14px, 2.4vw, 34px); align-items: center; margin-top: var(--space-2xl); }
+.nsmap__connectors { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: visible; opacity: 0; transition: opacity .8s ease; }
+.nsmap__connectors.is-in { opacity: 1; }
+.nsmap__connectors path { fill: none; stroke-width: 1.6; stroke-linecap: round; }
+.nsmap__col { position: relative; z-index: 1; display: flex; flex-direction: column; gap: clamp(14px, 2.2vw, 28px); }
+
+/* figure: same treatment as the old signals figure, now the hub of the section */
+.nsmap__figure { position: relative; align-self: stretch; min-height: 430px; display: flex; align-items: center; justify-content: center; }
+.nsmap__figure::after { content: ""; position: absolute; inset: -30% -14%; background: radial-gradient(ellipse 46% 56% at 50% 46%, rgba(27,168,160,0.17), rgba(27,168,160,0.05) 52%, transparent 76%); filter: blur(12px); z-index: 0; pointer-events: none; animation: figGlow 9s ease-in-out infinite; }
+.nsmap__figure img { position: relative; z-index: 1; height: 104%; max-height: 540px; width: auto; max-width: none; object-fit: contain; opacity: 0.95; mix-blend-mode: screen; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%); animation: figPulse 9s ease-in-out infinite; }
+img.nsmap__spark { position: absolute; left: 50%; top: 50%; z-index: 2; height: 104%; max-height: 540px; width: auto; max-width: none; object-fit: contain; transform: translate(-50%, -50%); mix-blend-mode: screen; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%); pointer-events: none; opacity: 0; filter: brightness(1.9) saturate(1.5) drop-shadow(0 0 10px rgba(45,212,191,0.7)); animation: figFire 8s ease-in-out infinite; }
+
+/* domain cards */
+.nsmap__card { position: relative; z-index: 1; background: var(--surface); border: 1px solid var(--border-d); border-radius: 8px; padding: 15px 17px; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s ease, background .2s ease; }
+.nsmap__card__top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.nsmap__card__name { font-size: 0.98rem; font-weight: 500; color: var(--fg); letter-spacing: -0.01em; display: flex; align-items: center; gap: 9px; }
+.nsmap__card__name::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--color-teal); flex: none; box-shadow: 0 0 8px rgba(27,168,160,0.65); }
+.nsmap__card--partner .nsmap__card__name::before { background: rgba(255,255,255,0.45); box-shadow: none; }
+.nsmap__card--dev .nsmap__card__name::before { background: transparent; box-shadow: none; border: 1px solid rgba(255,255,255,0.34); }
+.nsmap__card__desc { font-size: 0.95rem; font-weight: 300; color: var(--fg-muted); line-height: 1.55; }
+.nsmap__bms { display: grid; grid-template-columns: repeat(2, max-content); gap: 8px 20px; margin-top: 6px; }
+.nsmap__bm { display: inline-flex; align-items: center; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 300; text-transform: none; letter-spacing: normal; line-height: 1.3; color: var(--fg-muted); border: none; border-radius: 0; padding: 0; white-space: nowrap; }
+.nsmap__bm--soon { opacity: 0.6; font-style: italic; }
+
+/* maturity tier, same language as the device rows below */
+.nsmap__status { font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.09em; padding: 3px 8px; border-radius: 999px; white-space: nowrap; line-height: 1; flex: none; }
+.nsmap__status--live { color: var(--color-teal); border: 1px solid rgba(27,168,160,.45); background: rgba(27,168,160,.08); }
+.nsmap__status--partner { color: var(--fg-dim); border: 1px solid var(--border-d-strong); }
+.nsmap__status--dev { color: var(--fg-dim); border: 1px dashed var(--border-d-strong); }
+
+/* devices under the map: large product shots, centred, caption beneath */
+.nsmap__devices { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; margin-left: auto; margin-right: auto; gap: clamp(28px, 4.5vw, 64px); margin-top: 0; padding-top: 18px; }
+
+.devtile { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5px; }
+.devtile__media { position: relative; width: 100%; height: 232px; display: flex; align-items: center; justify-content: center; margin-bottom: 2px; }
+.devtile__media img { position: relative; width: auto; max-width: 100%; max-height: 100%; object-fit: contain; image-rendering: auto; filter: drop-shadow(0 22px 34px rgba(0,0,0,0.55)); }
+.devtile__head { display: flex; align-items: center; justify-content: center; gap: 9px; flex-wrap: wrap; }
+.devtile__name { font-size: 1rem; font-weight: 500; color: var(--fg); letter-spacing: -0.01em; line-height: 1.3; }
+.devtile__desc { font-size: 0.82rem; font-weight: 300; color: var(--fg-muted); line-height: 1.5; max-width: 31ch; text-wrap: pretty; }
+/* the empty slot is the message: the timeline has room for what clears validation next */
+.devtile--ghost .devtile__slot { width: 68%; height: 158px; border: 1px dashed var(--border-d-strong); border-radius: 12px; opacity: 0.55; display: flex; align-items: center; justify-content: center; gap: 7px; }
+.devtile--ghost .devtile__slot span { width: 5px; height: 5px; border-radius: 50%; background: var(--fg-dim); }
+.devtile--ghost .devtile__name { color: var(--fg-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .nsmap__figure::after, .nsmap__figure img, .nsmap__spark { animation: none !important; }
+  .nsmap__spark { opacity: 0; }
+}
+@media (max-width: 940px) {
+  .nsmap { grid-template-columns: 1fr; gap: 14px; }
+  .nsmap__figure { order: -1; min-height: 300px; }
+  .nsmap__figure img, img.nsmap__spark { height: 300px; }
+  .nsmap__connectors { display: none; }
+  .nsmap__devices { gap: 20px; }
+  .devtile__media { height: 200px; }
+}
+@media (max-width: 640px) {
+  .nsmap__devices { grid-template-columns: 1fr; gap: 26px; padding-top: 26px; }
+  .devtile__media { height: 210px; }
+}
+/* only the narrowest phones cannot fit two marker chips side by side */
+@media (max-width: 340px) { .nsmap__bms { grid-template-columns: max-content; } }
 
 /* The proof — named negatives */
 .proof__negs { list-style: none; margin: var(--space-xl) 0 0; padding: 0; display: grid; gap: 1px; background: var(--border-d); border: 1px solid var(--border-d); border-radius: 12px; overflow: hidden; }
@@ -2603,21 +2681,14 @@ img.signals-figure__spark { position: absolute; left: 50%; top: 50%; z-index: 2;
 .research__reports-inline { color: var(--color-teal); text-decoration: none; white-space: nowrap; }
 .research__reports-inline:hover { text-decoration: underline; }
 
-.footer__links {
-  display: flex;
-  gap: var(--space-lg);
-}
-
-.footer__disclaimer {
-  font-size: 12px;
-  color: var(--color-gray);
-  opacity: 0.7;
-  text-align: center;
-  margin-top: var(--space-md);
-  max-width: var(--max-width-text);
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.5;
+.footer__ruo {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-top: 2px;
 }
 
 
@@ -2646,13 +2717,14 @@ img.signals-figure__spark { position: absolute; left: 50%; top: 50%; z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-3xl);
+  gap: 46px;
   flex-wrap: wrap;
 }
 
 .partners__logo {
-  height: 44px;
+  height: 56px;
   width: auto;
+  object-fit: contain;
   opacity: 0.55;
   transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -3031,27 +3103,24 @@ img.signals-figure__spark { position: absolute; left: 50%; top: 50%; z-index: 2;
    FOOTER
    ============================================ */
 .footer {
-  padding: var(--space-xl) 0;
+  padding: var(--space-xl) 0 var(--space-lg);
   background: var(--bg-deep);
   border-top: 1px solid var(--border-d);
 }
-
-.footer__inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer__brand {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.footer__icon {
-  width: 24px;
-  height: 24px;
-  opacity: 0.5;
+/* footer carries the audience pages: the nav dropdown was removed by design,
+   so this is the only route to biopharma / research / evidence / parkinsons */
+.footer__top { display: flex; justify-content: space-between; align-items: flex-start; gap: clamp(32px, 6vw, 96px); flex-wrap: wrap; }
+.footer__brand-col { display: flex; flex-direction: column; gap: 10px; max-width: 380px; }
+.footer__logo { width: 101px; height: auto; opacity: 0.9; }
+.footer__tagline { font-size: 13px; line-height: 1.5; color: var(--fg-dim); margin: 0; text-wrap: pretty; }
+.footer__nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 36px); flex-wrap: wrap; }
+.footer__nav a { font-size: 13.5px; color: var(--fg-muted); text-decoration: none; transition: color .2s ease; }
+.footer__nav a:hover { color: var(--color-teal); }
+.footer__base { display: flex; justify-content: space-between; align-items: baseline; gap: 20px 40px; flex-wrap: wrap; margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--border-d); }
+@media (max-width: 700px) {
+  .footer__top { flex-direction: column; gap: 32px; }
+  .footer__nav { gap: 32px 40px; }
+  .footer__base { flex-direction: column; gap: 14px; }
 }
 
 .footer__text {
@@ -3347,12 +3416,6 @@ img.signals-figure__spark { position: absolute; left: 50%; top: 50%; z-index: 2;
     height: 260px;
     font-size: 13px;
   }
-
-  .footer__inner {
-    flex-direction: column;
-    gap: var(--space-sm);
-    text-align: center;
-  }
 }
 
 @media (max-width: 480px) {
@@ -3393,8 +3456,6 @@ img.signals-figure__spark { position: absolute; left: 50%; top: 50%; z-index: 2;
   .research__stat-number {
     font-size: 1.5rem;
   }
-
-  .footer__links { flex-direction: column; gap: var(--space-xs); align-items: center; }
 }
 
 /* ============================================
@@ -3598,7 +3659,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   border: none;
   border-radius: 0;
   padding: 8px 0;
-  gap: 44px;
+  gap: 46px;
 }
 .partners__logo {
   opacity: 0.6;
@@ -3614,7 +3675,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   "name": "Insai",
   "url": "https://insai.tech",
   "logo": "https://insai.tech/assets/Insai-logo-2026.png",
-  "description": "Insai turns at-home wearable recordings into digital biomarkers for life science research: brain rhythms from sleep, muscle and movement by day. Each marker reproduces a published method and carries a quality score on the recording it came from. For Research Use Only.",
+  "description": "Reproducible brain biomarkers from at-home sleep. Every number comes back with its method and its signal quality. For Research Use Only.",
   "contactPoint": {
     "@type": "ContactPoint",
     "email": "mark@insai.tech"
@@ -3633,50 +3694,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       <img src="assets/Insai-logo-2026-white.png" alt="Insai" id="navbar-logo" width="101" height="36">
     </a>
     <ul class="navbar__links">
-      <li class="navbar__dropdown" id="solutions-dropdown">
-        <button class="navbar__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-          Solutions
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="navbar__dropdown-menu">
-          <a href="parkinsons.html" class="navbar__dropdown-item">
-            <div class="navbar__dropdown-item-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 0-5 5v1a4 4 0 0 0-1 7.87V17a3 3 0 0 0 3 3h1"/><path d="M12 2a5 5 0 0 1 5 5v1a4 4 0 0 1 1 7.87V17a3 3 0 0 1-3 3h-1"/><path d="M12 2v18"/></svg>
-            </div>
-            <div class="navbar__dropdown-item-text">
-              <span class="navbar__dropdown-item-label">Parkinson&apos;s</span>
-              <span class="navbar__dropdown-item-desc">Brain and body markers, between clinic visits</span>
-            </div>
-          </a>
-          <a href="biopharma.html" class="navbar__dropdown-item">
-            <div class="navbar__dropdown-item-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.58 16.5h12.85"/></svg>
-            </div>
-            <div class="navbar__dropdown-item-text">
-              <span class="navbar__dropdown-item-label">Biopharma</span>
-              <span class="navbar__dropdown-item-desc">Brain and body endpoints for CNS trials</span>
-            </div>
-          </a>
-          <a href="research.html" class="navbar__dropdown-item">
-            <div class="navbar__dropdown-item-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2v6l5.4 9.4a2 2 0 0 1-1.7 3H5.8a2 2 0 0 1-1.7-3L9.5 8V2"/><path d="M8 2h8"/><path d="M9 12h6"/></svg>
-            </div>
-            <div class="navbar__dropdown-item-text">
-              <span class="navbar__dropdown-item-label">Research</span>
-              <span class="navbar__dropdown-item-desc">Reproducible sleep-EEG biomarkers for your study</span>
-            </div>
-          </a>
-          <a href="evidence.html" class="navbar__dropdown-item">
-            <div class="navbar__dropdown-item-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>
-            </div>
-            <div class="navbar__dropdown-item-text">
-              <span class="navbar__dropdown-item-label">Science</span>
-              <span class="navbar__dropdown-item-desc">The published research behind Insai</span>
-            </div>
-          </a>
-        </div>
-      </li>
       <li><a href="#contact" class="navbar__cta">Contact us</a></li>
     </ul>
     <button class="navbar__hamburger" id="hamburger" aria-label="Menu">
@@ -3689,16 +3706,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
 <!-- Mobile nav -->
 <div class="navbar__mobile" id="mobile-nav">
-  <button class="navbar__mobile-group-label" id="mobile-solutions-toggle">
-    Solutions
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-  </button>
-  <div class="navbar__mobile-group-items" id="mobile-solutions-items">
-    <a href="parkinsons.html" onclick="closeMobileNav()">Parkinson&apos;s</a>
-    <a href="biopharma.html" onclick="closeMobileNav()">Biopharma</a>
-    <a href="research.html" onclick="closeMobileNav()">Research</a>
-    <a href="evidence.html" onclick="closeMobileNav()">Science</a>
-  </div>
   <a href="#contact" onclick="closeMobileNav()">Contact us</a>
 </div>
 
@@ -3716,57 +3723,86 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       <h1 class="hero__headline">The brain and body, <span class="accent">measured in the real world.</span></h1>
       <p class="hero__subhead">Using AI to decode neurophysiology and make brain medicine measurable.</p>
       <div class="hero__ctas">
-        <a href="#contact" class="btn btn--primary">Talk to us about your study<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="evidence.html" class="btn btn--secondary-light">See the evidence</a>
+        <a href="#contact" class="btn btn--primary">Get started<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================
-     SECTION 2: WHY US
+     SECTION 2: SIGNALS + DECODING
      ============================================ -->
-<section class="pillars" id="pillars">
+<section class="pillars" id="signals">
   <div class="container">
-    <div class="signals-grid">
-      <svg class="signals-connectors" id="signals-connectors" aria-hidden="true" preserveAspectRatio="none"></svg>
-      <div class="signals-figure" aria-hidden="true">
-        <img src="assets/nervous-system-nerves.png" alt="" id="nervous-fig">
-        <img src="assets/nervous-system-nerves.png" alt="" class="signals-figure__spark" aria-hidden="true">
+    <div class="eyebrow">Neurophysiology, measured at home</div>
+    <h2 class="section-headline">Multiple signals, <span class="accent">one decoded timeline.</span></h2>
+    <div class="section-body">
+      <p>Neurophysiology is stuck in the lab. We build the wearables that read it at home, and the AI layer that decodes it, starting with sleep.</p>
+    </div>
+
+    <div class="nsmap">
+      <svg class="nsmap__connectors" id="nsmap-connectors" aria-hidden="true"></svg>
+
+      <div class="nsmap__col nsmap__col--left">
+        <div class="nsmap__card" data-fx="0.470" data-fy="0.058">
+          <div class="nsmap__card__top">
+            <div class="nsmap__card__name">Sleep</div>
+          </div>
+          <div class="nsmap__card__desc">Sleep organisation, stability, intensity, and how it is regulated across nights.</div>
+        </div>
+        <div class="nsmap__card" data-fx="0.448" data-fy="0.118">
+          <div class="nsmap__card__top">
+            <div class="nsmap__card__name">Cortical function</div>
+          </div>
+          <div class="nsmap__card__desc">Cortical slowing, excitability, and signal complexity, the markers that track cognitive status.</div>
+        </div>
       </div>
-      <div class="signals-body">
-        <div class="eyebrow">Neurophysiology, measured at home</div>
-        <h2 class="section-headline">Multiple signals, <span class="accent">one timeline.</span></h2>
-        <div class="section-body">
-          <p>Neurophysiology is stuck in the lab. We build the wearables that read it at home, and use sleep as the window into brain health.</p>
-        </div>
-        <div class="signals-devices">
-          <div class="signals-device" data-fx="0.50" data-fy="0.085" style="--conn: var(--color-teal)">
-            <div class="signals-device__media"><img src="assets/devices/device-headband.png" alt="Nexus EEG headband" loading="lazy"></div>
-            <div class="signals-device__info">
-              <div class="signals-device__top"><span class="signals-device__name">Nexus headband</span><span class="signals-device__region">Cortex</span></div>
-              <div class="signals-device__reads">Sleep-EEG headband, worn overnight at home. Hours of uninterrupted brain signal, night after night.</div>
-            </div>
+
+      <div class="nsmap__figure" aria-hidden="true">
+        <img src="assets/nervous-system-nerves.png" alt="" id="nsmap-fig">
+        <img src="assets/nervous-system-nerves.png" alt="" class="nsmap__spark" aria-hidden="true">
+      </div>
+
+      <div class="nsmap__col nsmap__col--right">
+        <div class="nsmap__card nsmap__card--dev" data-fx="0.548" data-fy="0.272">
+          <div class="nsmap__card__top">
+            <div class="nsmap__card__name">Autonomic regulation</div>
           </div>
-          <div class="signals-device" data-fx="0.80" data-fy="0.46" style="--conn: #6FE0D4">
-            <div class="signals-device__media"><img src="assets/devices/device-sleeve.png" alt="Forearm sensor sleeve" loading="lazy"></div>
-            <div class="signals-device__info">
-              <div class="signals-device__top"><span class="signals-device__name">Paragit sleeve</span><span class="signals-device__region">Muscle &amp; motion</span></div>
-              <div class="signals-device__reads">Surface EMG and motion, arm or leg. Muscle activity and movement, day and night.</div>
-            </div>
-          </div>
+          <div class="nsmap__card__desc">Cardiac autonomic tone and arousal response, resolved by sleep stage.</div>
         </div>
-        <p class="devices-connect">More devices join the timeline as they clear validation.</p>
+        <div class="nsmap__card nsmap__card--partner" data-fx="0.745" data-fy="0.487">
+          <div class="nsmap__card__top">
+            <div class="nsmap__card__name">Motor &amp; movement</div>
+          </div>
+          <div class="nsmap__card__desc">Muscle activation and movement kinematics, linking neural command to mechanical output.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why__legend-cta">
+      <div class="why__legend-btn why__legend-btn--soon">Research hub <small>Coming soon</small></div>
+    </div>
+
+    <div class="nsmap__devices">
+      <div class="devtile">
+        <div class="devtile__media"><img src="assets/devices/device-headband.png" alt="Nexus EEG headband" loading="lazy"></div>
+        <div class="devtile__head">
+          <span class="devtile__name">Nexus headband</span>
+        </div>
+        <div class="devtile__desc">Sleep-EEG headband, worn overnight at home. Hours of uninterrupted brain signal, night after night.</div>
+      </div>
+      <div class="devtile">
+        <div class="devtile__media"><img src="assets/devices/device-sleeve.png" alt="Forearm sensor sleeve" loading="lazy"></div>
+        <div class="devtile__head">
+          <span class="devtile__name">Paragit sleeve</span>
+        </div>
+        <div class="devtile__desc">Flexible EMG sleeve for the arm and leg. Muscle activity and movement, day and night.</div>
       </div>
     </div>
   </div>
 </section>
 
-
-
-
-
-
+<div class="section-seam"><img class="section-seam__bg" src="assets/eeg-wave-seam.png" alt="" aria-hidden="true" loading="lazy"><div class="section-seam__inner"><span class="section-seam__title">Sleep is a Window into <span class="accent">Brain Health</span></span></div></div>
 
 <!-- ============================================
      SECTION 3: PLATFORM
@@ -3815,13 +3851,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           </div>
           <div class="platform__screen-body">
             <div class="platform__screen is-active" data-screen="analysis" data-url="nexus.insai.tech/analysis">
-              <img src="assets/screenshots/nexus-analysis.png" alt="Nexus analysis view — hypnogram, staging confidence, stage composition, signal quality" loading="lazy">
+              <img src="assets/screenshots/nexus-night.png" alt="One night in the Nexus portal: hypnogram, staging confidence, sleep cycles, efficiency and stage composition" loading="lazy">
             </div>
             <div class="platform__screen" data-screen="trends" data-url="nexus.insai.tech/trends">
-              <img src="assets/screenshots/nexus-trends-multinight.png" alt="Nexus trends — markers across 30 nights against each participant&apos;s own baseline, with low-quality nights excluded" loading="lazy">
+              <img src="assets/screenshots/nexus-trends-fit.png" alt="Nexus trends — markers across 30 nights against each participant&apos;s own baseline, with low-quality nights excluded" loading="lazy">
             </div>
             <div class="platform__screen" data-screen="quality" data-url="nexus.insai.tech/data-trust">
-              <img src="assets/screenshots/nexus-quality.png" alt="Nexus signal quality — Data-Trust score, per-channel quality worst first, and scoring confidence across the night" loading="lazy">
+              <img src="assets/screenshots/nexus-dq.png" alt="Nexus signal quality: Data-Trust score, per-channel quality worst first, coverage and confidence" loading="lazy">
             </div>
           </div>
         </div>
@@ -3829,163 +3865,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
     </div>
   </div>
 </section>
-
-<!-- ============================================
-     SECTION 4: THE NEXUS ENGINE
-     ============================================ -->
-<section class="why" id="why">
-  <div class="container">
-    <div class="eyebrow">The AI layer for biosignals</div>
-    <h2 class="section-headline">From signals <span class="accent">to function.</span></h2>
-    <div class="section-body">
-      <p>Signals become biomarkers across four functional domains.</p>
-    </div>
-
-    <div class="why__hub">
-      <div class="why__radial-layout">
-        <svg class="why__connectors" aria-hidden="true"></svg>
-        <div class="why__ep-col why__ep-col--left">
-          <div class="why__proc-card">
-            <div class="why__proc-card__name">Sleep</div>
-            <div class="why__proc-card__desc">Sleep organisation, stability, intensity, and how it is regulated across nights.</div>
-            <div class="why__proc-card__bms">
-            <span class="why__bm">Macrostructure</span>
-            <span class="why__bm">Microstructure</span>
-            <span class="why__bm">Oscillations</span>
-            <span class="why__bm">Regulation</span>
-            </div>
-          </div>
-          <div class="why__proc-card">
-            <div class="why__proc-card__name">Cortical function</div>
-            <div class="why__proc-card__desc">Cortical slowing, excitability, and signal complexity, the markers that track cognitive status.</div>
-            <div class="why__proc-card__bms">
-            <span class="why__bm">Spectral slowing</span>
-            <span class="why__bm">Aperiodic activity</span>
-            <span class="why__bm">Complexity</span>
-            <span class="why__bm why__bm--soon">Brain age</span>
-            </div>
-          </div>
-        </div>
-        <div class="why__radial-center">
-          <div class="why__hub-engine">
-            <!-- Brain image centered with CSS invert filter -->
-            <img src="assets/brain.png" alt="" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56%; height: auto; filter: invert(1); mix-blend-mode: screen; opacity: 0.92; z-index: 1; pointer-events: none;">
-            <!-- Circuit overlay SVG -->
-            <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: relative; z-index: 2;">
-
-              <!-- OUTER CIRCUIT RING (static) -->
-              <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(255,255,255,0.13)" stroke-width="1.2"/>
-
-              <!-- PULSE: segment traveling around outer ring to emphasize compute -->
-              <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-dasharray="54 480"
-                      transform="rotate(-90 100 100)">
-                <animate attributeName="stroke-dashoffset" from="534" to="0" dur="2.5s" repeatCount="indefinite"/>
-              </circle>
-
-              <!-- RADIAL TRACES from outer ring toward center -->
-              <g stroke="rgba(255,255,255,0.22)" stroke-width="1.2" fill="none" stroke-linecap="round">
-                <line x1="100" y1="14" x2="100" y2="36"/>
-                <line x1="174.5" y1="57" x2="155.4" y2="68"/>
-                <line x1="186" y1="100" x2="164" y2="100"/>
-                <line x1="174.5" y1="143" x2="155.4" y2="132"/>
-                <line x1="100" y1="186" x2="100" y2="164"/>
-                <line x1="25.5" y1="143" x2="44.6" y2="132"/>
-                <line x1="14" y1="100" x2="36" y2="100"/>
-                <line x1="25.5" y1="57" x2="44.6" y2="68"/>
-                <line x1="143" y1="25.5" x2="132" y2="44.6"/>
-                <line x1="57" y1="25.5" x2="68" y2="44.6"/>
-                <line x1="57" y1="174.5" x2="68" y2="155.4"/>
-                <line x1="143" y1="174.5" x2="132" y2="155.4"/>
-              </g>
-
-              <!-- JUNCTION NODES on the outer ring (12 points) -->
-              <g fill="rgba(255,255,255,0.5)">
-                <circle cx="100" cy="14" r="2.8"/><circle cx="174.5" cy="57" r="2.8"/><circle cx="186" cy="100" r="2.8"/><circle cx="174.5" cy="143" r="2.8"/>
-                <circle cx="100" cy="186" r="2.8"/><circle cx="25.5" cy="143" r="2.8"/><circle cx="14" cy="100" r="2.8"/><circle cx="25.5" cy="57" r="2.8"/>
-                <circle cx="143" cy="25.5" r="2.8"/><circle cx="57" cy="25.5" r="2.8"/><circle cx="57" cy="174.5" r="2.8"/><circle cx="143" cy="174.5" r="2.8"/>
-              </g>
-
-              <!-- INNER DASHED CIRCLE with pulse traveling around -->
-              <circle cx="100" cy="100" r="64" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.8" stroke-dasharray="4 6"/>
-              <circle cx="100" cy="100" r="64" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round" stroke-dasharray="25 175"
-                      transform="rotate(90 100 100)">
-                <animate attributeName="stroke-dashoffset" from="200" to="0" dur="2s" begin="0.4s" repeatCount="indefinite"/>
-              </circle>
-
-              <!-- Inner ring junction dots -->
-              <g fill="rgba(255,255,255,0.3)">
-                <circle cx="100" cy="36" r="1.8"/><circle cx="155.4" cy="68" r="1.8"/><circle cx="164" cy="100" r="1.8"/><circle cx="155.4" cy="132" r="1.8"/>
-                <circle cx="100" cy="164" r="1.8"/><circle cx="44.6" cy="132" r="1.8"/><circle cx="36" cy="100" r="1.8"/><circle cx="44.6" cy="68" r="1.8"/>
-                <circle cx="132" cy="44.6" r="1.8"/><circle cx="68" cy="44.6" r="1.8"/><circle cx="68" cy="155.4" r="1.8"/><circle cx="132" cy="155.4" r="1.8"/>
-              </g>
-
-              <!-- ANIMATED PULSES along radials – data filling the lines to emphasize compute -->
-              <path d="M100 14 L100 36" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="22 0" opacity="0.7">
-                <animate attributeName="stroke-dashoffset" from="22" to="0" dur="1.2s" repeatCount="indefinite"/>
-              </path>
-              <path d="M186 100 L164 100" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="22 0" opacity="0.6">
-                <animate attributeName="stroke-dashoffset" from="22" to="0" dur="1.2s" begin="0.2s" repeatCount="indefinite"/>
-              </path>
-              <path d="M100 186 L100 164" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="22 0" opacity="0.6">
-                <animate attributeName="stroke-dashoffset" from="22" to="0" dur="1.2s" begin="0.4s" repeatCount="indefinite"/>
-              </path>
-              <path d="M14 100 L36 100" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="22 0" opacity="0.6">
-                <animate attributeName="stroke-dashoffset" from="22" to="0" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>
-              </path>
-              <path d="M174.5 57 L155.4 68" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="24 0" opacity="0.5">
-                <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.4s" begin="0.1s" repeatCount="indefinite"/>
-              </path>
-              <path d="M174.5 143 L155.4 132" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="24 0" opacity="0.5">
-                <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.4s" begin="0.5s" repeatCount="indefinite"/>
-              </path>
-              <path d="M25.5 143 L44.6 132" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="24 0" opacity="0.5">
-                <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.4s" begin="0.3s" repeatCount="indefinite"/>
-              </path>
-              <path d="M25.5 57 L44.6 68" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="24 0" opacity="0.5">
-                <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.4s" begin="0.7s" repeatCount="indefinite"/>
-              </path>
-
-              <!-- Subtle glow pulse -->
-              <circle cx="100" cy="100" r="30" fill="white" opacity="0">
-                <animate attributeName="opacity" values="0;0.06;0" dur="3.5s" repeatCount="indefinite"/>
-                <animate attributeName="r" values="30;50;30" dur="3.5s" repeatCount="indefinite"/>
-              </circle>
-
-            </svg>
-          </div>
-        </div>
-        <div class="why__ep-col why__ep-col--right">
-          <div class="why__proc-card">
-            <div class="why__proc-card__name">Motor &amp; movement</div>
-            <div class="why__proc-card__desc">Muscle activation and movement kinematics, linking neural command to mechanical output.</div>
-            <div class="why__proc-card__bms">
-            <span class="why__bm">Output</span>
-            <span class="why__bm">Events</span>
-            <span class="why__bm">Oscillations</span>
-            <span class="why__bm">State modulation</span>
-            </div>
-          </div>
-          <div class="why__proc-card">
-            <div class="why__proc-card__name">Autonomic regulation</div>
-            <div class="why__proc-card__desc">Cardiac autonomic tone and arousal response, resolved by sleep stage.</div>
-            <div class="why__proc-card__bms">
-            <span class="why__bm">Heart rate</span>
-            <span class="why__bm">Cardiovagal tone</span>
-            <span class="why__bm">Arousal burden</span>
-            <span class="why__bm">Nocturnal dipping</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="why__legend-cta">
-        <span class="why__legend-btn why__legend-btn--soon">Research hub <small>Coming soon</small></span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 
 <!-- ============================================
      SECTION 5: SOLUTIONS
@@ -4007,15 +3886,15 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         <div class="offer-card__for">For researchers with recordings in hand</div>
         <div class="offer-card__eyebrow">Software &middot; Nexus portal</div>
         <h3 class="offer-card__title">Upload your nights. Get them analyzed.</h3>
-        <p class="offer-card__body">Every result carries its published method, the night&apos;s signal quality, and a full audit trail. You can defend any number you report.</p>
+        <p class="offer-card__body">Every number comes back with its method and its signal quality, so you can defend what you report.</p>
         <ul class="offer-card__points">
           <li>Upload and manage EDFs</li>
-          <li>Staging from U-Sleep, YASA and more</li>
+          <li>Staging with <a href="https://doi.org/10.1038/s41746-021-00440-5" target="_blank" rel="noopener">U-Sleep</a>, <a href="https://doi.org/10.7554/eLife.70092" target="_blank" rel="noopener">YASA</a>, <a href="https://arxiv.org/abs/2412.07236" target="_blank" rel="noopener">CBraMod</a>, <a href="https://arxiv.org/abs/2606.09605" target="_blank" rel="noopener">Hypnos</a>, and others</li>
           <li>Signal quality and physiological screens on every night</li>
           <li>CLI and API that drop into your own workflows</li>
         </ul>
         <div class="offer-card__foot">
-          <a href="#contact" class="btn btn--primary offer-card__cta" data-inquiry="Software beta access">Request access</a>
+          <a href="#contact" class="btn btn--primary offer-card__cta" data-inquiry="Nexus software access">Request access</a>
         </div>
       </div>
       <div class="offer-card">
@@ -4023,7 +3902,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <span class="offer-card__icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
           </span>
-          <span class="offer-card__badge offer-card__badge--soon">Founding cohort</span>
         </div>
         <div class="offer-card__for">For teams designing a new study</div>
         <div class="offer-card__eyebrow">At-home studies</div>
@@ -4031,17 +3909,16 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         <p class="offer-card__body">You design the study. We help you collect and analyze the data.</p>
         <ul class="offer-card__points">
           <li>Nexus headband per participant, Paragit sleeve on request</li>
-          <li>We handle participant setup and support</li>
-          <li>We monitor compliance and flag dropouts during the study</li>
+          <li>We fit participants and handle their support</li>
+          <li>Compliance monitored, dropouts flagged early</li>
           <li>Nights sync automatically and come back staged</li>
         </ul>
         <div class="offer-card__foot">
-          <a href="#contact" class="btn btn--secondary-light offer-card__cta" data-inquiry="Research Kit pre-order">Book a protocol call</a>
+          <a href="#contact" class="btn btn--secondary-light offer-card__cta" data-inquiry="Book a meeting">Book a protocol call</a>
         </div>
       </div>
     </div>
 
-    <p class="offer-pharma-link">On a CNS trial? <a href="biopharma.html">For biopharma &rarr;</a> &middot; <a href="research.html">For research &rarr;</a></p>
   </div>
 </section>
 
@@ -4051,7 +3928,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 <section class="applications" id="applications">
   <div class="container">
     <div class="eyebrow">Applications</div>
-    <h2 class="section-headline">Sleep is the window. <span class="accent">Measured from home, at scale.</span></h2>
+    <h2 class="section-headline"><span class="accent">Measured from home, at scale.</span></h2>
     <div class="section-body">
       <p>Accessible sleep studies for the protocols where sleep actually matters.</p>
     </div>
@@ -4065,7 +3942,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <div class="appcard__sig"><span>Nexus headband</span><span class="is-signal">Architecture</span><span class="is-signal">Sleep regularity</span></div>
         </div>
       </div>
-      <div class="appcard appcard--lead">
+      <div class="appcard">
         <div class="appcard__img"><span class="appcard__tag">Neurology</span><img src="assets/applications/app-parkinsons.jpg" alt="Older man at home wearing the forearm sensor sleeve" loading="lazy" style="object-position:50% 42%;"></div>
         <div class="appcard__body">
           <div class="appcard__k">Parkinson&apos;s, between visits</div>
@@ -4083,9 +3960,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       </div>
     </div>
     <div class="appband">
-      <span class="appband__k">Pharma endpoints</span>
-      <span class="appband__tag">B2B track</span>
-      <span class="appband__d">A secondary endpoint beside your primary measure, where rating scales aren&apos;t sharp enough. <a href="biopharma.html" class="appcard__more">For biopharma &rarr;</a></span>
+      <span class="appband__d">For therapy developers: a secondary endpoint beside your primary measure, where rating scales aren&apos;t sharp enough.</span>
     </div>
 
     <hr class="partners__divider">
@@ -4096,8 +3971,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       <img src="assets/ku-logo-clean-mono.png" alt="University of Copenhagen" class="partners__logo">
       <img src="assets/cebreo-logo-mono.png" alt="Cebreo Medical" class="partners__logo">
       <img src="assets/opto-logo-mono.png" alt="OptoCeutics" class="partners__logo">
+      <img src="assets/paragit-logo-mono.png" alt="Paragit Neurotech" class="partners__logo">
     </div>
-    <p class="offer-pharma-link">Brain today. Nervous system next.</p>
   </div>
 </section>
 
@@ -4112,7 +3987,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         <h2 class="section-headline">Tell us what you want to measure</h2>
         <p class="contact__body">Bring your study and the signal you&apos;re after. We&apos;ll tell you, honestly, what we can reproduce today and what we cannot yet.</p>
         <ul class="contact__assurances">
-          <li>A straight answer on feasibility &mdash; no sales runaround</li>
+          <li>A straight answer on feasibility, not a sales runaround</li>
           <li>A reply from the team, usually within one business day</li>
           <li>Your data and study details stay confidential</li>
         </ul>
@@ -4145,14 +4020,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
               <label for="contact-inquiry">Inquiry type</label>
               <select id="contact-inquiry" name="inquiry">
                 <option value="" disabled selected>Select an option</option>
-                <option value="Add an endpoint to my study">Add an endpoint to my study</option>
-                <option value="Retrospective EEG/sleep data analysis">Analyse data I already have</option>
-                <option value="Software beta access">Nexus portal beta access</option>
-                <option value="Research Kit pre-order">Research Kit pre-order</option>
-                <option value="Device / OEM partnership">Device or OEM partnership</option>
-                <option value="Research collaboration">Research collaboration</option>
-                <option value="Personal access">Personal access (membership)</option>
-                <option value="Other">Other</option>
+                <option value="Nexus software access">Nexus software access</option>
+                <option value="Book a meeting">Book a meeting</option>
+                <option value="Something else">Something else</option>
               </select>
             </div>
           </div>
@@ -4244,17 +4114,21 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
      ============================================ -->
 <footer class="footer">
   <div class="container">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <img src="assets/Insai-logo-2026-icon.png" alt="" class="footer__icon">
-        <span class="footer__text">&copy; 2026 Insai. Copenhagen.</span>
+    <div class="footer__top">
+      <div class="footer__brand-col">
+        <img src="assets/Insai-logo-2026-white.png" alt="Insai" class="footer__logo" width="101" height="36">
+        <p class="footer__tagline">Reproducible brain biomarkers from at-home sleep.</p>
+        <span class="footer__ruo">For Research Use Only</span>
       </div>
-      <div class="footer__links">
-        <span class="footer__text"><a href="privacy.html">Privacy Policy</a></span>
-        <span class="footer__text"><a href="mailto:mark@insai.tech">mark@insai.tech</a></span>
-      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="#contact">Contact</a>
+        <a href="https://www.linkedin.com/company/insai-neurotech/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="privacy.html">Privacy policy</a>
+      </nav>
     </div>
-    <p class="footer__disclaimer">Insai's biomarker platform is intended for research and drug development use only. Not intended for clinical diagnosis, patient monitoring, or therapeutic decision-making.</p>
+    <div class="footer__base">
+      <span class="footer__text">&copy; 2026 Insai. Copenhagen.</span>
+    </div>
   </div>
 </footer>
 
@@ -4721,14 +4595,36 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   var screens = showcase.querySelectorAll('.platform__screen');
   var urlEl = document.getElementById('platform-url');
 
+  var body = showcase.querySelector('.platform__screen-body');
+
+  // each capture is a different shape; let the frame take the active one's
+  // aspect so the shot fills it exactly rather than being cropped or padded
+  function fitFrame(sc) {
+    var img = sc.querySelector('img');
+    if (!body || !img || !img.naturalWidth) return;
+    body.style.aspectRatio = img.naturalWidth + ' / ' + img.naturalHeight;
+  }
+
   function activate(key) {
     steps.forEach(function (s) { s.classList.toggle('is-active', s.dataset.screen === key); });
     screens.forEach(function (sc) {
       var on = sc.dataset.screen === key;
       sc.classList.toggle('is-active', on);
-      if (on && urlEl && sc.dataset.url) urlEl.textContent = sc.dataset.url;
+      if (on) {
+        fitFrame(sc);
+        if (urlEl && sc.dataset.url) urlEl.textContent = sc.dataset.url;
+      }
     });
   }
+
+  screens.forEach(function (sc) {
+    var img = sc.querySelector('img');
+    if (img) img.addEventListener('load', function () {
+      if (sc.classList.contains('is-active')) fitFrame(sc);
+    });
+  });
+  var first = showcase.querySelector('.platform__screen.is-active');
+  if (first) fitFrame(first);
 
   steps.forEach(function (s) {
     s.addEventListener('click', function () { activate(s.dataset.screen); });
@@ -4756,121 +4652,81 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 })();
 </script>
 
-<!-- Draw connector lines from the engine core to each process card -->
+<!-- Draw connectors from the nervous-system figure to each domain card -->
 <script>
 (function () {
-  var layout = document.querySelector('.why__radial-layout');
-  var svg = document.querySelector('.why__connectors');
-  if (!layout || !svg) return;
-
-  function draw() {
-    var engine = layout.querySelector('.why__radial-center .why__hub-engine');
-    var cards = layout.querySelectorAll('.why__proc-card');
-    if (!engine || !cards.length) return;
-    // mobile: connectors hidden via CSS, skip
-    if (getComputedStyle(svg).display === 'none') return;
-
-    var lr = layout.getBoundingClientRect();
-    var er = engine.getBoundingClientRect();
-    var ecx = er.left + er.width / 2 - lr.left;
-    var ecy = er.top + er.height / 2 - lr.top;
-    var radius = er.width * 0.40; // start at the engine's ring edge
-    var engineCenterX = er.left + er.width / 2;
-
-    svg.setAttribute('viewBox', '0 0 ' + lr.width + ' ' + lr.height);
-    svg.setAttribute('width', lr.width);
-    svg.setAttribute('height', lr.height);
-
-    var ns = 'http://www.w3.org/2000/svg';
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
-
-    cards.forEach(function (card) {
-      var cr = card.getBoundingClientRect();
-      var onLeft = (cr.left + cr.width / 2) < engineCenterX;
-      var ax = (onLeft ? cr.right : cr.left) - lr.left;
-      var ay = cr.top + cr.height / 2 - lr.top;
-      var dx = ax - ecx, dy = ay - ecy;
-      var len = Math.hypot(dx, dy) || 1;
-      var sx = ecx + dx / len * radius;
-      var sy = ecy + dy / len * radius;
-
-      var line = document.createElementNS(ns, 'line');
-      line.setAttribute('x1', sx); line.setAttribute('y1', sy);
-      line.setAttribute('x2', ax); line.setAttribute('y2', ay);
-      line.setAttribute('stroke', 'rgba(27,168,160,0.42)');
-      line.setAttribute('stroke-width', '1.3');
-      line.setAttribute('stroke-linecap', 'round');
-      svg.appendChild(line);
-
-      var dot = document.createElementNS(ns, 'circle');
-      dot.setAttribute('cx', ax); dot.setAttribute('cy', ay);
-      dot.setAttribute('r', '2.8'); dot.setAttribute('fill', '#1BA8A0');
-      svg.appendChild(dot);
-    });
-  }
-
-  var raf;
-  function schedule() { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); }
-  window.addEventListener('resize', schedule);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
-  window.addEventListener('load', draw);
-  draw();
-  setTimeout(draw, 250);
-  setTimeout(draw, 800);
-})();
-</script>
-
-<!-- Draw connector lines from each device to its point on the nervous-system figure -->
-<script>
-(function () {
-  var grid = document.querySelector('.signals-grid');
-  var svg = document.getElementById('signals-connectors');
-  var fig = document.getElementById('nervous-fig');
-  if (!grid || !svg || !fig) return;
-  var devices = grid.querySelectorAll('.signals-device[data-fx]');
-  var teal = (getComputedStyle(document.documentElement).getPropertyValue('--color-teal') || '#1BA8A0').trim();
+  var map = document.querySelector('.nsmap');
+  var svg = document.getElementById('nsmap-connectors');
+  var fig = document.getElementById('nsmap-fig');
+  if (!map || !svg || !fig) return;
+  var cards = map.querySelectorAll('.nsmap__card[data-fx]');
   var ns = 'http://www.w3.org/2000/svg';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function draw() {
     if (getComputedStyle(svg).display === 'none') return;
-    var gr = svg.getBoundingClientRect();
+    var mr = map.getBoundingClientRect();
     var fr = fig.getBoundingClientRect();
+    if (!mr.width || !fr.width) return;
+    var figCx = fr.left + fr.width / 2;
+
+    svg.setAttribute('viewBox', '0 0 ' + mr.width + ' ' + mr.height);
     while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-    devices.forEach(function (dev, i) {
-      var fx = parseFloat(dev.getAttribute('data-fx'));
-      var fy = parseFloat(dev.getAttribute('data-fy'));
-      var tx = (fr.left - gr.left) + fx * fr.width;
-      var ty = (fr.top - gr.top) + fy * fr.height;
-      var dr = dev.getBoundingClientRect();
-      var ox = dr.left - gr.left;
-      var oy = (dr.top - gr.top) + dr.height / 2;
+    cards.forEach(function (card, i) {
+      // anchor point on the figure, normalised to the image box
+      var ax = (fr.left - mr.left) + parseFloat(card.getAttribute('data-fx')) * fr.width;
+      var ay = (fr.top - mr.top) + parseFloat(card.getAttribute('data-fy')) * fr.height;
 
-      var c = getComputedStyle(dev).getPropertyValue('--conn').trim();
-      if (!c || c.indexOf('var(') === 0) c = teal;
+      // leave from whichever card edge faces the figure
+      var cr = card.getBoundingClientRect();
+      var onLeft = (cr.left + cr.width / 2) < figCx;
+      var cx = (onLeft ? cr.right : cr.left) - mr.left;
+      var cy = (cr.top - mr.top) + cr.height / 2;
 
-      var dx = tx - ox;
-      var d = 'M ' + ox + ' ' + oy +
-              ' C ' + (ox + dx * 0.5) + ' ' + oy +
-              ', ' + (ox + dx * 0.5) + ' ' + ty +
-              ', ' + tx + ' ' + ty;
-      var pid = 'conn-' + i;
+      var dx = ax - cx;
+      var d = 'M ' + cx + ' ' + cy +
+              ' C ' + (cx + dx * 0.5) + ' ' + cy +
+              ', ' + (cx + dx * 0.5) + ' ' + ay +
+              ', ' + ax + ' ' + ay;
+
       var path = document.createElementNS(ns, 'path');
-      path.setAttribute('id', pid);
       path.setAttribute('d', d);
-      path.setAttribute('stroke', c);
+      path.setAttribute('stroke', 'rgba(27,168,160,0.7)');
+      path.setAttribute('stroke-dasharray', '4 5');
       svg.appendChild(path);
 
+      // anchor dot on the body, origin dot on the card
       var tgt = document.createElementNS(ns, 'circle');
-      tgt.setAttribute('cx', tx); tgt.setAttribute('cy', ty);
-      tgt.setAttribute('r', '3'); tgt.setAttribute('fill', c);
+      tgt.setAttribute('cx', ax); tgt.setAttribute('cy', ay);
+      tgt.setAttribute('r', '3'); tgt.setAttribute('fill', '#1BA8A0');
       svg.appendChild(tgt);
 
       var org = document.createElementNS(ns, 'circle');
-      org.setAttribute('cx', ox); org.setAttribute('cy', oy);
-      org.setAttribute('r', '2.2'); org.setAttribute('fill', c);
+      org.setAttribute('cx', cx); org.setAttribute('cy', cy);
+      org.setAttribute('r', '2.2'); org.setAttribute('fill', '#1BA8A0');
+      org.setAttribute('opacity', '0.7');
       svg.appendChild(org);
+
+      // one travelling pulse per line, body to card, staggered
+      if (reduce) return;
+      var len = path.getTotalLength ? path.getTotalLength() : 0;
+      if (!len) return;
+      var pulse = document.createElementNS(ns, 'path');
+      pulse.setAttribute('d', d);
+      pulse.setAttribute('stroke', '#3DBEB6');
+      pulse.setAttribute('stroke-width', '1.6');
+      pulse.setAttribute('stroke-linecap', 'round');
+      pulse.setAttribute('stroke-dasharray', '14 ' + len);
+      var anim = document.createElementNS(ns, 'animate');
+      anim.setAttribute('attributeName', 'stroke-dashoffset');
+      anim.setAttribute('from', '0');
+      anim.setAttribute('to', String(len + 14));
+      anim.setAttribute('dur', '3.4s');
+      anim.setAttribute('begin', (i * 0.6) + 's');
+      anim.setAttribute('repeatCount', 'indefinite');
+      pulse.appendChild(anim);
+      svg.appendChild(pulse);
     });
   }
 
@@ -4881,9 +4737,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   window.addEventListener('load', draw);
   if (fig.complete) draw(); else fig.addEventListener('load', draw);
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries, obs) {
+    new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { svg.classList.add('is-in'); draw(); } });
-    }, { threshold: 0.25 }).observe(grid);
+    }, { threshold: 0.2 }).observe(map);
   } else { svg.classList.add('is-in'); }
   draw();
   setTimeout(draw, 250);
