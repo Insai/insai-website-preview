@@ -1324,7 +1324,7 @@ a {
   font-family: var(--font-sans); font-size: 1.32rem; font-weight: 600; letter-spacing: -0.02em;
   color: var(--fg); line-height: 1.22; margin: 0 0 12px;
 }
-.offer-card__body { font-size: 14.5px; font-weight: 300; color: var(--fg-muted); line-height: 1.6; margin: 0 0 18px; }
+.offer-card__body { font-size: 14.5px; font-weight: 300; color: var(--fg-muted); line-height: 1.6; margin: 0 0 18px; min-height: calc(2 * 1.6em); }
 .offer-card__points { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-direction: column; gap: 9px; }
 .offer-card__points li {
   position: relative; padding-left: 24px; font-size: 13.5px; font-weight: 300; color: var(--fg); line-height: 1.4;
@@ -2365,10 +2365,10 @@ a {
 .appcard__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .appcard__img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,15,18,.6), transparent 32%); }
 .appcard__tag { position: absolute; top: 10px; left: 10px; z-index: 2; font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-teal); background: rgba(4,17,15,.72); border: 1px solid rgba(27,168,160,.45); border-radius: 999px; padding: 3px 9px; }
-.appcard__body { padding: 15px 17px; }
+.appcard__body { padding: 15px 17px; display: flex; flex-direction: column; flex: 1; }
 .appcard__k { font-size: 1rem; font-weight: 600; color: var(--fg); margin-bottom: 5px; }
 .appcard__d { font-size: 0.82rem; color: var(--fg-muted); line-height: 1.45; }
-.appcard__sig { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--border-d); }
+.appcard__sig { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 13px; border-top: 1px solid var(--border-d); }
 .appcard__sig span { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.07em; line-height: 1; color: var(--fg-dim); border: 1px solid var(--border-d-strong); border-radius: 999px; padding: 4px 8px; white-space: nowrap; }
 .appcard__sig span.is-signal { color: var(--color-teal); border-color: rgba(27,168,160,.4); background: rgba(27,168,160,.06); }
 .appcard__more { display: inline-block; margin-top: 8px; color: var(--color-teal); text-decoration: none; font-weight: 500; }
@@ -3665,6 +3665,91 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   transition: opacity 0.2s ease;
 }
 .partners__logo:hover { opacity: 0.9; }
+/* ============================================
+   SMALL SCREENS (Sep 10 2026, Kaleem review)
+   Everything below overrides earlier rules on purpose.
+   ============================================ */
+
+/* Tablet: three across is too tight, one across makes the photo swamp the card */
+@media (max-width: 1040px) and (min-width: 601px) {
+  .appgrid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) and (min-width: 601px) {
+  .solutions__grid.offers { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .appgrid { grid-template-columns: 1fr; }
+  /* one card per row means a full-width photo, so flatten it */
+  .appcard__img { aspect-ratio: 2 / 1; }
+}
+
+/* Hero: the photo is a band under the copy, never a wash behind the headline */
+@media (max-width: 860px) {
+  .hero { padding: 116px 0 250px; }
+  .hero__bg { top: auto; bottom: 0; width: 100%; height: 250px; }
+  .hero__bg-img {
+    object-position: 58% 30%;
+    opacity: 1;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.55) 14%, #000 30%);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.55) 14%, #000 30%);
+  }
+  .hero__bg::after {
+    background: linear-gradient(to bottom, var(--bg-deep) 0%, transparent 26%, transparent 72%, rgba(7,9,11,0.6) 100%);
+  }
+  .hero__glow { opacity: 0.5; }
+  /* the rest of the page is left-aligned, so the button is too */
+  .hero__ctas { flex-direction: column; align-items: flex-start; }
+  .hero__ctas .btn { width: auto; }
+}
+
+/* Contact: centring the column also centred the wrapped assurance lines,
+   which put them under the tick instead of beside it */
+@media (max-width: 768px) {
+  .contact__text,
+  .contact__text .section-headline,
+  .contact__email-fallback { text-align: left; }
+  .contact__actions { align-items: stretch; }
+}
+
+.platform__screen-hint {
+  display: none;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+/* Platform screens: a 1320px capture inside a 360px frame is decoration.
+   Render it at twice the frame width and let the reader pan. */
+@media (max-width: 860px) {
+  .platform__screen-body {
+    aspect-ratio: auto;
+    height: 500px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  .platform__screen { width: max(100%, 660px); height: 500px; right: auto; bottom: auto; }
+  .platform__screen img { width: 100%; height: 100%; }
+  .platform__screen-hint { display: block; }
+}
+
+/* Offer cards: row-match the two so the bullet lists and CTAs line up at any
+   width, instead of relying on both bodies happening to wrap the same */
+@media (min-width: 601px) {
+  .solutions__grid.offers { align-items: start; }
+  .offer-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 7;
+    align-content: start;
+  }
+  .offer-card__body { min-height: 0; }
+}
+
 </style>
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
@@ -3821,21 +3906,21 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></span>
           <span class="platform__vstep-text">
             <span class="platform__vstep-job">Analyze</span><span class="platform__vstep-title">A full night in detail</span>
-            <span class="platform__vstep-body">Stages at 30-second resolution, with architecture, cycles, and fragmentation. Every epoch carries a confidence value, and the raw signal sits one click underneath.</span>
+            <span class="platform__vstep-body">Every 30 seconds of the night is staged, so you see the cycles and how often sleep broke up. Each stage carries a confidence score, and the raw signal is one click away.</span>
           </span>
         </div>
         <div class="platform__vstep" data-screen="trends" role="button" tabindex="0">
           <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 7v5l3 3"/></svg></span>
           <span class="platform__vstep-text">
             <span class="platform__vstep-job">Track</span><span class="platform__vstep-title">Many nights for context</span>
-            <span class="platform__vstep-body">Each participant becomes their own control. Markers read against that person's own baseline, so a real change separates from a bad night.</span>
+            <span class="platform__vstep-body">One bad night tells you nothing. Each participant is read against their own baseline across the study, so a real change stands out from a restless one.</span>
           </span>
         </div>
         <div class="platform__vstep" data-screen="quality" role="button" tabindex="0">
           <span class="platform__vstep-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
           <span class="platform__vstep-text">
             <span class="platform__vstep-job">Defend</span><span class="platform__vstep-title">Analytics you can trust</span>
-            <span class="platform__vstep-body">Method, version, and signal quality on every result. Our pipeline reproduces published methods to 1e-3, so a reviewer can run it again.</span>
+            <span class="platform__vstep-body">Every result shows the method behind it and how clean the signal was. We match published methods to 1e-3, so a reviewer can rerun the analysis and get the same answer.</span>
           </span>
         </div>
       </div>
@@ -3853,13 +3938,14 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
               <img src="assets/screenshots/nexus-night.png" alt="One night in the Nexus portal: hypnogram, staging confidence, sleep cycles, efficiency and stage composition" loading="lazy">
             </div>
             <div class="platform__screen" data-screen="trends" data-url="nexus.insai.tech/trends">
-              <img src="assets/screenshots/nexus-trends-fit.png" alt="Nexus trends — markers across 30 nights against each participant&apos;s own baseline, with low-quality nights excluded" loading="lazy">
+              <img src="assets/screenshots/nexus-trends-fit.png" alt="Nexus trends, markers across 30 nights against each participant&apos;s own baseline, with low-quality nights excluded" loading="lazy">
             </div>
             <div class="platform__screen" data-screen="quality" data-url="nexus.insai.tech/data-trust">
               <img src="assets/screenshots/nexus-dq.png" alt="Nexus signal quality: Data-Trust score, per-channel quality worst first, coverage and confidence, with detected sleep oscillations below" loading="lazy">
             </div>
           </div>
         </div>
+        <p class="platform__screen-hint">Drag the screen sideways to read it</p>
       </div>
     </div>
   </div>
@@ -3889,7 +3975,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         <ul class="offer-card__points">
           <li>Upload and manage EDFs</li>
           <li>Staging with <a href="https://doi.org/10.1038/s41746-021-00440-5" target="_blank" rel="noopener">U-Sleep</a>, <a href="https://doi.org/10.7554/eLife.70092" target="_blank" rel="noopener">YASA</a>, <a href="https://arxiv.org/abs/2412.07236" target="_blank" rel="noopener">CBraMod</a>, <a href="https://arxiv.org/abs/2606.09605" target="_blank" rel="noopener">Hypnos</a>, and others</li>
-          <li>Signal quality and physiological screens on every night</li>
+          <li>Architecture, regularity, spindles, slow waves, and spectral markers</li>
+          <li>A signal-quality score on every night, with the raw trace behind it</li>
           <li>CLI and API that drop into your own workflows</li>
         </ul>
         <div class="offer-card__foot">
@@ -3905,12 +3992,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         <div class="offer-card__for">For teams designing a new study</div>
         <div class="offer-card__eyebrow">At-home studies</div>
         <h3 class="offer-card__title">Every bedroom becomes a study site.</h3>
-        <p class="offer-card__body">You design the study. We help you collect and analyze the data.</p>
+        <p class="offer-card__body">You design the study. We handle the hardware and the participants, and every night comes back analyzed.</p>
         <ul class="offer-card__points">
           <li>Nexus headband per participant, Paragit sleeve on request</li>
           <li>We fit participants and handle their support</li>
           <li>Compliance monitored, dropouts flagged early</li>
           <li>Nights sync automatically and come back staged</li>
+          <li>The same markers and provenance as the portal</li>
         </ul>
         <div class="offer-card__foot">
           <a href="#contact" class="btn btn--secondary-light offer-card__cta" data-inquiry="Book a meeting">Book a protocol call</a>
@@ -3937,8 +4025,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         <div class="appcard__img"><span class="appcard__tag">Longevity</span><img src="assets/applications/app-longevity.jpg" alt="Older woman asleep in her own bed wearing the Nexus headband" loading="lazy"></div>
         <div class="appcard__body">
           <div class="appcard__k">Health and longevity</div>
-          <div class="appcard__d">No healthy volunteer spends years in a sleep lab. We ship headbands to their homes and send back staging and architecture you can put in a methods section.</div>
-          <div class="appcard__sig"><span>Nexus headband</span><span class="is-signal">Architecture</span><span class="is-signal">Sleep regularity</span></div>
+          <div class="appcard__d">Slow-wave sleep and sleep regularity move slowly and swing night to night. A run of nights at each timepoint reads a participant against their own average.</div>
+          <div class="appcard__sig"><span>Nexus headband</span><span class="is-signal">Slow-wave sleep</span><span class="is-signal">Sleep regularity</span></div>
         </div>
       </div>
       <div class="appcard">
