@@ -977,7 +977,7 @@ a {
 .platform__screen-frame { width: 100%; border: 1px solid var(--border-d); border-radius: 14px; overflow: hidden; background: var(--surface); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
 .platform__screen-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--border-d); background: var(--bg-deep); }
 .platform__screen-url { margin-left: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); }
-.platform__screen-body { position: relative; aspect-ratio: 1232 / 912; background: var(--bg-deep); }
+.platform__screen-body { position: relative; aspect-ratio: 1320 / 1000; background: var(--bg); }
 .platform__screen { position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s ease; pointer-events: none; }
 .platform__screen.is-active { opacity: 1; pointer-events: auto; }
 .platform__screen img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
@@ -989,7 +989,6 @@ a {
 @media (max-width: 860px) {
   .platform__showcase { grid-template-columns: 1fr; gap: 24px; margin-right: 0; padding-right: 0; }
   .platform__vstep { opacity: 1; }
-  .platform__screen-body { aspect-ratio: 16 / 12; }
 }
 .platform__feature-icon {
   width: 40px;
@@ -2362,9 +2361,9 @@ a {
 .appgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: var(--space-xl); }
 .appcard { background: var(--surface); border: 1px solid var(--border-d); border-radius: 13px; overflow: hidden; display: flex; flex-direction: column; }
 .appcard--lead { border-color: rgba(27,168,160,.45); }
-.appcard__img { position: relative; height: 128px; overflow: hidden; }
+.appcard__img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
 .appcard__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.appcard__img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,15,18,.65), transparent 55%); }
+.appcard__img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,15,18,.6), transparent 32%); }
 .appcard__tag { position: absolute; top: 10px; left: 10px; z-index: 2; font-family: var(--font-mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--color-teal); background: rgba(4,17,15,.72); border: 1px solid rgba(27,168,160,.45); border-radius: 999px; padding: 3px 9px; }
 .appcard__body { padding: 15px 17px; }
 .appcard__k { font-size: 1rem; font-weight: 600; color: var(--fg); margin-bottom: 5px; }
@@ -3943,7 +3942,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         </div>
       </div>
       <div class="appcard">
-        <div class="appcard__img"><span class="appcard__tag">Neurology</span><img src="assets/applications/app-parkinsons.jpg" alt="Older man at home wearing the forearm sensor sleeve" loading="lazy" style="object-position:50% 42%;"></div>
+        <div class="appcard__img"><span class="appcard__tag">Neurology</span><img src="assets/applications/app-parkinsons.jpg" alt="Older man at home wearing the forearm sensor sleeve" loading="lazy" style="object-position:50% 16%;"></div>
         <div class="appcard__body">
           <div class="appcard__k">Parkinson&apos;s, between visits</div>
           <div class="appcard__d">MDS-UPDRS comes months apart, scored by hand. We read the brain on the nights in between, with EMG and motion from the sleeve.</div>
@@ -3951,7 +3950,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         </div>
       </div>
       <div class="appcard">
-        <div class="appcard__img"><span class="appcard__tag">Psychiatry</span><img src="assets/applications/app-sleep-pro.jpg" alt="At-home sleep study with the Nexus headband" loading="lazy" style="object-position:32% 38%;"></div>
+        <div class="appcard__img"><span class="appcard__tag">Psychiatry</span><img src="assets/applications/app-sleep-pro.jpg" alt="At-home sleep study with the Nexus headband" loading="lazy" style="object-position:50% 30%;"></div>
         <div class="appcard__body">
           <div class="appcard__k">Psychiatry and mental health</div>
           <div class="appcard__d">Mood and cognition trials run on wrist actigraphy, which infers sleep from movement. The headband reads EEG, so you follow REM and slow-wave sleep through an episode.</div>
@@ -4595,36 +4594,14 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   var screens = showcase.querySelectorAll('.platform__screen');
   var urlEl = document.getElementById('platform-url');
 
-  var body = showcase.querySelector('.platform__screen-body');
-
-  // each capture is a different shape; let the frame take the active one's
-  // aspect so the shot fills it exactly rather than being cropped or padded
-  function fitFrame(sc) {
-    var img = sc.querySelector('img');
-    if (!body || !img || !img.naturalWidth) return;
-    body.style.aspectRatio = img.naturalWidth + ' / ' + img.naturalHeight;
-  }
-
   function activate(key) {
     steps.forEach(function (s) { s.classList.toggle('is-active', s.dataset.screen === key); });
     screens.forEach(function (sc) {
       var on = sc.dataset.screen === key;
       sc.classList.toggle('is-active', on);
-      if (on) {
-        fitFrame(sc);
-        if (urlEl && sc.dataset.url) urlEl.textContent = sc.dataset.url;
-      }
+      if (on && urlEl && sc.dataset.url) urlEl.textContent = sc.dataset.url;
     });
   }
-
-  screens.forEach(function (sc) {
-    var img = sc.querySelector('img');
-    if (img) img.addEventListener('load', function () {
-      if (sc.classList.contains('is-active')) fitFrame(sc);
-    });
-  });
-  var first = showcase.querySelector('.platform__screen.is-active');
-  if (first) fitFrame(first);
 
   steps.forEach(function (s) {
     s.addEventListener('click', function () { activate(s.dataset.screen); });
