@@ -3714,6 +3714,15 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   .contact__actions { align-items: stretch; }
 }
 
+.platform__screen-caption {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+@media (max-width: 860px) { .platform__screen-caption { display: none; } }
 .platform__screen-hint {
   display: none;
   margin-top: 10px;
@@ -3752,6 +3761,64 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   }
   .offer-card__body { min-height: 0; }
 }
+
+/* Lightbox: the 2x captures only pay off at a size worth reading */
+.platform__screen-body { cursor: zoom-in; }
+.platform__screen-open {
+  position: absolute; right: 12px; bottom: 12px; z-index: 3;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--fg-muted); background: rgba(7,9,11,0.82); border: 1px solid var(--border-d-strong);
+  border-radius: 999px; padding: 6px 11px; pointer-events: none;
+  opacity: 0; transition: opacity 0.2s ease;
+}
+.platform__screen-body:hover .platform__screen-open { opacity: 1; }
+.platform__screen-open svg { width: 12px; height: 12px; }
+
+.shotbox[hidden] { display: none !important; }
+.shotbox {
+  position: fixed; inset: 0; z-index: 10001;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(16px, 3vw, 48px);
+  background: rgba(4,6,8,0.92);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  opacity: 0; transition: opacity 0.22s ease;
+}
+.shotbox.is-open { opacity: 1; }
+.shotbox__fig { position: relative; max-width: min(96vw, 1400px); width: 100%; }
+.shotbox__img {
+  display: block; width: 100%; height: auto; max-height: 84vh; object-fit: contain;
+  border: 1px solid var(--border-d); border-radius: 10px; background: var(--bg);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.6);
+}
+.shotbox__bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  margin-top: 14px; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.06em; color: var(--fg-dim);
+}
+.shotbox__tabs { display: flex; gap: 8px; }
+.shotbox__tab {
+  font: inherit; color: var(--fg-dim); background: transparent;
+  border: 1px solid var(--border-d-strong); border-radius: 999px;
+  padding: 5px 12px; cursor: pointer; text-transform: uppercase;
+  transition: color .18s ease, border-color .18s ease, background .18s ease;
+}
+.shotbox__tab:hover { color: var(--fg-muted); }
+.shotbox__tab.is-active { color: var(--color-teal); border-color: rgba(27,168,160,.5); background: rgba(27,168,160,.08); }
+.shotbox__close {
+  position: absolute; top: -42px; right: 0;
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  color: var(--fg-muted); background: transparent; border: 1px solid var(--border-d-strong);
+  border-radius: 8px; cursor: pointer;
+}
+.shotbox__close:hover { color: var(--fg); border-color: var(--border-d-strong); }
+.shotbox__close svg { width: 16px; height: 16px; }
+@media (max-width: 700px) {
+  .shotbox__close { top: -38px; }
+  .shotbox__bar { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .platform__screen-body { cursor: default; }
+}
+@media (prefers-reduced-motion: reduce) { .shotbox { transition: none; } }
 
 </style>
 <!-- Structured Data (JSON-LD) -->
@@ -3959,6 +4026,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
             <span class="platform__screen-url" id="platform-url">nexus.insai.tech/analysis</span>
           </div>
           <div class="platform__screen-body">
+            <span class="platform__screen-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg>Open full size</span>
             <div class="platform__screen is-active" data-screen="analysis" data-url="nexus.insai.tech/analysis">
               <img src="assets/screenshots/nexus-night.png" alt="One night in the Nexus portal: hypnogram, staging confidence, sleep cycles, efficiency and stage composition" loading="lazy">
             </div>
@@ -3971,8 +4039,22 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           </div>
         </div>
         <p class="platform__screen-hint">Drag the screen sideways to read it</p>
+        <p class="platform__screen-caption">Click a screen to open it full size.</p>
       </div>
     </div>
+  </div>
+
+  <div class="shotbox" id="shotbox" hidden role="dialog" aria-modal="true" aria-label="Nexus screen, full size">
+    <figure class="shotbox__fig">
+      <button class="shotbox__close" id="shotbox-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <img class="shotbox__img" id="shotbox-img" src="" alt="">
+      <figcaption class="shotbox__bar">
+        <span id="shotbox-url">nexus.insai.tech/analysis</span>
+        <span class="shotbox__tabs" id="shotbox-tabs"></span>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
@@ -4713,6 +4795,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   var steps = showcase.querySelectorAll('.platform__vstep');
   var screens = showcase.querySelectorAll('.platform__screen');
   var urlEl = document.getElementById('platform-url');
+  var body = showcase.querySelector('.platform__screen-body');
 
   function activate(key) {
     steps.forEach(function (s) { s.classList.toggle('is-active', s.dataset.screen === key); });
@@ -4720,6 +4803,78 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       var on = sc.dataset.screen === key;
       sc.classList.toggle('is-active', on);
       if (on && urlEl && sc.dataset.url) urlEl.textContent = sc.dataset.url;
+    });
+  }
+
+  // --- full-size viewer -------------------------------------------------
+  var box=document.getElementById('shotbox'), boxImg=document.getElementById('shotbox-img'),
+      boxUrl=document.getElementById('shotbox-url'), boxTabs=document.getElementById('shotbox-tabs'),
+      boxClose=document.getElementById('shotbox-close'), lastFocus=null;
+
+  if (box) {
+    var LABEL={analysis:'Analyze', trends:'Track', quality:'Defend'};
+    screens.forEach(function (sc) {
+      var b=document.createElement('button');
+      b.className='shotbox__tab'; b.type='button';
+      b.textContent=LABEL[sc.dataset.screen]||sc.dataset.screen;
+      b.dataset.screen=sc.dataset.screen;
+      b.addEventListener('click', function () { activate(sc.dataset.screen); show(sc.dataset.screen); });
+      boxTabs.appendChild(b);
+    });
+
+    function show(key) {
+      var sc=showcase.querySelector('.platform__screen[data-screen="'+key+'"]');
+      if (!sc) return;
+      var img=sc.querySelector('img');
+      boxImg.src=img.currentSrc||img.src;
+      boxImg.alt=img.alt;
+      boxUrl.textContent=sc.dataset.url||'';
+      boxTabs.querySelectorAll('.shotbox__tab').forEach(function (t) {
+        t.classList.toggle('is-active', t.dataset.screen===key);
+      });
+    }
+    function open(key) {
+      lastFocus=document.activeElement;
+      show(key);
+      box.hidden=false;
+      void box.offsetWidth;                 // flush layout so the fade has a start value
+      box.classList.add('is-open');
+      document.body.style.overflow='hidden';
+      boxClose.focus();
+    }
+    function close() {
+      box.classList.remove('is-open');
+      document.body.style.overflow='';
+      setTimeout(function(){ box.hidden=true; boxImg.src=''; }, 220);
+      if (lastFocus) lastFocus.focus();
+    }
+
+    // a horizontal drag on the mobile pan track must not count as a click
+    var downX=null, downY=null;
+    body.addEventListener('pointerdown', function (e) { downX=e.clientX; downY=e.clientY; });
+    body.addEventListener('click', function (e) {
+      var dragged = downX !== null &&
+        (Math.abs(e.clientX-downX)>6 || Math.abs(e.clientY-downY)>6);
+      downX = downY = null;
+      if (dragged) return;
+      // below 860 the frame already pans at 688px; a 96vw dialog would be smaller
+      if (window.matchMedia('(max-width: 860px)').matches) return;
+      var on=showcase.querySelector('.platform__screen.is-active');
+      if (on) open(on.dataset.screen);
+    });
+
+    boxClose.addEventListener('click', close);
+    box.addEventListener('click', function (e) { if (e.target===box) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (box.hidden) return;
+      if (e.key==='Escape') { e.preventDefault(); close(); }
+      if (e.key==='ArrowRight' || e.key==='ArrowLeft') {
+        e.preventDefault();
+        var keys=[].map.call(screens, function (sc) { return sc.dataset.screen; });
+        var cur=keys.indexOf(showcase.querySelector('.platform__screen.is-active').dataset.screen);
+        var next=(cur + (e.key==='ArrowRight'?1:keys.length-1)) % keys.length;
+        activate(keys[next]); show(keys[next]);
+      }
     });
   }
 
