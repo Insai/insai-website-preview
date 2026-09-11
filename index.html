@@ -26,7 +26,10 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBBBKQDH0W"></script>
 <script>
   gtag('js', new Date());
-  gtag('config', window.GA_MEASUREMENT_ID);
+  // GA4 was splitting traffic between / and /index.html; report both as /
+  gtag('config', window.GA_MEASUREMENT_ID, {
+    page_path: location.pathname.replace(/\/index\.html$/, '/') + location.search
+  });
 </script>
 <meta name="description" content="Insai measures the brain and body at home. Our headband records sleep EEG in a participant's own bed, and our AI turns those nights into digital biomarkers for life science research.">
 <!-- Open Graph -->
@@ -1413,280 +1416,6 @@ a {
   .offer-dev__media { height: 62px; }
 }
 
-/* Early access modal */
-.ea-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-}
-
-.ea-modal.is-open {
-  display: flex;
-}
-
-.ea-modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.ea-modal.is-open .ea-modal__backdrop {
-  opacity: 1;
-}
-
-.ea-modal__dialog {
-  position: relative;
-  background: var(--color-white);
-  border-radius: 16px;
-  padding: 40px;
-  width: 90%;
-  max-width: 480px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transform: translateY(20px) scale(0.97);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.ea-modal.is-open .ea-modal__dialog {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.ea-modal__close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: none;
-  border: none;
-  color: var(--color-gray);
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 6px;
-  transition: color 0.2s, background 0.2s;
-}
-
-.ea-modal__close:hover {
-  color: var(--color-navy);
-  background: var(--color-surface);
-}
-
-.ea-modal__title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--color-navy);
-  margin-bottom: 4px;
-}
-
-.ea-modal__subtitle {
-  font-size: 15px;
-  color: var(--color-slate);
-  margin-bottom: var(--space-lg);
-}
-
-.ea-modal__fields {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-}
-
-.ea-modal__field label {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-slate);
-  margin-bottom: 6px;
-}
-
-.ea-modal__field label .required {
-  color: var(--color-teal);
-}
-
-.ea-modal__field input {
-  width: 100%;
-  padding: 10px 14px;
-  font-size: 15px;
-  font-family: var(--font-sans);
-  color: var(--color-navy);
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.ea-modal__field input::placeholder {
-  color: var(--color-gray);
-}
-
-.ea-modal__field input:focus {
-  border-color: var(--color-teal);
-  box-shadow: 0 0 0 3px rgba(27, 168, 160, 0.25);
-}
-
-.ea-modal__field input.is-invalid {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
-}
-
-.ea-modal__field-error {
-  font-size: 13px;
-  color: #ef4444;
-  margin-top: 4px;
-  display: none;
-}
-
-.ea-modal__field-error.is-visible {
-  display: block;
-}
-
-.ea-modal__submit {
-  width: 100%;
-  padding: 14px 28px;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: var(--font-sans);
-  color: var(--color-white);
-  background: var(--color-teal);
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: background 0.2s;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.ea-modal__submit:hover {
-  background: var(--color-teal-dark);
-}
-
-.ea-modal__submit:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.ea-modal__spinner {
-  display: none;
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: var(--color-white);
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
-}
-
-.ea-modal__submit.is-loading .ea-modal__spinner {
-  display: block;
-}
-
-.ea-modal__error {
-  display: none;
-  text-align: center;
-  margin-top: var(--space-sm);
-}
-
-.ea-modal__error.is-visible {
-  display: block;
-}
-
-.ea-modal__error p {
-  font-size: 14px;
-  color: #ef4444;
-}
-
-.ea-modal__error a {
-  color: var(--color-teal);
-}
-
-.ea-modal__honeypot {
-  position: absolute;
-  left: -9999px;
-  top: -9999px;
-  opacity: 0;
-  height: 0;
-  width: 0;
-  overflow: hidden;
-}
-
-/* Success state */
-.ea-modal__success {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: var(--space-xl) 0;
-}
-
-.ea-modal__success.is-visible {
-  display: flex;
-}
-
-.ea-modal__success-circle {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--color-teal-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--space-md);
-  animation: ea-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-.ea-modal__success-check {
-  width: 32px;
-  height: 32px;
-  stroke: var(--color-teal);
-  stroke-dasharray: 30;
-  stroke-dashoffset: 30;
-  animation: ea-draw-check 0.4s 0.35s ease forwards;
-}
-
-.ea-modal__success h3 {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--color-navy);
-  margin-bottom: 6px;
-  opacity: 0;
-  transform: translateY(8px);
-  animation: ea-fade-up 0.4s 0.55s ease forwards;
-}
-
-.ea-modal__success p {
-  font-size: 15px;
-  color: var(--color-slate);
-  opacity: 0;
-  transform: translateY(8px);
-  animation: ea-fade-up 0.4s 0.7s ease forwards;
-}
-
-@keyframes ea-pop {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.15); }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes ea-draw-check {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes ea-fade-up {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 480px) {
-  .ea-modal__dialog {
-    padding: 28px 24px;
-    width: 95%;
-  }
-}
 
 /* ============================================
    SECTION 3: WHY INSAI / THE STACK
@@ -3567,8 +3296,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 .navbar__dropdown-item-desc { color: var(--fg-dim); }
 .navbar__mobile { background: var(--bg); }
 .navbar__mobile-group-items a, .navbar__mobile-group-label { color: var(--fg-muted); }
-.ea-modal__dialog { background: var(--surface); border: 1px solid var(--border-d); color: var(--fg); }
-.ea-modal__dialog input, .ea-modal__dialog textarea, .ea-modal__dialog select { background: var(--bg-deep); border-color: var(--border-d-strong); color: var(--fg); }
 .diff__title, .research__card-title { font-weight: 500; }
 
 /* platform: dark browser frame around the dark Nexus screenshot */
@@ -3885,12 +3612,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   <a href="#contact" onclick="closeMobileNav()">Contact us</a>
 </div>
 
+<main id="main">
 <!-- ============================================
      SECTION 1: HERO
      ============================================ -->
 <section class="hero" id="hero">
   <div class="hero__bg" aria-hidden="true">
-    <img src="assets/headband-cover.jpg" alt="" class="hero__bg-img" fetchpriority="high">
+    <img src="assets/headband-cover.jpg" alt="" class="hero__bg-img" fetchpriority="high" width="1600" height="1067">
   </div>
   <div class="hero__glow"></div>
   <div class="container">
@@ -3935,8 +3663,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       </div>
 
       <div class="nsmap__figure" aria-hidden="true">
-        <img src="assets/nervous-system-nerves.png" alt="" id="nsmap-fig">
-        <img src="assets/nervous-system-nerves.png" alt="" class="nsmap__spark" aria-hidden="true">
+        <img src="assets/nervous-system-nerves.webp" alt="" id="nsmap-fig" width="760" height="1140">
+        <img src="assets/nervous-system-nerves.webp" alt="" class="nsmap__spark" aria-hidden="true" width="760" height="1140">
       </div>
 
       <div class="nsmap__col nsmap__col--right">
@@ -3961,14 +3689,14 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
     <div class="nsmap__devices">
       <div class="devtile">
-        <div class="devtile__media"><img src="assets/devices/device-headband.png" alt="Nexus EEG headband" loading="lazy"></div>
+        <div class="devtile__media"><img src="assets/devices/device-headband.png" alt="Nexus EEG headband" loading="lazy" width="480" height="480"></div>
         <div class="devtile__head">
           <span class="devtile__name">Nexus headband</span>
         </div>
         <div class="devtile__desc">Sleep-EEG headband, worn overnight at home. Hours of uninterrupted brain signal, night after night.</div>
       </div>
       <div class="devtile">
-        <div class="devtile__media"><img src="assets/devices/device-sleeve.png" alt="Forearm sensor sleeve" loading="lazy"></div>
+        <div class="devtile__media"><img src="assets/devices/device-sleeve.png" alt="Forearm sensor sleeve" loading="lazy" width="320" height="481"></div>
         <div class="devtile__head">
           <span class="devtile__name">Paragit sleeve</span>
         </div>
@@ -3978,7 +3706,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   </div>
 </section>
 
-<div class="section-seam"><img class="section-seam__bg" src="assets/eeg-wave-seam.png" alt="" aria-hidden="true" loading="lazy"><div class="section-seam__inner"><span class="section-seam__title">Sleep is a Window into <span class="accent">Brain Health</span></span></div></div>
+<div class="section-seam"><img class="section-seam__bg" src="assets/eeg-wave-seam.webp" alt="" aria-hidden="true" loading="lazy" width="1620" height="590"><div class="section-seam__inner"><span class="section-seam__title">Sleep is a Window into <span class="accent">Brain Health</span></span></div></div>
 
 <!-- ============================================
      SECTION 3: PLATFORM
@@ -4028,13 +3756,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <div class="platform__screen-body">
             <span class="platform__screen-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg>Open full size</span>
             <div class="platform__screen is-active" data-screen="analysis" data-url="nexus.insai.tech/analysis">
-              <img src="assets/screenshots/nexus-night.png" alt="One night in the Nexus portal: hypnogram, staging confidence, sleep cycles, efficiency and stage composition" loading="lazy">
+              <img src="assets/screenshots/nexus-night.webp" alt="One night in the Nexus portal: hypnogram, staging confidence, sleep cycles, efficiency and stage composition" loading="lazy" width="2640" height="1920">
             </div>
             <div class="platform__screen" data-screen="trends" data-url="nexus.insai.tech/trends">
-              <img src="assets/screenshots/nexus-trends-fit.png" alt="Nexus trends, markers across 14 nights against each participant&apos;s own baseline, with low-signal nights excluded" loading="lazy">
+              <img src="assets/screenshots/nexus-trends-fit.webp" alt="Nexus trends, markers across 14 nights against each participant&apos;s own baseline, with low-signal nights excluded" loading="lazy" width="2640" height="1920">
             </div>
             <div class="platform__screen" data-screen="quality" data-url="nexus.insai.tech/data-trust">
-              <img src="assets/screenshots/nexus-dq.png" alt="Nexus signal quality: Data-Trust score, per-channel quality worst first, coverage and confidence, with detected sleep oscillations below" loading="lazy">
+              <img src="assets/screenshots/nexus-dq.webp" alt="Nexus signal quality: Data-Trust score, per-channel quality worst first, coverage and confidence, with detected sleep oscillations below" loading="lazy" width="2640" height="1920">
             </div>
           </div>
         </div>
@@ -4129,7 +3857,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
     <div class="appgrid">
       <div class="appcard">
-        <div class="appcard__img"><span class="appcard__tag">Longevity</span><img src="assets/applications/app-longevity.jpg" alt="Older woman asleep in her own bed wearing the Nexus headband" loading="lazy"></div>
+        <div class="appcard__img"><span class="appcard__tag">Longevity</span><img src="assets/applications/app-longevity.jpg" alt="Older woman asleep in her own bed wearing the Nexus headband" loading="lazy" width="1200" height="750"></div>
         <div class="appcard__body">
           <div class="appcard__k">Health and longevity</div>
           <div class="appcard__d">Slow-wave sleep and sleep regularity move slowly and swing night to night. A run of nights at each timepoint reads a participant against their own average.</div>
@@ -4137,7 +3865,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         </div>
       </div>
       <div class="appcard">
-        <div class="appcard__img"><span class="appcard__tag">Neurology</span><img src="assets/applications/app-parkinsons.jpg" alt="Older man at home wearing the forearm sensor sleeve" loading="lazy" style="object-position:50% 16%;"></div>
+        <div class="appcard__img"><span class="appcard__tag">Neurology</span><img src="assets/applications/app-parkinsons.jpg" alt="Older man at home wearing the forearm sensor sleeve" loading="lazy" style="object-position:50% 16%;" width="1200" height="800"></div>
         <div class="appcard__body">
           <div class="appcard__k">Parkinson&apos;s, between visits</div>
           <div class="appcard__d">MDS-UPDRS comes months apart, scored by hand. We read the brain on the nights in between, with EMG and motion from the sleeve.</div>
@@ -4145,7 +3873,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         </div>
       </div>
       <div class="appcard">
-        <div class="appcard__img"><span class="appcard__tag">Psychiatry</span><img src="assets/applications/app-sleep-pro.jpg" alt="At-home sleep study with the Nexus headband" loading="lazy" style="object-position:50% 30%;"></div>
+        <div class="appcard__img"><span class="appcard__tag">Psychiatry</span><img src="assets/applications/app-sleep-pro.jpg" alt="At-home sleep study with the Nexus headband" loading="lazy" style="object-position:50% 30%;" width="1000" height="667"></div>
         <div class="appcard__body">
           <div class="appcard__k">Psychiatry and mental health</div>
           <div class="appcard__d">Mood and cognition trials run on wrist actigraphy, which infers sleep from movement. The headband reads EEG, so you follow REM and slow-wave sleep through an episode.</div>
@@ -4160,12 +3888,12 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
     <hr class="partners__divider">
     <div class="partners__label">Collaborators</div>
     <div class="partners__logos">
-      <img src="assets/DTU-logo-mono.png" alt="Technical University of Denmark" class="partners__logo">
-      <img src="assets/rh-logo-mono.png" alt="Rigshospitalet" class="partners__logo">
-      <img src="assets/ku-logo-clean-mono.png" alt="University of Copenhagen" class="partners__logo">
-      <img src="assets/cebreo-logo-mono.png" alt="Cebreo Medical" class="partners__logo">
-      <img src="assets/opto-logo-mono.png" alt="OptoCeutics" class="partners__logo">
-      <img src="assets/paragit-logo-mono.png" alt="Paragit Neurotech" class="partners__logo">
+      <img src="assets/DTU-logo-mono.png" alt="Technical University of Denmark" class="partners__logo" width="225" height="225">
+      <img src="assets/rh-logo-mono.png" alt="Rigshospitalet" class="partners__logo" width="225" height="225">
+      <img src="assets/ku-logo-clean-mono.png" alt="University of Copenhagen" class="partners__logo" width="355" height="142">
+      <img src="assets/cebreo-logo-mono.png" alt="Cebreo Medical" class="partners__logo" width="200" height="200">
+      <img src="assets/opto-logo-mono.png" alt="OptoCeutics" class="partners__logo" width="300" height="222">
+      <img src="assets/paragit-logo-mono.png" alt="Paragit Neurotech" class="partners__logo" width="244" height="129">
     </div>
   </div>
 </section>
@@ -4246,62 +3974,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   </div>
 </section>
 
-<!-- ============================================
-     EARLY ACCESS MODAL
-     ============================================ -->
-<div class="ea-modal" id="ea-modal" aria-hidden="true">
-  <div class="ea-modal__backdrop" id="ea-backdrop"></div>
-  <div class="ea-modal__dialog" role="dialog" aria-labelledby="ea-modal-title">
-    <button class="ea-modal__close" id="ea-close" aria-label="Close">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
 
-    <!-- Form state -->
-    <div class="ea-modal__form-wrap" id="ea-form-wrap">
-      <h2 class="ea-modal__title" id="ea-modal-title">Request early access</h2>
-      <p class="ea-modal__subtitle">Get access to the Insai platform for your research team.</p>
-
-      <form id="early-access-form" action="https://formspree.io/f/xykdpapq" method="POST" novalidate>
-        <div class="ea-modal__honeypot" aria-hidden="true">
-          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-        </div>
-        <div class="ea-modal__fields">
-          <div class="ea-modal__field">
-            <label for="ea-name">Name <span class="required">*</span></label>
-            <input type="text" id="ea-name" name="name" required placeholder="Your name">
-            <div class="ea-modal__field-error" id="ea-name-error">Please enter your name</div>
-          </div>
-          <div class="ea-modal__field">
-            <label for="ea-email">Work email <span class="required">*</span></label>
-            <input type="email" id="ea-email" name="email" required placeholder="you@company.com">
-            <div class="ea-modal__field-error" id="ea-email-error">Please enter a valid email</div>
-          </div>
-          <div class="ea-modal__field">
-            <label for="ea-company">Company <span class="required">*</span></label>
-            <input type="text" id="ea-company" name="company" required placeholder="Your company">
-            <div class="ea-modal__field-error" id="ea-company-error">Please enter your company</div>
-          </div>
-        </div>
-        <button type="submit" class="ea-modal__submit" id="ea-submit">
-          <span>Request early access</span>
-          <span class="ea-modal__spinner"></span>
-        </button>
-        <div class="ea-modal__error" id="ea-error">
-          <p>Something went wrong. Please try again or email <a href="mailto:mark@insai.tech">mark@insai.tech</a>.</p>
-        </div>
-      </form>
-    </div>
-
-    <!-- Success state -->
-    <div class="ea-modal__success" id="ea-success">
-      <div class="ea-modal__success-circle">
-        <svg class="ea-modal__success-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <h3>You're on the list</h3>
-      <p>We'll be in touch soon with next steps.</p>
-    </div>
-  </div>
-</div>
+</main>
 
 <!-- ============================================
      FOOTER
@@ -4390,118 +4064,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   });
 
   // Platform: single static Nexus screenshot; steps are a description list (no swap/auto-cycle).
-
-  // ========================================
-  // Early access modal
-  // ========================================
-  var eaModal = document.getElementById('ea-modal');
-  var eaOpenBtn = document.getElementById('ea-open');
-  var eaCloseBtn = document.getElementById('ea-close');
-  var eaBackdrop = document.getElementById('ea-backdrop');
-  var eaForm = document.getElementById('early-access-form');
-  var eaFormWrap = document.getElementById('ea-form-wrap');
-  var eaSubmit = document.getElementById('ea-submit');
-  var eaSuccess = document.getElementById('ea-success');
-  var eaError = document.getElementById('ea-error');
-
-  function openEaModal() {
-    eaModal.classList.add('is-open');
-    eaModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    // Focus first input after animation
-    setTimeout(function() {
-      var firstInput = eaForm.querySelector('input[name="name"]');
-      if (firstInput) firstInput.focus();
-    }, 350);
-  }
-
-  function closeEaModal() {
-    eaModal.classList.remove('is-open');
-    eaModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  if (eaOpenBtn) {
-    eaOpenBtn.addEventListener('click', openEaModal);
-  }
-  if (eaCloseBtn) {
-    eaCloseBtn.addEventListener('click', closeEaModal);
-  }
-  if (eaBackdrop) {
-    eaBackdrop.addEventListener('click', closeEaModal);
-  }
-  // Close on Escape
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && eaModal.classList.contains('is-open')) {
-      closeEaModal();
-    }
-  });
-
-  if (eaForm) {
-    var eaRequiredFields = eaForm.querySelectorAll('[required]');
-
-    function validateEaField(field) {
-      var errorEl = document.getElementById(field.id + '-error');
-      var value = field.value.trim();
-      var valid = true;
-      if (!value) {
-        valid = false;
-      } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        valid = false;
-      }
-      if (!valid) {
-        field.classList.add('is-invalid');
-        if (errorEl) errorEl.classList.add('is-visible');
-      } else {
-        field.classList.remove('is-invalid');
-        if (errorEl) errorEl.classList.remove('is-visible');
-      }
-      return valid;
-    }
-
-    eaRequiredFields.forEach(function(field) {
-      field.addEventListener('input', function() {
-        if (field.classList.contains('is-invalid')) {
-          validateEaField(field);
-        }
-      });
-    });
-
-    eaForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var allValid = true;
-      eaRequiredFields.forEach(function(field) {
-        if (!validateEaField(field)) allValid = false;
-      });
-      if (!allValid) return;
-
-      eaSubmit.classList.add('is-loading');
-      eaSubmit.disabled = true;
-      eaSubmit.querySelector('span:first-child').textContent = 'Submitting...';
-      eaError.classList.remove('is-visible');
-
-      var formData = new FormData(eaForm);
-
-      fetch(eaForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(function(response) {
-        if (response.ok) {
-          eaFormWrap.style.display = 'none';
-          eaSuccess.classList.add('is-visible');
-        } else {
-          throw new Error('Form submission failed');
-        }
-      }).catch(function() {
-        eaError.classList.add('is-visible');
-      }).finally(function() {
-        eaSubmit.classList.remove('is-loading');
-        eaSubmit.disabled = false;
-        eaSubmit.querySelector('span:first-child').textContent = 'Request early access';
-      });
-    });
-  }
 
   // ========================================
   // Contact form handler
@@ -4710,83 +4272,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   });
 })();
 </script>
-
-<!-- One-pager download gate (INS-1133) -->
-<script>
-(function () {
-  var wrap = document.getElementById('briefings');
-  if (!wrap) return;
-  var gate = document.getElementById('downloads-gate');
-  var emailInput = document.getElementById('downloads-email');
-  var msg = document.getElementById('downloads-msg');
-  var grid = document.getElementById('downloads-grid');
-  var cards = grid ? grid.querySelectorAll('.dl-card') : [];
-  var ENDPOINT = 'https://formspree.io/f/meeleqvr';
-  var KEY = 'insai_dl_unlocked';
-
-  function unlock() {
-    wrap.classList.add('is-unlocked');
-    cards.forEach(function (c) {
-      c.setAttribute('href', c.getAttribute('data-file'));
-      c.setAttribute('download', '');
-      c.removeAttribute('aria-disabled');
-    });
-  }
-
-  // Returning visitors who already gave an email skip the gate.
-  try { if (localStorage.getItem(KEY) === '1') unlock(); } catch (e) {}
-
-  // Locked cards focus the email field instead of navigating.
-  cards.forEach(function (c) {
-    c.addEventListener('click', function (e) {
-      if (!wrap.classList.contains('is-unlocked')) {
-        e.preventDefault();
-        emailInput.focus();
-        msg.textContent = 'Enter your work email above to unlock the downloads.';
-        msg.className = 'downloads__gate-msg';
-      }
-    });
-  });
-
-  if (gate) {
-    gate.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var email = (emailInput.value || '').trim();
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-        msg.textContent = 'Please enter a valid email.';
-        msg.className = 'downloads__gate-msg is-error';
-        return;
-      }
-      var btn = gate.querySelector('button');
-      btn.disabled = true;
-      msg.textContent = 'Unlocking...';
-      msg.className = 'downloads__gate-msg';
-
-      var fd = new FormData();
-      fd.append('email', email);
-      fd.append('_subject', 'One-pager download');
-      fd.append('source', 'briefings / one-pager downloads');
-
-      fetch(ENDPOINT, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
-        .then(function (r) {
-          if (!r.ok) throw new Error('failed');
-          try { localStorage.setItem(KEY, '1'); } catch (e) {}
-          unlock();
-          msg.textContent = 'Downloads unlocked. Pick a briefing below.';
-          msg.className = 'downloads__gate-msg is-ok';
-        })
-        .catch(function () {
-          // Don't trap the user if lead-capture fails; still let them download.
-          unlock();
-          msg.textContent = 'Downloads unlocked.';
-          msg.className = 'downloads__gate-msg is-ok';
-        })
-        .finally(function () { btn.disabled = false; });
-    });
-  }
-})();
-</script>
-
 <!-- Platform showcase: click/hover a card to swap the screen -->
 <script>
 (function () {
@@ -4828,6 +4313,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       var img=sc.querySelector('img');
       boxImg.src=img.currentSrc||img.src;
       boxImg.alt=img.alt;
+      if (img.naturalWidth) { boxImg.width=img.naturalWidth; boxImg.height=img.naturalHeight; }
       boxUrl.textContent=sc.dataset.url||'';
       boxTabs.querySelectorAll('.shotbox__tab').forEach(function (t) {
         t.classList.toggle('is-active', t.dataset.screen===key);
