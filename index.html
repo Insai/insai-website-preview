@@ -2,7 +2,6 @@
 <!-- @dsCard group="Brand" name="Homepage" subtitle="Hero · Signals · Platform · Get started · Applications" viewport="1440x900" -->
 <html lang="en">
 <head>
-<meta name="robots" content="noindex,nofollow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insai | Brain and body biomarkers, measured at home</title>
@@ -29,11 +28,12 @@
   gtag('js', new Date());
   gtag('config', window.GA_MEASUREMENT_ID);
 </script>
-<meta name="description" content="Reproducible brain biomarkers from at-home sleep. Every number comes back with its method and its signal quality. For Research Use Only.">
+<meta name="description" content="Insai measures the brain and body at home. Our headband records sleep EEG in a participant's own bed, and our AI turns those nights into digital biomarkers for life science research.">
 <!-- Open Graph -->
 <meta property="og:title" content="Insai | Brain and body biomarkers, measured at home">
-<meta property="og:description" content="Reproducible brain biomarkers from at-home sleep. Every number comes back with its method and its signal quality. For Research Use Only.">
-<meta property="og:image" content="https://insai.tech/assets/og-card.png">
+<meta property="og:description" content="Insai measures the brain and body at home. Our headband records sleep EEG in a participant's own bed, and our AI turns those nights into digital biomarkers for life science research.">
+<meta property="og:image" content="https://insai.github.io/insai-website-preview/assets/og-card.png">
+<meta property="og:image:alt" content="Insai, with an EEG waveform">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://insai.tech/">
@@ -42,14 +42,17 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Insai | Brain and body biomarkers, measured at home">
-<meta name="twitter:description" content="Reproducible brain biomarkers from at-home sleep. Every number comes back with its method and its signal quality. For Research Use Only.">
-<meta name="twitter:image" content="https://insai.tech/assets/og-card.png">
+<meta name="twitter:description" content="Insai measures the brain and body at home. Our headband records sleep EEG in a participant's own bed, and our AI turns those nights into digital biomarkers for life science research.">
+<meta name="twitter:image" content="https://insai.github.io/insai-website-preview/assets/og-card.png">
+<meta name="twitter:image:alt" content="Insai, with an EEG waveform">
 <!-- Canonical URL -->
 <link rel="canonical" href="https://insai.tech/">
+<meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="assets/Insai-logo-2026-icon.png"><style>
+<link rel="icon" type="image/png" href="assets/Insai-logo-2026-icon.png">
+<link rel="apple-touch-icon" href="assets/Insai-logo-2026-icon.png"><style>
 /* ============================================
    INSAI DESIGN TOKENS v1.0
    ============================================ */
@@ -3759,11 +3762,33 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   "name": "Insai",
   "url": "https://insai.tech",
   "logo": "https://insai.tech/assets/Insai-logo-2026.png",
-  "description": "Reproducible brain biomarkers from at-home sleep. Every number comes back with its method and its signal quality. For Research Use Only.",
+  "description": "Insai measures the brain and body at home. Our headband records sleep EEG in a participant's own bed, and our AI turns those nights into digital biomarkers for life science research.",
   "contactPoint": {
     "@type": "ContactPoint",
     "email": "mark@insai.tech"
-  }
+  },
+  "sameAs": ["https://www.linkedin.com/company/insai-neurotech/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Insai",
+  "url": "https://insai.tech/",
+  "publisher": { "@type": "Organization", "name": "Insai" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Insai | Brain and body biomarkers, measured at home",
+  "url": "https://insai.tech/",
+  "description": "Insai measures the brain and body at home. Our headband records sleep EEG in a participant's own bed, and our AI turns those nights into digital biomarkers for life science research.",
+  "primaryImageOfPage": { "@type": "ImageObject", "url": "https://insai.github.io/insai-website-preview/assets/og-card.png" },
+  "isPartOf": { "@type": "WebSite", "url": "https://insai.tech/" },
+  "about": { "@type": "Organization", "name": "Insai" }
 }
 </script>
 </head>
@@ -4464,6 +4489,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         if (response.ok) {
           contactForm.style.display = 'none';
           contactSuccess.classList.add('is-visible');
+          // fires only once the backend confirms; Consent Mode governs storage
+          if (window.gtag) {
+            gtag('event', 'generate_lead', {
+              form_name: 'study-inquiry',
+              inquiry_type: formData.get('inquiry') || 'unspecified'
+            });
+          }
         } else {
           throw new Error('Form submission failed');
         }
@@ -4556,7 +4588,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
 <!-- Cookie Consent Banner -->
 <div id="cookie-consent-banner" style="display:none;position:fixed;bottom:24px;left:24px;right:24px;max-width:480px;z-index:10000;background:#14181D;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:20px 24px;box-shadow:0 8px 32px rgba(0,0,0,0.5);font-family:'Geist',system-ui,-apple-system,sans-serif;opacity:0;transform:translateY(16px);transition:opacity 0.4s ease,transform 0.4s ease;">
-  <p style="margin:0 0 16px 0;font-size:14px;line-height:1.6;color:#CBD5E1;">We use analytics cookies to understand how visitors interact with our site. No advertising or third-party tracking.</p>
+  <p style="margin:0 0 16px 0;font-size:14px;line-height:1.6;color:#CBD5E1;">We use analytics cookies to understand how visitors interact with our site. No advertising or third-party tracking. <a href="privacy.html" style="color:#1BA8A0;text-decoration:underline;">Privacy policy</a></p>
   <div style="display:flex;gap:10px;align-items:center;">
     <button id="cookie-accept" style="padding:10px 28px;border-radius:8px;border:none;background:#1BA8A0;color:#fff;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;transition:background 0.2s;">Accept</button>
     <button id="cookie-decline" style="padding:10px 16px;border-radius:8px;border:none;background:transparent;color:rgba(255,255,255,0.72);font-size:13px;font-weight:400;font-family:inherit;cursor:pointer;">No thanks</button>
