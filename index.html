@@ -22,20 +22,40 @@
   });
 
   window.GA_MEASUREMENT_ID = 'G-VBBBKQDH0W';
+
+  // Only the live site reports. Local previews and the preview repo stay out of the
+  // numbers, and so does any browser that opened the site once with ?notrack=1
+  // (undo with ?notrack=0). ?ga_debug=1 shows the visit in GA DebugView.
+  (function () {
+    var q = new URLSearchParams(location.search), optedOut = false;
+    try {
+      if (q.get('notrack') === '1') localStorage.setItem('insai-notrack', '1');
+      if (q.get('notrack') === '0') localStorage.removeItem('insai-notrack');
+      optedOut = localStorage.getItem('insai-notrack') === '1';
+    } catch (e) {}
+    if (!/(^|\.)insai\.tech$/.test(location.hostname) || optedOut) {
+      window['ga-disable-' + window.GA_MEASUREMENT_ID] = true;
+    }
+    window.GA_DEBUG = q.get('ga_debug') === '1';
+  })();
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBBBKQDH0W"></script>
 <script>
   gtag('js', new Date());
-  // GA4 was splitting traffic between / and /index.html; report both as /
-  gtag('config', window.GA_MEASUREMENT_ID, {
-    page_path: location.pathname.replace(/\/index\.html$/, '/') + location.search
-  });
+  // One path per page: /index.html reports as /, /workbench.html as /workbench
+  var gaConfig = {
+    page_location: location.origin +
+      location.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '') + location.search
+  };
+  if (window.GA_DEBUG) gaConfig.debug_mode = true; // any value, even false, turns debug on
+  gtag('config', window.GA_MEASUREMENT_ID, gaConfig);
 </script>
+<!-- /Google Analytics -->
 <meta name="description" content="Insai measures the brain and body at home. Our headband records sleep EEG in a participant's own bed, and our AI turns those nights into digital biomarkers for life science research.">
 <!-- Open Graph -->
 <meta property="og:title" content="Insai | Brain and body biomarkers, measured at home">
 <meta property="og:description" content="Insai measures the brain and body at home. Our headband records sleep EEG in a participant's own bed, and our AI turns those nights into digital biomarkers for life science research.">
-<meta property="og:image" content="https://insai.github.io/insai-website-preview/assets/og-card.png">
+<meta property="og:image" content="https://insai.tech/assets/og-card.png">
 <meta property="og:image:alt" content="Insai, with an EEG waveform">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -46,11 +66,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Insai | Brain and body biomarkers, measured at home">
 <meta name="twitter:description" content="Insai measures the brain and body at home. Our headband records sleep EEG in a participant's own bed, and our AI turns those nights into digital biomarkers for life science research.">
-<meta name="twitter:image" content="https://insai.github.io/insai-website-preview/assets/og-card.png">
+<meta name="twitter:image" content="https://insai.tech/assets/og-card.png">
 <meta name="twitter:image:alt" content="Insai, with an EEG waveform">
 <!-- Canonical URL -->
 <link rel="canonical" href="https://insai.tech/">
-<meta name="robots" content="noindex,nofollow">
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -3547,6 +3567,25 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 }
 @media (prefers-reduced-motion: reduce) { .shotbox { transition: none; } }
 
+/* Launch strip: one line above the hero eyebrow pointing at the new product */
+.hero__launch {
+  display: inline-flex; align-items: center; gap: 10px; max-width: 100%;
+  margin-bottom: var(--space-lg); padding: 6px 14px 6px 6px;
+  font-size: 14px; font-weight: 400; line-height: 1.3; color: var(--fg);
+  background: rgba(7,9,11,0.72); border: 1px solid rgba(27,168,160,0.45); border-radius: 999px;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.hero__launch:hover { border-color: var(--color-teal); background: rgba(27,168,160,0.10); }
+.hero__launch:focus-visible { outline: 2px solid var(--color-teal); outline-offset: 3px; }
+.hero__launch-tag {
+  flex-shrink: 0; padding: 3px 9px; border-radius: 999px;
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #04110F; background: var(--color-teal);
+}
+.hero__launch svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--color-teal); }
+@media (max-width: 480px) { .hero__launch { font-size: 13px; } }
+
 </style>
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
@@ -3580,7 +3619,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   "name": "Insai | Brain and body biomarkers, measured at home",
   "url": "https://insai.tech/",
   "description": "Insai measures the brain and body at home. Our headband records sleep EEG in a participant's own bed, and our AI turns those nights into digital biomarkers for life science research.",
-  "primaryImageOfPage": { "@type": "ImageObject", "url": "https://insai.github.io/insai-website-preview/assets/og-card.png" },
+  "primaryImageOfPage": { "@type": "ImageObject", "url": "https://insai.tech/assets/og-card.png" },
   "isPartOf": { "@type": "WebSite", "url": "https://insai.tech/" },
   "about": { "@type": "Organization", "name": "Insai" }
 }
@@ -3597,6 +3636,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       <img src="assets/Insai-logo-2026-white.png" alt="Insai" id="navbar-logo" width="101" height="36">
     </a>
     <ul class="navbar__links">
+      <li><a href="workbench.html" class="navbar__link" data-cta="home_nav_workbench">Workbench</a></li>
       <li><a href="#contact" class="navbar__cta">Contact us</a></li>
     </ul>
     <button class="navbar__hamburger" id="hamburger" aria-label="Menu">
@@ -3609,6 +3649,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
 <!-- Mobile nav -->
 <div class="navbar__mobile" id="mobile-nav">
+  <a href="workbench.html" onclick="closeMobileNav()">Workbench</a>
   <a href="#contact" onclick="closeMobileNav()">Contact us</a>
 </div>
 
@@ -3623,11 +3664,12 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   <div class="hero__glow"></div>
   <div class="container">
     <div class="hero__content">
+      <a href="workbench.html" class="hero__launch" data-cta="home_launch_strip"><span class="hero__launch-tag">New</span>Nexus Workbench is live. Score sleep EEG together.<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <div class="eyebrow">Digital biomarkers for life science research</div>
       <h1 class="hero__headline">The brain and body, <span class="accent">measured in the real world.</span></h1>
       <p class="hero__subhead">Using AI to decode neurophysiology and make brain medicine measurable.</p>
       <div class="hero__ctas">
-        <a href="#contact" class="btn btn--primary">Get started<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="workbench.html#request" class="btn btn--primary" data-cta="home_hero_request">Request Workbench access<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </div>
@@ -3793,7 +3835,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   <div class="container">
     <div class="eyebrow">Get started</div>
     <h2 class="section-headline">Start on your data. <span class="accent">Scale with at-home studies.</span></h2>
-    <p class="solutions__router">Upload and analyze nights you already have. Run your next study on the same platform, and we ship devices straight to your participants.</p>
+    <p class="solutions__router">Score and analyze the nights you already have in Workbench. Run your next study on the same platform, and we ship devices straight to your participants.</p>
 
     <div class="solutions__grid offers">
       <div class="offer-card">
@@ -3801,21 +3843,21 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <span class="offer-card__icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
           </span>
-          <span class="offer-card__badge">Beta</span>
+          <span class="offer-card__badge">New</span>
         </div>
         <div class="offer-card__for">For researchers with recordings in hand</div>
-        <div class="offer-card__eyebrow">Software &middot; Nexus portal</div>
-        <h3 class="offer-card__title">Upload your nights. Get them analyzed.</h3>
-        <p class="offer-card__body">Every number comes back with its method and its signal quality, so you can defend what you report.</p>
+        <div class="offer-card__eyebrow">Software &middot; Nexus Workbench</div>
+        <h3 class="offer-card__title">Score your nights together, every mark explained.</h3>
+        <p class="offer-card__body">The machine&apos;s marks sit on the signal with the reason they&apos;re there. Your lab agrees or disagrees with each one.</p>
         <ul class="offer-card__points">
-          <li>Upload and manage EDFs</li>
-          <li>Staging with <a href="https://doi.org/10.1038/s41746-021-00440-5" target="_blank" rel="noopener">U-Sleep</a>, <a href="https://doi.org/10.7554/eLife.70092" target="_blank" rel="noopener">YASA</a>, <a href="https://arxiv.org/abs/2412.07236" target="_blank" rel="noopener">CBraMod</a>, <a href="https://arxiv.org/abs/2606.09605" target="_blank" rel="noopener">Hypnos</a>, and others</li>
+          <li>Upload EDFs and invite your whole lab to the same night</li>
+          <li>Staging with <a href="https://doi.org/10.1038/s41746-021-00440-5" target="_blank" rel="noopener">U-Sleep</a>, <a href="https://doi.org/10.7554/eLife.70092" target="_blank" rel="noopener">YASA</a> side by side, with confidence per epoch</li>
           <li>Architecture, regularity, spindles, slow waves, and spectral markers</li>
           <li>A signal-quality score on every night, with the raw trace behind it</li>
-          <li>CLI and API that drop into your own workflows</li>
+          <li>EDF, scoring CSV and JSON export</li>
         </ul>
         <div class="offer-card__foot">
-          <a href="#contact" class="btn btn--primary offer-card__cta" data-inquiry="Nexus software access">Request access</a>
+          <a href="workbench.html" class="btn btn--primary offer-card__cta" data-cta="home_card_workbench">Explore Workbench</a>
         </div>
       </div>
       <div class="offer-card">
@@ -3836,7 +3878,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <li>The same markers and provenance as the portal</li>
         </ul>
         <div class="offer-card__foot">
-          <a href="#contact" class="btn btn--secondary-light offer-card__cta" data-inquiry="Book a meeting">Book a protocol call</a>
+          <a href="#contact" class="btn btn--secondary-light offer-card__cta" data-inquiry="Book a meeting" data-cta="home_card_studies">Book a protocol call</a>
         </div>
       </div>
     </div>
@@ -3920,6 +3962,10 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           <div class="contact__honeypot" aria-hidden="true">
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
           </div>
+          <input type="hidden" name="page" value="home">
+          <input type="hidden" name="utm_source" data-utm="utm_source">
+          <input type="hidden" name="utm_medium" data-utm="utm_medium">
+          <input type="hidden" name="utm_campaign" data-utm="utm_campaign">
           <div class="contact__form-row">
             <div class="contact__field">
               <label for="contact-name">Name <span class="required">*</span></label>
@@ -3942,7 +3988,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
               <label for="contact-inquiry">Inquiry type</label>
               <select id="contact-inquiry" name="inquiry">
                 <option value="" disabled selected>Select an option</option>
-                <option value="Nexus software access">Nexus software access</option>
+                <option value="Nexus Workbench access">Nexus Workbench access</option>
+                <option value="Research kit quote">Research kit quote</option>
                 <option value="Book a meeting">Book a meeting</option>
                 <option value="Something else">Something else</option>
               </select>
@@ -3989,6 +4036,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         <span class="footer__ruo">For Research Use Only</span>
       </div>
       <nav class="footer__nav" aria-label="Footer">
+        <a href="workbench.html">Workbench</a>
         <a href="#contact">Contact</a>
         <a href="https://www.linkedin.com/company/insai-neurotech/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="privacy.html">Privacy policy</a>
@@ -4115,7 +4163,15 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       requiredFields.forEach(function(field) {
         if (!validateField(field)) allValid = false;
       });
-      if (!allValid) return;
+      if (!allValid) {
+        if (window.gtag) {
+          gtag('event', 'form_error', {
+            form_name: contactForm.dataset.formName || 'study-inquiry',
+            error_type: 'validation'
+          });
+        }
+        return;
+      }
 
       // Show loading state
       contactSubmit.classList.add('is-loading');
@@ -4136,7 +4192,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
           // fires only once the backend confirms; Consent Mode governs storage
           if (window.gtag) {
             gtag('event', 'generate_lead', {
-              form_name: 'study-inquiry',
+              form_name: contactForm.dataset.formName || 'study-inquiry',
               inquiry_type: formData.get('inquiry') || 'unspecified'
             });
           }
@@ -4145,10 +4201,16 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         }
       }).catch(function() {
         contactError.classList.add('is-visible');
+        if (window.gtag) {
+          gtag('event', 'form_error', {
+            form_name: contactForm.dataset.formName || 'study-inquiry',
+            error_type: 'send'
+          });
+        }
       }).finally(function() {
         contactSubmit.classList.remove('is-loading');
         contactSubmit.disabled = false;
-        contactSubmit.querySelector('span:first-child').textContent = 'Send message';
+        contactSubmit.querySelector('span:first-child').textContent = contactForm.dataset.submitLabel || 'Send message';
       });
     });
 
@@ -4482,6 +4544,101 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   draw();
   setTimeout(draw, 250);
   setTimeout(draw, 800);
+})();
+</script>
+
+<!-- Funnel: campaign, clicks, sections, scroll depth, forms -->
+<script>
+(function () {
+  function send(name, params) { if (window.gtag) gtag('event', name, params); }
+
+  // Keep the campaign a visitor arrived with (for this tab), so a form sent
+  // later, on any page, still says which post or channel brought them.
+  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign'];
+  var store = {};
+  try { store = JSON.parse(sessionStorage.getItem('insai_utm') || '{}') || {}; } catch (e) {}
+  var q = new URLSearchParams(location.search);
+  if (KEYS.some(function (k) { return q.get(k); })) {
+    store = {};
+    KEYS.forEach(function (k) { if (q.get(k)) store[k] = q.get(k).slice(0, 100); });
+    try { sessionStorage.setItem('insai_utm', JSON.stringify(store)); } catch (e) {}
+  }
+  document.querySelectorAll('input[data-utm]').forEach(function (el) {
+    el.value = store[el.getAttribute('data-utm')] || '';
+  });
+
+  function sectionOf(el) {
+    var sec = el.closest('section[id]');
+    if (sec) return sec.id;
+    if (el.closest('footer')) return 'footer';
+    if (el.closest('#navbar, #mobile-nav')) return 'nav';
+    return 'other';
+  }
+  function slug(t) {
+    return (t || '').toLowerCase().replace(/&[a-z]+;/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40);
+  }
+
+  // Every link and button click. Tagged ones keep their data-cta name; the rest
+  // are named section:link-text, so nothing on the page goes uncounted.
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('a[href], button');
+    if (!el || el.closest('#cookie-consent-banner') || (el.type === 'submit' && el.form)) return;
+    var text = (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim();
+    var label = text || el.getAttribute('aria-label') || (el.querySelector('img') || {}).alt || 'icon';
+    var section = sectionOf(el);
+    var params = { cta: el.getAttribute('data-cta') || section + ':' + slug(label), section: section, link_text: label.slice(0, 100) };
+    if (el.href) params.link_url = el.href;
+    send('cta_click', params);
+  }, true);
+
+  // A section counts as seen once half of it (or half the screen, for tall
+  // sections) has been on screen for a full second.
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  if ('IntersectionObserver' in window && sections.length) {
+    var timers = {};
+    var steps = [];
+    for (var i = 0; i <= 20; i++) steps.push(i / 20);
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var id = en.target.id;
+        var need = Math.min(en.boundingClientRect.height, window.innerHeight) * 0.5;
+        if (en.isIntersecting && en.intersectionRect.height >= need) {
+          if (!timers[id]) {
+            timers[id] = setTimeout(function () {
+              io.unobserve(en.target);
+              send('section_view', { section: id, section_index: sections.indexOf(en.target) + 1 });
+            }, 1000);
+          }
+        } else if (timers[id]) {
+          clearTimeout(timers[id]);
+          timers[id] = 0;
+        }
+      });
+    }, { threshold: steps });
+    sections.forEach(function (sec) { io.observe(sec); });
+  }
+
+  // Scroll depth at 25, 50, 75 and 100 percent of the page
+  var marks = [25, 50, 75, 100], hit = {}, ticking = false;
+  function checkDepth() {
+    ticking = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max <= 0 ? 100 : window.scrollY / max * 100;
+    marks.forEach(function (m) {
+      if (!hit[m] && pct >= m - 1) { hit[m] = true; send('scroll_depth', { depth: m }); }
+    });
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(checkDepth); }
+  }, { passive: true });
+
+  // First touch on a form (the send itself is generate_lead, failures form_error)
+  document.querySelectorAll('form').forEach(function (form) {
+    form.addEventListener('focusin', function onStart() {
+      form.removeEventListener('focusin', onStart);
+      send('form_start', { form_name: form.dataset.formName || 'study-inquiry' });
+    });
+  });
 })();
 </script>
 </body>

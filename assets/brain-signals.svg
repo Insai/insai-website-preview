@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 -10 370 410">
+  <!-- Neural Network Brain - Geometric node & edge illustration -->
+  <!-- Usage: <img src="assets/brain-signals.svg" alt="Neural network brain" /> -->
+
+  <!-- ====== EDGES (connections between nodes) ====== -->
+
+  <!-- Outer perimeter - top arc (clockwise) -->
+  <line x1="68" y1="62" x2="100" y2="30" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="100" y1="30" x2="160" y2="10" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="160" y1="10" x2="235" y2="18" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="235" y1="18" x2="295" y2="44" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="295" y1="44" x2="338" y2="80" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Outer perimeter - right side -->
+  <line x1="338" y1="80" x2="360" y2="128" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="360" y1="128" x2="356" y2="178" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="356" y1="178" x2="332" y2="222" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Outer perimeter - left side -->
+  <line x1="68" y1="62" x2="42" y2="115" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="42" y1="115" x2="34" y2="170" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="34" y1="170" x2="52" y2="226" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="52" y1="226" x2="96" y2="268" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Bottom connections -->
+  <line x1="96" y1="268" x2="162" y2="218" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="96" y1="268" x2="202" y2="270" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="162" y1="218" x2="202" y2="270" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="270" x2="245" y2="205" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="245" y1="205" x2="302" y2="262" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="270" x2="302" y2="262" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="332" y1="222" x2="302" y2="262" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Brainstem -->
+  <line x1="302" y1="262" x2="286" y2="310" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="286" y1="310" x2="314" y2="346" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="314" y1="346" x2="298" y2="380" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="270" x2="286" y2="310" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Top outer to inner top row -->
+  <line x1="68" y1="62" x2="134" y2="86" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="100" y1="30" x2="134" y2="86" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="100" y1="30" x2="202" y2="70" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="160" y1="10" x2="134" y2="86" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="160" y1="10" x2="202" y2="70" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="235" y1="18" x2="202" y2="70" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="235" y1="18" x2="274" y2="82" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="295" y1="44" x2="274" y2="82" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="338" y1="80" x2="274" y2="82" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Inner top row horizontal -->
+  <line x1="134" y1="86" x2="202" y2="70" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="70" x2="274" y2="82" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Middle row to outer -->
+  <line x1="42" y1="115" x2="114" y2="155" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="34" y1="170" x2="114" y2="155" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="360" y1="128" x2="290" y2="144" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="356" y1="178" x2="290" y2="144" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="338" y1="80" x2="290" y2="144" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Middle row horizontal -->
+  <line x1="114" y1="155" x2="202" y2="148" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="148" x2="290" y2="144" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Top row to middle row diagonals -->
+  <line x1="134" y1="86" x2="114" y2="155" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="134" y1="86" x2="202" y2="148" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="70" x2="114" y2="155" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="70" x2="202" y2="148" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="70" x2="290" y2="144" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="274" y1="82" x2="202" y2="148" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="274" y1="82" x2="290" y2="144" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Middle row to lower row -->
+  <line x1="114" y1="155" x2="162" y2="218" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="148" x2="162" y2="218" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="148" x2="245" y2="205" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="290" y1="144" x2="245" y2="205" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="290" y1="144" x2="332" y2="222" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="162" y1="218" x2="245" y2="205" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Additional cross diagonals for density -->
+  <line x1="112" y1="155" x2="245" y2="205" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="52" y1="226" x2="162" y2="218" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="332" y1="222" x2="245" y2="205" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="202" y1="148" x2="302" y2="262" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+  <line x1="114" y1="155" x2="202" y2="270" stroke="#000" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- ====== NODES ====== -->
+  <!-- Small solid dots - outer perimeter -->
+  <circle cx="100" cy="30" r="5.5" fill="#000"/>
+  <circle cx="295" cy="44" r="5.5" fill="#000"/>
+  <circle cx="360" cy="128" r="5.5" fill="#000"/>
+  <circle cx="356" cy="178" r="5.5" fill="#000"/>
+  <circle cx="332" cy="222" r="5.5" fill="#000"/>
+  <circle cx="302" cy="262" r="5.5" fill="#000"/>
+  <circle cx="202" cy="270" r="5.5" fill="#000"/>
+  <circle cx="96" cy="268" r="5.5" fill="#000"/>
+  <circle cx="52" cy="226" r="5.5" fill="#000"/>
+  <circle cx="34" cy="170" r="5.5" fill="#000"/>
+  <circle cx="42" cy="115" r="5.5" fill="#000"/>
+  <circle cx="68" cy="62" r="5.5" fill="#000"/>
+
+  <!-- Brainstem dots -->
+  <circle cx="286" cy="310" r="5" fill="#000"/>
+  <circle cx="314" cy="346" r="5" fill="#000"/>
+  <circle cx="298" cy="380" r="4.5" fill="#000"/>
+
+  <!-- Ring nodes - outer perimeter junctions -->
+  <circle cx="160" cy="10" r="9.5" fill="#fff" stroke="#000" stroke-width="6"/>
+  <circle cx="235" cy="18" r="9.5" fill="#fff" stroke="#000" stroke-width="6"/>
+  <circle cx="338" cy="80" r="8.5" fill="#fff" stroke="#000" stroke-width="6"/>
+
+  <!-- Ring nodes - inner top row -->
+  <circle cx="134" cy="86" r="10.5" fill="#fff" stroke="#000" stroke-width="6"/>
+  <circle cx="202" cy="70" r="10.5" fill="#fff" stroke="#000" stroke-width="6"/>
+  <circle cx="274" cy="82" r="10.5" fill="#fff" stroke="#000" stroke-width="6"/>
+
+  <!-- Ring nodes - middle row (largest hubs) -->
+  <circle cx="114" cy="155" r="14" fill="#fff" stroke="#000" stroke-width="6.5"/>
+  <circle cx="202" cy="148" r="14" fill="#fff" stroke="#000" stroke-width="6.5"/>
+  <circle cx="290" cy="144" r="11.5" fill="#fff" stroke="#000" stroke-width="6"/>
+
+  <!-- Ring nodes - lower row -->
+  <circle cx="162" cy="218" r="10.5" fill="#fff" stroke="#000" stroke-width="6"/>
+  <circle cx="245" cy="205" r="10.5" fill="#fff" stroke="#000" stroke-width="6"/>
+
+</svg>
