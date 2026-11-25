@@ -1003,7 +1003,7 @@ a {
 .platform__screen-frame { width: 100%; border: 1px solid var(--border-d); border-radius: 14px; overflow: hidden; background: var(--surface); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
 .platform__screen-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--border-d); background: var(--bg-deep); }
 .platform__screen-url { margin-left: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); }
-.platform__screen-body { position: relative; aspect-ratio: 2640 / 1920; background: var(--bg); }
+.platform__screen-body { position: relative; aspect-ratio: 2816 / 1760; background: var(--bg); }
 .platform__screen { position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s ease; pointer-events: none; }
 .platform__screen.is-active { opacity: 1; pointer-events: auto; }
 .platform__screen img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
@@ -1330,6 +1330,19 @@ a {
   padding: 30px 30px 28px;
 }
 .offer-card__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+/* Get started v1: a screen at the top of each card */
+.offer-card__media { position: relative; margin: -30px -30px 24px; aspect-ratio: 640 / 340; border-radius: 16px 16px 0 0; overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 100%, rgba(27,168,160,0.10), rgba(27,168,160,0) 60%), #101315; border-bottom: 1px solid var(--border-d); }
+.offer-card__kit { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.offer-card__badge--float { position: absolute; top: 16px; right: 16px; z-index: 2; }
+.laptop { position: absolute; left: 50%; top: 9%; width: 64%; transform: translateX(-50%); }
+.laptop__lid { padding: 1.4% 1.4% 2.2%; border-radius: 12px 12px 0 0; background: linear-gradient(180deg, #262b30, #15181b);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08) inset, 0 30px 60px rgba(0,0,0,0.55); }
+.laptop__screen { position: relative; aspect-ratio: 1280 / 760; overflow: hidden; border-radius: 4px; background: #0b0d0f; }
+.laptop__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.laptop__base { position: relative; height: 0; padding-bottom: 3.2%; margin: 0 -7%; border-radius: 0 0 14px 14px;
+  background: linear-gradient(180deg, #3a4046, #1b1f22 70%); box-shadow: 0 14px 26px rgba(0,0,0,0.5); }
+.laptop__base::before { content: ""; position: absolute; left: 50%; top: 0; width: 16%; height: 40%; transform: translateX(-50%); border-radius: 0 0 8px 8px; background: #121517; }
 .offer-card__icon {
   width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
   border: 1px solid rgba(27,168,160,0.4); border-radius: 10px; color: var(--color-teal);
@@ -1429,6 +1442,7 @@ a {
 @media (max-width: 860px) {
   .solutions__grid { grid-template-columns: 1fr; }
   .offer-card { padding: 24px 20px 22px; }
+  .offer-card__media { margin: -24px -20px 20px; }
   .offer-card__title { font-size: 1.18rem; }
   .offer-card__cta { min-height: 52px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
   .solutions__router { font-size: 14px; }
@@ -3485,13 +3499,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 @media (max-width: 860px) {
   .platform__screen-body {
     aspect-ratio: auto;
-    height: 500px;
+    height: 430px;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
   }
-  .platform__screen { width: max(100%, 688px); height: 500px; right: auto; bottom: auto; }
+  .platform__screen { width: max(100%, 688px); height: 430px; right: auto; bottom: auto; }
   .platform__screen img { width: 100%; height: 100%; }
   .platform__screen-hint { display: block; }
 }
@@ -3793,18 +3807,18 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
             <span class="platform__screenshot-dot"></span>
             <span class="platform__screenshot-dot"></span>
             <span class="platform__screenshot-dot"></span>
-            <span class="platform__screen-url" id="platform-url">nexus.insai.tech/analysis</span>
+            <span class="platform__screen-url" id="platform-url">nexus.insai.tech/nights/17-nov</span>
           </div>
           <div class="platform__screen-body">
             <span class="platform__screen-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg>Open full size</span>
-            <div class="platform__screen is-active" data-screen="analysis" data-url="nexus.insai.tech/analysis">
-              <img src="assets/screenshots/nexus-night.webp" alt="One night in the Nexus portal: hypnogram, staging confidence, sleep cycles, efficiency and stage composition" loading="lazy" width="2640" height="1920">
+            <div class="platform__screen is-active" data-screen="analysis" data-url="nexus.insai.tech/nights/17-nov">
+              <img src="assets/screenshots/portal-v2-night.webp?v=25nov" alt="One night in the Nexus portal: the hypnogram with staging confidence and cycles, total sleep, efficiency, onset and WASO against the usual, a data-quality score with each channel worst first, and this night against the participant&apos;s usual." loading="lazy" width="2816" height="1760">
             </div>
-            <div class="platform__screen" data-screen="trends" data-url="nexus.insai.tech/trends">
-              <img src="assets/screenshots/nexus-trends-fit.webp" alt="Nexus trends, markers across 14 nights against each participant&apos;s own baseline, with low-signal nights excluded" loading="lazy" width="2640" height="1920">
+            <div class="platform__screen" data-screen="trends" data-url="nexus.insai.tech/nights/trends">
+              <img src="assets/screenshots/portal-v2-trends.webp?v=25nov" alt="Nexus trends over 30 days: one thing moved, sleep onset 40 minutes later than usual with high confidence, while 31 measures are checked against the participant&apos;s own usual range and low-trust nights are left out." loading="lazy" width="2816" height="1760">
             </div>
-            <div class="platform__screen" data-screen="quality" data-url="nexus.insai.tech/data-trust">
-              <img src="assets/screenshots/nexus-dq.webp" alt="Nexus signal quality: Data-Trust score, per-channel quality worst first, coverage and confidence, with detected sleep oscillations below" loading="lazy" width="2640" height="1920">
+            <div class="platform__screen" data-screen="quality" data-url="nexus.insai.tech/nights">
+              <img src="assets/screenshots/portal-v2-nights.webp?v=25nov" alt="The Nexus nights list: every night with its signal quality, hypnogram, total sleep, device, analysis pipelines and review status, with a poor-signal night flagged and low-trust nights hidden." loading="lazy" width="2816" height="1760">
             </div>
           </div>
         </div>
@@ -3839,11 +3853,14 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 
     <div class="solutions__grid offers">
       <div class="offer-card">
-        <div class="offer-card__head">
-          <span class="offer-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
-          </span>
-          <span class="offer-card__badge">New</span>
+        <div class="offer-card__media offer-card__media--laptop">
+          <span class="offer-card__badge offer-card__badge--float">New</span>
+          <div class="laptop" aria-hidden="true">
+            <div class="laptop__lid"><div class="laptop__screen">
+              <video class="laptop__video" data-src="assets/screenshots/wb-uc1-score-keys.mp4?v=25nov" poster="assets/screenshots/wb-uc1-score-keys-poster.webp?v=25nov" muted loop playsinline preload="none" width="1920" height="1140"></video>
+            </div></div>
+            <div class="laptop__base"></div>
+          </div>
         </div>
         <div class="offer-card__for">For researchers with recordings in hand</div>
         <div class="offer-card__eyebrow">Software &middot; Nexus Workbench</div>
@@ -3859,10 +3876,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
         </div>
       </div>
       <div class="offer-card">
-        <div class="offer-card__head">
-          <span class="offer-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
-          </span>
+        <div class="offer-card__media">
+          <img class="offer-card__kit" src="assets/home-kit.webp?v=25nov-b" alt="The research kit: the Nexus headband and the Nexus Research app on two iPhones. The home screen is ready to start a recording, and the signal check reads each of the four channels before the session starts." width="1280" height="680" loading="lazy">
         </div>
         <div class="offer-card__for">For teams designing a new study</div>
         <div class="offer-card__eyebrow">At-home studies</div>
@@ -4637,6 +4652,22 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
       send('form_start', { form_name: form.dataset.formName || 'study-inquiry' });
     });
   });
+})();
+</script>
+<script>
+(function () {
+  var v = document.querySelector('.laptop__video');
+  if (!v) return;
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) {
+        if (v.dataset.src) { v.src = v.dataset.src; v.removeAttribute('data-src'); }
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+      } else if (!v.paused) v.pause();
+    });
+  }, { threshold: 0.3 }).observe(v);
 })();
 </script>
 </body>
