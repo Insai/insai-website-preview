@@ -4560,6 +4560,12 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 @keyframes wb-panel-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .wb-uc2 .wb-feat__panel.is-active { animation: none; } }
 
+/* v58: use cases get a wider screen column (desk captures) */
+@media (min-width: 861px) {
+  .wb-uc2 .wb-feat__panel { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 48px; }
+}
+.wb-uc__stack video.wb-uc__shot { object-fit: cover; object-position: top left; }
+
 </style>
 <script type="application/ld+json">
 {
@@ -4784,7 +4790,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.wb-keyclip').forEach(function (v) {
     var keys = v.dataset.keys.split('|').map(function (k) { var p = k.split(' '); return { t: parseFloat(p[0]), k: p[1], label: p.slice(2).join(' ') }; });
     var hud = v.parentNode.querySelector('.wb-keyhud');
-    var legend = v.closest('.wb-fl__visual').querySelectorAll('.wb-legend--keys li');
+    var vis = v.closest('.wb-fl__visual'); var legend = vis ? vis.querySelectorAll('.wb-legend--keys li') : [];
     v.addEventListener('ended', function () { last = null; });
     var last = null;
     v.addEventListener('timeupdate', function () {
@@ -4896,7 +4902,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <script>
 // Feature videos: fetch each one only when its row comes near the screen,
 // play it while on screen, pause it when scrolled away.
-(function () {
+function wbVideos() {
   var vids = [].slice.call(document.querySelectorAll('.wb-feat__video'));
   if (!vids.length) return;
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -4914,7 +4920,8 @@ document.addEventListener('DOMContentLoaded', function () {
     es.forEach(function (e) { if (e.isIntersecting) { load(e.target); play(e.target); } else if (!e.target.paused) e.target.pause(); });
   }, { threshold: 0.25 });
   vids.forEach(function (v) { soon.observe(v); seen.observe(v); });
-})();
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wbVideos); else wbVideos();
 </script>
 
 <!-- WHERE IT FITS -->
@@ -4992,14 +4999,15 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="wb-feat__panel is-active" role="tabpanel" id="panel-uc-study" aria-labelledby="tab-uc-study">
       <div class="wb-uc2__text">
         <div class="wb-uc2__for">For research labs scoring their own studies</div>
-        <h3 class="wb-uc2__title">Score hundreds of nights without more scorers.</h3>
-        <p class="wb-uc2__body">Models mark stages, spindles and artefacts. Your scorers accept or fix each mark with one key, blind or assisted. Every stage edit is logged.</p>
+        <h3 class="wb-uc2__title">Score at full speed, in a browser tab.</h3>
+        <p class="wb-uc2__body">Open any EDF in a browser tab and stage it one key per epoch, with the AI model&rsquo;s stage beside yours. Every edit is logged.</p>
         <a href="#request" class="wb-uc2__cta" data-inquiry="Score my study" data-cta="wb_uc_study">Score your study &rarr;</a>
       </div>
       <div class="wb-uc2__visual platform__screen-frame wb-uc__visual">
-        <div class="platform__screen-bar"><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screen-url">Workbench &middot; who is scoring each night</span></div>
-        <div class="wb-uc__stack">
-          <img class="wb-uc__shot is-on" src="assets/screenshots/wb-uc1-scoring-v2.webp" alt="A project of twelve nights by three scorers: each night shows who is scoring it, how far they have got, blind or assisted, and on assisted tasks their agreement with you as per cent and kappa. One night has nobody on it yet." loading="lazy" width="1680" height="946">
+        <div class="platform__screen-bar"><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screen-url">Workbench &middot; scoring a night from the keyboard</span></div>
+        <div class="wb-uc__stack" style="aspect-ratio: 1280 / 760">
+          <video class="wb-uc__shot is-on wb-feat__video wb-keyclip" data-src="assets/screenshots/wb-uc1-score-keys.mp4?v=25nov" data-poster="assets/screenshots/wb-uc1-score-keys-poster.webp?v=25nov" muted loop playsinline preload="none" width="1920" height="1140" data-keys="1.4 - Scoring profile|4.6 2 N2|5.9 2 N2|7.2 2 N2|8.5 2 N2|9.8 2 N2|11.1 3 N3|12.4 3 N3|13.7 3 N3|15.0 3 N3|16.3 3 N3" aria-label="Scoring a PSG night one 30 second epoch at a time, with the brain markers on: spindles and K-complexes marked on the traces, and slow-wave, K-complex and spindle rows across the night. The Scoring signal profile is picked, then one key per epoch stages ten epochs as N2 and N3. Each unscored epoch shows the AI model&apos;s stage faintly, and the hypnogram fills in as you go."></video>
+          <span class="wb-keyhud" aria-hidden="true"><kbd></kbd><span></span></span>
         </div>
       </div>
     </div>
@@ -5007,14 +5015,15 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="wb-feat__panel" role="tabpanel" id="panel-uc-model" aria-labelledby="tab-uc-model" hidden>
       <div class="wb-uc2__text">
         <div class="wb-uc2__for">For researchers training or testing models</div>
-        <h3 class="wb-uc2__title">See why your model disagrees with you.</h3>
-        <p class="wb-uc2__body">Compare several models on one recording, or import your own results. Each mark shows its trace, time-frequency and spectrum. Export clean labels for training and testing.</p>
+        <h3 class="wb-uc2__title">See where your model and scorers disagree.</h3>
+        <p class="wb-uc2__body">Import your model&rsquo;s marks next to the human scoring. Each epoch where they differ is flagged. A scorer agrees or disagrees with one key, and the corrected labels export for your next training run.</p>
         <a href="#request" class="wb-uc2__cta" data-inquiry="Check my model" data-cta="wb_uc_model">Check your model &rarr;</a>
       </div>
       <div class="wb-uc2__visual platform__screen-frame wb-uc__visual">
-        <div class="platform__screen-bar"><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screen-url">Workbench &middot; your scoring against a model</span></div>
+        <div class="platform__screen-bar"><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screen-url">Workbench &middot; the AI model against human scoring</span></div>
         <div class="wb-uc__stack">
-          <img class="wb-uc__shot is-on" src="assets/screenshots/wb-uc2-model-v2.webp" alt="Marking a night done: your hypnogram against the AI model with every difference marked, Cohen&apos;s kappa and the share of epochs that agree, and time per stage for you and the model." loading="lazy" width="1680" height="946">
+          <video class="wb-uc__shot is-on wb-feat__video wb-keyclip" data-src="assets/screenshots/wb-uc2-model-agree.mp4?v=24nov" data-poster="assets/screenshots/wb-uc2-model-agree-poster.webp?v=24nov" muted loop playsinline preload="none" width="1920" height="1080" data-keys="1.6 - Agreement with the AI model|5.4 L Next AI mark|8.4 Y Agree|10.8 D Disagree" aria-label="A scored PSG night with the AI model on: the Assist menu shows 89 per cent agreement and kappa 0.84, two epochs where the model said N1 instead of N2 carry a gold edge, and the scorer opens the model&apos;s marks one by one, agreeing with one and disagreeing with the next."></video>
+          <span class="wb-keyhud" aria-hidden="true"><kbd></kbd><span></span></span>
         </div>
       </div>
     </div>
@@ -5022,14 +5031,15 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="wb-feat__panel" role="tabpanel" id="panel-uc-device" aria-labelledby="tab-uc-device" hidden>
       <div class="wb-uc2__text">
         <div class="wb-uc2__for">For teams building EEG and biosignal devices</div>
-        <h3 class="wb-uc2__title">Tell artefacts from brain activity.</h3>
-        <p class="wb-uc2__body">Quality scores per epoch and per channel, artefact marks with their evidence, and every session paired with a reference recording.</p>
+        <h3 class="wb-uc2__title">Separate signal from noise.</h3>
+        <p class="wb-uc2__body">Record the same night on your device and on a reference PSG. Workbench grades every epoch and channel and marks artefacts with their evidence, so you see where your device holds up.</p>
         <a href="#request" class="wb-uc2__cta" data-inquiry="Validate my device" data-cta="wb_uc_device">Validate your device &rarr;</a>
       </div>
       <div class="wb-uc2__visual platform__screen-frame wb-uc__visual">
-        <div class="platform__screen-bar"><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screen-url">Workbench &middot; a headband night paired with PSG</span></div>
-        <div class="wb-uc__stack">
-          <img class="wb-uc__shot is-on" src="assets/screenshots/wb-uc3-device-paired.webp" alt="A project of eight nights. Night 8 was recorded on a headband and a PSG together on one wall clock, and every recording carries a quality score" loading="lazy" width="1016" height="572">
+        <div class="platform__screen-bar"><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screenshot-dot"></span><span class="platform__screen-url">Workbench &middot; a PSG and a headband on one night</span></div>
+        <div class="wb-uc__stack" style="aspect-ratio: 1280 / 760">
+          <video class="wb-uc__shot is-on wb-feat__video wb-keyclip" data-src="assets/screenshots/wb-uc3-device.mp4?v=25nov-c" data-poster="assets/screenshots/wb-uc3-device-poster.webp?v=25nov-c" muted loop playsinline preload="none" width="1920" height="1140" data-keys="1.4 - One night, two devices|4.1 &crarr; Open night|6.5 - PSG and headband, one clock|8.0 0 Raw signal|9.5 T Layers|12.4 - Body and device marks|15.2 - Slow drift|19.8 - Muscle burst|24.3 - Contact hum|29.1 - Broadband burst|34.0 - Lost contact" aria-label="A night recorded on a PSG and a headband together opens as one combined recording: the PSG rows and the headband rows on one clock. On raw signal, the Layers pane lists the body and device marks and the quality checks with their counts, and the clip steps through slow drift, a muscle burst, contact hum, a broadband burst and a lost contact on the headband rows, each with its evidence, while the PSG rows stay clean."></video>
+          <span class="wb-keyhud" aria-hidden="true"><kbd></kbd><span></span></span>
         </div>
       </div>
     </div>
